@@ -1,0 +1,54 @@
+@import '../../variables.scss';
+
+.CircleText {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: rem(186);
+  width: rem(186);
+  font-weight: bold;
+  top: rem(290);
+  right: rem(32);
+  font-family: var(--font-extra);
+  backdrop-filter: blur(4px);
+  border-radius: 100%;
+  color: var(--prime-1);
+
+  &__breaf {
+    font-size: rem(20);
+    font-weight: 800;
+    line-height: rem(25.4);
+    text-align: center;
+  }
+
+  &__text {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    font-weight: bold;
+    animation: animate 7.5s linear infinite;
+
+    $move: rem(95);
+
+    span {
+      top: -$move;
+      position: absolute;
+      display: inline-block;
+      transform-origin: 0 $move;
+      font-size: rem(12);
+      font-weight: normal;
+      width: rem(11);
+      overflow: hidden;
+    }
+  }
+
+  @keyframes animate {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}

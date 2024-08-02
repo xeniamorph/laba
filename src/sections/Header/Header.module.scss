@@ -1,0 +1,332 @@
+@import '../../variables.scss';
+
+.Header {
+  $s: &;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: 0.3s;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(8) 0 rem(16) 0;
+    margin: 0 rem(16);
+    z-index: 30;
+  }
+
+  &__desc {
+    display: none;
+    font-size: 15px;
+  }
+
+  &__mr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__toggle {
+    width: rem(62);
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      div,
+      div::after,
+      div::before {
+        box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    div {
+      width: rem(62);
+      height: 2px;
+      background-color: var(--prime-2);
+      position: relative;
+      transition: 0.1s;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--prime-2);
+        left: 0;
+        position: absolute;
+        transition: 0.3s;
+      }
+      &::after {
+        top: rem(6);
+      }
+      &::before {
+        top: rem(-6);
+      }
+    }
+  }
+
+  &__inner {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    min-height: rem(726);
+    justify-content: space-between;
+    position: relative;
+    padding: 0 rem(16) rem(16) rem(16);
+    animation: slideDown 0.5s ease-out forwards;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: rem(530);
+      height: rem(454);
+      top: rem(107);
+      right: rem(-150);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(/src/assets/images/header-menu.png);
+      transform: scaleX(-1);
+    }
+  }
+
+  nav {
+    padding-top: rem(60);
+    padding-bottom: rem(16);
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--prime-1);
+
+    li:not(:last-child) {
+      margin-bottom: rem(32);
+    }
+
+    a {
+      display: inline-block;
+      font-size: rem(40);
+      line-height: rem(38.6);
+      position: relative;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--prime-3);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: rem(-12);
+        height: rem(2);
+        width: 0;
+        background-color: var(--prime-3);
+        z-index: 20;
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+
+      &.active {
+        &::before {
+          transition: 0.3s;
+          width: rem(95);
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  &__links {
+    z-index: 20;
+    display: flex;
+    align-self: flex-end;
+    gap: rem(20);
+    margin-top: auto;
+    margin-bottom: rem(16);
+    opacity: 0.6;
+    color: var(--prime-1);
+
+    a {
+      display: block;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--prime-3);
+      }
+    }
+  }
+
+  &__contacts {
+    color: var(--prime-1);
+    z-index: 10;
+    position: relative;
+    font-family: var(--font-sec);
+    font-weight: var(--fw-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    a {
+      display: block;
+      transition: color 0.3s;
+      font-size: rem(16);
+      line-height: rem(24);
+      opacity: 0.6;
+
+      &:hover {
+        color: var(--prime-3);
+      }
+
+      &#{$s}__mail {
+        font-size: rem(24);
+        line-height: rem(32);
+        margin: 0 0 rem(16) 0;
+      }
+
+      &#{$s}__tel {
+        margin: 0 0 rem(4) 0;
+      }
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
+
+  &.active {
+    background-color: var(--prime-2);
+    color: var(--prime-1);
+    z-index: 30;
+    position: relative;
+    height: 100vh;
+
+    #{$s}__top {
+      border-bottom: 2px solid var(--prime-1);
+    }
+
+    #{$s}__mr svg * {
+      fill: var(--prime-1);
+    }
+
+    #{$s}__toggle {
+      &:hover {
+        div,
+        div::after,
+        div::before {
+          box-shadow: 0 1px 12px rgb(255, 255, 255);
+        }
+      }
+
+      div {
+        width: rem(32);
+        height: 0;
+        background-color: var(--prime-1);
+
+        &::after,
+        &::before {
+          top: 0;
+          transform: rotate(-30deg);
+          transition: 0.3s;
+          background-color: var(--prime-1);
+        }
+        &::before {
+          transform: rotate(30deg);
+        }
+      }
+    }
+
+    #{$s}__inner {
+      display: flex;
+      flex-grow: 1;
+    }
+  }
+
+  @media all and (min-width: $bp4) {
+    &__top {
+      padding: rem(12) 0 rem(16) 0;
+      margin: 0 rem(32);
+    }
+
+    &__inner::before {
+      right: 0;
+    }
+  }
+
+  // Адаптация для tablet
+  @media all and (min-width: $bp3) {
+    &__top {
+      padding: rem(12) 0 rem(16) 0;
+    }
+
+    &__inner {
+      padding: 0 rem(32) rem(32) rem(32);
+      min-height: 90vh;
+
+      &::before {
+        width: rem(962);
+        height: rem(826);
+        top: rem(155);
+        right: auto;
+        left: rem(-189);
+        transform: scaleX(1);
+      }
+    }
+
+    nav {
+      padding: rem(200) 0 0 49.5%;
+    }
+
+    &__desc {
+      display: block;
+    }
+  }
+
+  // Адаптация для desktop
+  @media all and (min-width: $bp1) {
+    &__top {
+      padding: rem(20) 0 rem(16) 0;
+    }
+
+    &__inner {
+      min-height: 90vh;
+      max-height: rem(1024);
+
+      &::before {
+        top: rem(59);
+        left: rem(-43);
+      }
+    }
+
+    nav {
+      padding: rem(195) 0 0 49.5%;
+    }
+  }
+}

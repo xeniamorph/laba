@@ -1,0 +1,128 @@
+@import '../../variables.scss';
+
+.InteractiveText {
+  position: relative;
+  $s: &;
+  height: rem(150);
+  margin: 0 rem(16);
+
+  &__textSVG {
+    display: none;
+    width: 100%;
+  }
+
+  &__icon1,
+  &__icon2 {
+    width: rem(80);
+    height: rem(71);
+    object-fit: contain;
+    position: absolute;
+    bottom: -84px;
+  }
+
+  &__icon1 {
+    left: 65%;
+    transform: translate(-50%);
+  }
+
+  &__icon2 {
+    left: 35%;
+    transform: translate(-50%);
+  }
+
+  &__main,
+  &__inner {
+    width: 100%;
+    font-size: 7.5vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    span {
+      width: 100%;
+      display: flex;
+
+      &:nth-child(2) {
+        align-self: flex-start;
+      }
+      &:nth-child(3) {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &__inner {
+    display: none;
+  }
+
+  &__circle {
+    display: none;
+  }
+
+  @media all and (min-width: $bp4) {
+    margin: 0 rem(32);
+
+    &__main,
+    &__inner {
+      font-size: 7.4vw;
+    }
+  }
+
+  @media all and (min-width: $bp3) {
+    &__main,
+    &__inner {
+      display: flex;
+      position: absolute;
+      cursor: none;
+    }
+
+    span {
+      width: 100%;
+      display: flex;
+
+      img {
+        margin: 0 auto;
+        width: rem(110);
+        height: rem(91);
+      }
+
+      &:nth-child(2) {
+        align-self: flex-start;
+      }
+      &:nth-child(3) {
+        align-self: flex-end;
+      }
+    }
+
+    &__main {
+      color: initial;
+      z-index: 0;
+    }
+
+    &__inner {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--prime-2);
+      z-index: 20;
+    }
+
+    &__circle {
+      display: block;
+      height: 500px;
+      width: 500px;
+      border-radius: 50%;
+      background-color: var(--prime-1);
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+    }
+  }
+
+  @media all and (min-width: $bp3) {
+    &__main,
+    &__inner {
+      font-size: 7.6vw;
+    }
+  }
+}
