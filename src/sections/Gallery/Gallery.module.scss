@@ -48,7 +48,7 @@
       }
 
       span:first-child {
-        font-weight: 500;
+        font-weight: var(--fw-medium);
         font-size: rem(24);
         line-height: rem(32);
         color: var(--prime-1);

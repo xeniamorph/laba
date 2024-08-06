@@ -16,14 +16,14 @@ function CircleText() {
   }, []);
 
   return (
-    <section className={styles.CircleText}>
+    <a href="#" className={styles.CircleText}>
       <span className={styles.CircleText__breaf}>
         заполнить<br></br> бриф
       </span>
       <div ref={textRef} className={styles.CircleText__text}>
         &middot;решаем сложные диджитал задачи&middot; решаем сложные задачи
       </div>
-    </section>
+    </a>
   );
 }
 

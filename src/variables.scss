@@ -1,9 +1,10 @@
 // Функция перерасчета px в rem
 @function rem($pixels) {
-	@return calc($pixels / 16) + rem;
+  @return calc($pixels / 16) + rem;
 }
 /* Breakpoints */
-$bp0: 1920px;
+$bp: 1920px;
+$bp0: 1600px;
 $bp1: 1440px;
 $bp2: 1280px;
 $bp3: 1024px;

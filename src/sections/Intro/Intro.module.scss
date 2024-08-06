@@ -8,7 +8,7 @@
     position: relative;
     height: 95vh;
 
-    #{$s}__img {
+    video {
       position: absolute;
       top: 0;
       left: 0;
@@ -48,64 +48,12 @@
     }
   }
 
-  &__img {
+  video {
+    display: block;
     width: 100%;
     height: 100vw;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
-
-  // &__brief {
-  //   display: none;
-  //   justify-content: flex-end;
-  //   margin-right: rem(16);
-  //   margin-left: rem(16);
-  //   position: absolute;
-  //   top: rem(275);
-  //   right: 0;
-  // }
-
-  // &__circle {
-  //   position: relative;
-  //   width: 186px;
-  //   height: 186px;
-
-  //   svg {
-  //     width: 100%;
-  //     height: 100%;
-  //     backdrop-filter: blur(4px);
-  //     border-radius: 50%;
-  //   }
-
-  //   #{$s}__text {
-  //     font-size: 12px;
-  //     font-family: var(--font-sec);
-  //     font-weight: var(-fw-bold);
-  //     animation: rotate 20s linear infinite;
-  //     transform-origin: center;
-  //     fill: white;
-  //     letter-spacing: 0.075em;
-  //   }
-  // }
-
-  // &__offer {
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   font-size: 20px;
-  //   font-weight: var(-fw-bold);
-  //   line-height: 1.2;
-  //   text-align: center;
-  //   font-family: var(--font-prime);
-  //   color: white;
-  //   z-index: 1;
-  // }
 
   @media all and (min-width: $bp4) {
     &__company {
@@ -123,7 +71,7 @@
       }
     }
 
-    &__img {
+    video {
       height: 80vw;
     }
   }
@@ -142,7 +90,7 @@
       margin-right: rem(30);
     }
 
-    &__img {
+    video {
       height: 75vh;
     }
   }
