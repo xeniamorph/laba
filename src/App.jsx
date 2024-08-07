@@ -6,7 +6,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
 import './App.css';
 // import './tailwind-utilities.css';
 // import './tailwind-components.css';
-import './tailwind-all.css';
+// import './tailwind-all.css';
 // import './tailwind-utilities.min.css';
 // import './tailwind-base.min.css';
 // import './tailwind-base.css';
@@ -26,7 +26,7 @@ import InteractiveText from './sections/InteractiveText/InteractiveText.jsx';
 import Footer from './sections/Footer/Footer.jsx';
 import ButtonWrapper from './sections/ButtonWrapper/ButtonWrapper.jsx';
 import Test from './sections/Test/Test.jsx';
-import Сontacts from './sections/Сontacts/Сontacts.jsx';
+import FormBrief from './sections/FormBrief/FormBrief.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -89,7 +89,7 @@ const App = () => {
         {/* <AboutList /> */}
         {/* <InteractiveText /> */}
 
-        <Сontacts />
+        <FormBrief />
         <Footer />
       </div>
     </div>
