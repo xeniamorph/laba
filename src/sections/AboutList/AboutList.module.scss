@@ -38,7 +38,7 @@
 
   &__header {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: rem(16);
     font-family: var(--font-sec);
     font-weight: var(--fw-light);
@@ -55,7 +55,7 @@
 
   &__num {
     max-width: 12%;
-    max-height: rem(64);
+    height: rem(53);
     flex-shrink: 0;
 
     img {
@@ -66,7 +66,6 @@
   }
 
   &__subtitle {
-    width: 80%;
     font-size: rem(24);
     line-height: rem(32);
     align-self: center;
@@ -157,12 +156,12 @@
     }
 
     &__num {
-      max-height: rem(90);
+      height: rem(70);
     }
 
     &__subtitle {
       font-size: rem(32);
-      line-height: rem(40);
+      line-height: 1.1;
     }
 
     &__video {
@@ -174,6 +173,17 @@
 
   // Адаптация для tablet
   @media all and (min-width: $bp3) {
+    &__subtitle {
+      font-family: var(--font-prime);
+      font-weight: var(--fw-medium);
+      font-size: rem(32);
+      line-height: rem(40);
+    }
+
+    &__desc {
+      font-size: rem(24);
+      line-height: rem(32);
+    }
   }
 
   // Адаптация для desktop
@@ -194,6 +204,8 @@
     }
 
     &__subtitle {
+      font-family: var(--font-sec);
+      font-weight: var(--fw-light);
       font-size: rem(50);
       line-height: rem(45);
     }

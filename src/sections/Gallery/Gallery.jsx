@@ -18,13 +18,13 @@ const items = [
   {
     video: video_2,
     src: '#',
-    title: 'Проект Вуаля',
+    title: 'Проект Signature',
     desc: 'ЗD визуализация',
   },
   {
     video: video_3,
     src: '#',
-    title: 'Проект Вуаля',
+    title: 'Проект Вуаля Вуаляшкин',
     desc: 'ЗD визуализация видео продакшн VR',
     autoplay: true,
   },
@@ -73,7 +73,8 @@ function Gallery() {
                 Your browser does not support the video tag.
               </video>
               <h2>
-                <span>{element.title} </span> <span>| {element.desc}</span>
+                <span>{element.title}</span>
+                <span>{element.desc}</span>
               </h2>
             </a>
           </li>

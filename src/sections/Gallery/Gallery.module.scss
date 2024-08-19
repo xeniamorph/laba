@@ -45,21 +45,23 @@
 
       span {
         display: inline-block;
-      }
 
-      span:first-child {
-        font-weight: var(--fw-medium);
-        font-size: rem(24);
-        line-height: rem(32);
-        color: var(--prime-1);
-      }
+        &:first-child {
+          font-weight: var(--fw-medium);
+          font-size: rem(24);
+          line-height: rem(32);
+          color: var(--prime-1);
+        }
 
-      span:last-child {
-        color: var(--sec-5);
-        font-family: var(--font-sec);
-        font-size: rem(14);
-        line-height: 126.5%;
-        font-weight: var(--fw-light);
+        &:last-child {
+          color: var(--sec-5);
+          font-family: var(--font-sec);
+          font-size: rem(14);
+          line-height: rem(17);
+          font-weight: var(--fw-light);
+          border-left: 1px solid var(--sec-5);
+          padding-left: rem(6);
+        }
       }
     }
   }
@@ -79,29 +81,49 @@
         order: 5;
       }
     }
+  }
 
+  // Адаптация для tablet
+  @media all and (min-width: $bp3) {
     &__item a {
-      span:first-child {
-        opacity: 0;
-        max-width: 0;
-        white-space: nowrap;
-        transform: translateX(-10px);
-        transition: margin 2s ease, max-width 1.5s ease, transform 1s ease, opacity 0.5s ease-out 0s;
+      h2 {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        height: 42px;
+      }
+
+      span {
+        &:first-child {
+          opacity: 0;
+          max-width: 0;
+          transform: translateX(rem(-20));
+          transition: margin 1s ease, max-width 1s ease-in, transform 0.2s ease, opacity 0.3s ease-out;
+        }
+
+        &:last-child {
+          align-self: flex-end;
+          max-width: 100%;
+        }
       }
 
       &:hover {
-        span:first-child {
-          max-width: 100%;
-          opacity: 1;
-          transform: none;
-          transition: margin 1s ease, max-width 2s ease, transform 1s ease, opacity 1s ease-in 0.3s;
-          margin-right: 10px;
+        span {
+          &:first-child {
+            max-width: 49%;
+            opacity: 1;
+            transform: none;
+            transition: margin 1s ease, max-width 1s ease-out, transform 1s ease 1s, opacity 1s ease-out 1s;
+            margin-right: rem(10);
+          }
+
+          &:last-child {
+            max-width: 49%;
+            align-self: center;
+          }
         }
       }
     }
-  }
-  // Адаптация для tablet
-  @media all and (min-width: $bp3) {
   }
   // Адаптация для desktop
   @media all and (min-width: $bp1) {

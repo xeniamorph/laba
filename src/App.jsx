@@ -16,8 +16,8 @@ import Ticker from './sections/Ticker/Ticker.jsx';
 import AboutList from './sections/AboutList/AboutList.jsx';
 import InteractiveText from './sections/InteractiveText/InteractiveText.jsx';
 import Footer from './sections/Footer/Footer.jsx';
-import ButtonWrapper from './sections/ButtonWrapper/ButtonWrapper.jsx';
 import FormBrief from './sections/FormBrief/FormBrief.jsx';
+import Partners from './sections/Partners/Partners.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -54,11 +54,10 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <Ticker items={tickerItems} />
+            {/* <Ticker items={tickerItems} />
             <Gallery />
             <Service />
             <Сompetencies />
-            <ButtonWrapper />
             <Ticker items={tickerItems} star={true} />
             <video
               autoPlay
@@ -74,9 +73,10 @@ const App = () => {
               Your browser does not support the video tag.
             </video>
             <Ticker items={tickerItems} />
-            <AboutList />
+            <AboutList /> */}
             {/* <InteractiveText /> */}
-            <FormBrief />
+            <Partners />
+            {/* <FormBrief /> */}
           </main>
           <Footer />
         </div>

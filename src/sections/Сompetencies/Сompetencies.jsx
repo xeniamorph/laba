@@ -70,7 +70,6 @@ function Сompetencies() {
       });
     });
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 

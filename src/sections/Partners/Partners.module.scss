@@ -1,0 +1,66 @@
+@import '../../variables.scss';
+
+.Partners {
+  $s: &;
+  margin: rem(70) rem(16);
+
+  &__slide {
+    height: rem(182);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcddde;
+  }
+
+  &__img {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(16);
+    margin: rem(24) 0;
+  }
+
+  &__bullet {
+    display: inline-block;
+    width: rem(8);
+    height: rem(8);
+    background-color: var(--prime-3);
+    border-radius: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &_active {
+      background-color: var(--sec-3);
+      cursor: initial;
+    }
+  }
+
+  @media all and (min-width: $bp4) {
+  }
+
+  @media all and (min-width: $bp3) {
+    &__slide {
+      height: rem(112);
+    }
+  }
+
+  @media all and (min-width: $bp0) {
+    margin: rem(70) rem(32);
+
+    &__slide {
+      height: rem(182);
+    }
+  }
+}

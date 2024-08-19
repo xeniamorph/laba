@@ -10,7 +10,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: rem(32);
 
   &__text {
     animation: marquee 35s linear infinite;
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     list-style-type: disc;
-    gap: 32px;
+    gap: rem(32);
 
     li {
       font-weight: var(--fw-light);
