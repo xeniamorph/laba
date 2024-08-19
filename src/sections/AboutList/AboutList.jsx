@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './AboutList.module.scss';
 
-import video from '../../assets/videos/about-list-1.mp4';
+import video1 from '../../assets/videos/about-list-1.mp4';
+import video2 from '../../assets/videos/about-list-2.mp4';
+import video3 from '../../assets/videos/about-list-3.mp4';
 import num1 from '../../assets/images/about-list-num-1.svg';
 import num2 from '../../assets/images/about-list-num-2.svg';
 import num3 from '../../assets/images/about-list-num-3.svg';
@@ -10,19 +12,19 @@ const items = [
   {
     title: 'Всегда в&nbsp;контакте с&nbsp;заказчиком',
     desc: 'Работаем по&nbsp;системе такой&nbsp;то&nbsp;2х недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков',
-    video: video,
+    video: video1,
     num: num1,
   },
   {
     title: 'Ищем лучшие решения ваших задач',
     desc: 'Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков',
-    video: video,
+    video: video2,
     num: num2,
   },
   {
     title: 'Верим в&nbsp;договоренности',
     desc: 'Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков',
-    video: video,
+    video: video3,
     num: num3,
   },
 ];

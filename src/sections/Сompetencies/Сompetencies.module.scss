@@ -104,19 +104,20 @@
 
   &__item {
     display: flex;
+    border-top: 1px solid #dcddde;
 
     &:first-child {
       grid-column-start: 1;
       grid-column-end: 3;
-      background-color: rgb(49, 164, 168);
+      // background-color: rgb(49, 164, 168);
     }
 
     &:nth-child(2) {
-      background-color: rgb(155, 96, 96);
+      // background-color: rgb(155, 96, 96);
     }
 
     &:nth-child(3) {
-      background-color: rgb(137, 179, 137);
+      // background-color: rgb(137, 179, 137);
 
       #{$s}__preview {
         display: none;
@@ -125,12 +126,12 @@
 
     &:nth-child(4) {
       flex-direction: row-reverse;
-      background-color: rgb(123, 123, 177);
+      // background-color: rgb(123, 123, 177);
     }
 
     &:nth-child(5) {
       flex-direction: row-reverse;
-      background-color: rgb(175, 175, 126);
+      // background-color: rgb(175, 175, 126);
     }
   }
 

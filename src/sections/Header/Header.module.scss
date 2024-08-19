@@ -2,7 +2,6 @@
 
 .Header {
   $s: &;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -136,6 +135,10 @@
       }
 
       &.active {
+        &:hover {
+          color: var(--prime-1);
+        }
+
         &::before {
           transition: 0.3s;
           width: rem(95);
@@ -147,6 +150,7 @@
   }
 
   &__links {
+    font-family: var(--font-sec);
     z-index: 20;
     display: flex;
     align-self: flex-end;
@@ -272,7 +276,6 @@
   @media all and (min-width: $bp4) {
     &__top {
       padding: rem(12) 0 rem(16) 0;
-      margin: 0 rem(32);
     }
 
     &__inner::before {
@@ -284,11 +287,12 @@
   @media all and (min-width: $bp3) {
     &__top {
       padding: rem(12) 0 rem(16) 0;
+      margin: 0 rem(32);
     }
 
     &__inner {
       padding: 0 rem(32) rem(32) rem(32);
-      min-height: 90vh;
+      min-height: 100vh;
 
       &::before {
         width: rem(962);
@@ -316,7 +320,7 @@
     }
 
     &__inner {
-      min-height: 90vh;
+      min-height: 95vh;
       max-height: rem(1024);
 
       &::before {

@@ -51,7 +51,6 @@ function Сompetencies() {
 
     window.addEventListener('resize', handleResize);
 
-    // Custom cursor logic
     const cursor = document.querySelector('.custom-cursor');
     const links = document.querySelectorAll('a, .Сompetencies__header, .Сompetencies__title');
 

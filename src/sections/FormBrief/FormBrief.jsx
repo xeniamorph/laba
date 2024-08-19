@@ -18,6 +18,7 @@ const options = [
 function FormBrief() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -32,16 +33,23 @@ function FormBrief() {
     setSelectedOptions((prevSelected) => prevSelected.filter((option) => option !== value));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsFormSubmitted(true);
+  };
+
   return (
     <section className={styles.FormBrief}>
       <div className={styles.FormBrief__header}>
         <h2>Заполните бриф</h2>
-        <p>Выберете подходящие вам услуги, либо звоните, мы пообщаемся и подберем лучшее решение для вашей компании</p>
       </div>
-      <form action="https://echo.htmlacademy.ru/" method="post">
+      <form action="#" method="post" className={isFormSubmitted ? styles.success : ''} onSubmit={handleSubmit}>
+        <p>
+          Выберете подходящие вам услуги, либо звоните, мы&nbsp;пообщаемся <br></br>и&nbsp;подберем лучшее решение для вашей компании
+        </p>
         <div className={styles.FormBrief__services}>
           <div className={styles.FormBrief__dropdown}>
-            <div className={`${styles.FormBrief__dropclick} ${isDropdownOpen ? styles.active : ''}`} aria-expanded={isDropdownOpen}>
+            <div className={`${styles.FormBrief__dropclick} ${isDropdownOpen ? styles.active : ''} ${selectedOptions.length > 0 ? styles.contain : ''}`} aria-expanded={isDropdownOpen}>
               <span onClick={handleDropdownToggle}>Выбрать услуги</span>
               <div className={styles.FormBrief__selectedItems}>
                 {selectedOptions.map((option, index) => (
@@ -64,22 +72,28 @@ function FormBrief() {
 
         <div className={styles.FormBrief__contacts}>
           <h3 className={styles.FormBrief__subtitle}>Контактные данные</h3>
-          <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name}`}>
-            <input type="text" id="name" name="name" autoComplete="name" placeholder="Ваше имя" />
+          <div className={styles.FormBrief__inputs}>
+            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name}`}>
+              <input type="text" id="name" name="name" autoComplete="name" placeholder="Ваше имя" />
+            </div>
+            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_email}`}>
+              <input type="email" id="email" name="email" autoComplete="email" placeholder="Еmail" required />
+              <span className={styles.FormBrief__error}>Не корректный Email</span>
+            </div>
           </div>
-          <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_email}`}>
-            <input type="email" id="email" name="email" autoComplete="email" placeholder="Еmail" required />
-            <span className={styles.FormBrief__error}>Не корректный Email</span>
-          </div>
-          <label className={styles.FormBrief__agreement}>
-            Подтвердите согласие на обработку персональных данных
+          <div className={`${styles.FormBrief__checkbox}`}>
             <input id="agreement" name="agreement" type="checkbox" required />
-          </label>
+            <label htmlFor="agreement">Подтвердите согласие на обработку персональных данных</label>
+          </div>
           <button className={styles.FormBrief__submit} type="submit">
             Отправить заявку
           </button>
         </div>
       </form>
+      <div className={`${styles.FormBrief__success} ${isFormSubmitted ? styles.active : ''}`}>
+        <p>Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
+        <a href="#">Перейти на главную</a>
+      </div>
     </section>
   );
 }

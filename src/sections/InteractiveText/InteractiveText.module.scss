@@ -71,6 +71,9 @@
   }
 
   @media all and (min-width: $bp3) {
+    margin: rem(150) rem(16) 0 rem(16);
+    height: 80vh;
+
     &__main,
     &__inner {
       display: flex;
