@@ -1,49 +1,40 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './InteractiveText.module.scss';
 
-import textSVG from '../../assets/images/interactive-text.svg';
-import icon1 from '../../assets/images/interactive-text-1.svg';
-import icon2 from '../../assets/images/interactive-text-2.svg';
-
 function InteractiveText() {
+  const cursorRef = useRef(null);
+  const animationFrameId = useRef(null);
+
   useEffect(() => {
+    const cursor = cursorRef.current;
+
     const handleMouseMove = (e) => {
-      const circle = document.getElementById('circle');
-      const halfCircleSize = circle.offsetWidth / 2;
-      circle.style.left = `${e.clientX - halfCircleSize}px`;
-      circle.style.top = `${e.clientY - halfCircleSize}px`;
+      if (cursor) {
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+        }
+
+        animationFrameId.current = requestAnimationFrame(() => {
+          cursor.style.left = e.pageX + 'px';
+          cursor.style.top = e.pageY + 'px';
+        });
+      }
     };
 
     document.addEventListener('mousemove', handleMouseMove);
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 
   return (
     <section className={styles.InteractiveText}>
-      <img src={textSVG} className={styles.InteractiveText__textSVG}></img>
-      <div className={styles.InteractiveText__main}>
-        <span>Вдохновляющие</span>
-        <span>
-          проекты для <img className={styles.InteractiveText__icon1} src={icon1}></img>
-        </span>
-        <span>
-          <img src={icon2} className={styles.InteractiveText__icon2}></img>амбициозных
-        </span>
-        заказчиков
-      </div>
-      <div className={styles.InteractiveText__inner}>
-        <span>Вдохновляющие</span>
-        <span>
-          проекты для <img className={styles.InteractiveText__icon1} src={icon1}></img>
-        </span>
-        <span>
-          <img src={icon2} className={styles.InteractiveText__icon2}></img>амбициозных
-        </span>
-        заказчиков
-      </div>
-      <div id="circle" className={styles.InteractiveText__circle}></div>
+      <div className={styles.InteractiveText__main}>Вдохновляющие проекты для амбициозных заказчиков</div>
+      <div ref={cursorRef} className={styles.InteractiveText__circle}></div>
     </section>
   );
 }

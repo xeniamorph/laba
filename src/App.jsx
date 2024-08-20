@@ -14,10 +14,10 @@ import Service from './sections/Service/Service.jsx';
 import Сompetencies from './sections/Сompetencies/Сompetencies.jsx';
 import Ticker from './sections/Ticker/Ticker.jsx';
 import AboutList from './sections/AboutList/AboutList.jsx';
-import InteractiveText from './sections/InteractiveText/InteractiveText.jsx';
 import Footer from './sections/Footer/Footer.jsx';
 import FormBrief from './sections/FormBrief/FormBrief.jsx';
 import Partners from './sections/Partners/Partners.jsx';
+import TextEffect from './sections/TextEffect/TextEffect.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -54,7 +54,7 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            {/* <Ticker items={tickerItems} />
+            <Ticker items={tickerItems} />
             <Gallery />
             <Service />
             <Сompetencies />
@@ -73,10 +73,12 @@ const App = () => {
               Your browser does not support the video tag.
             </video>
             <Ticker items={tickerItems} />
-            <AboutList /> */}
-            {/* <InteractiveText /> */}
+            <Service />
+            <Сompetencies />
+            <AboutList />
+            <TextEffect />
             <Partners />
-            {/* <FormBrief /> */}
+            <FormBrief />
           </main>
           <Footer />
         </div>

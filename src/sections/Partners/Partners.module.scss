@@ -2,7 +2,11 @@
 
 .Partners {
   $s: &;
-  margin: rem(70) rem(16);
+  margin: rem(70) 0;
+
+  &__swiper {
+    padding: 0 16px;
+  }
 
   &__slide {
     height: rem(182);
@@ -47,20 +51,101 @@
     }
   }
 
-  @media all and (min-width: $bp4) {
+  // Для ленты
+
+  &__rows {
+    margin: rem(70) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+    }
+
+    .animate {
+      animation: fast-scroll 2s ease-in-out forwards, slow-scroll 100s linear infinite;
+      animation-delay: 0s, 2s;
+    }
   }
 
-  @media all and (min-width: $bp3) {
-    &__slide {
-      height: rem(112);
+  &__row {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: rem(112);
+
+    &:nth-child(even) #{$s}__track {
+      animation-direction: reverse;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: rem(216);
+    height: rem(112);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcddde;
+  }
+
+  &__picture {
+    width: 80%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  @keyframes fast-scroll {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -200%;
+    }
+  }
+
+  @keyframes slow-scroll {
+    0% {
+      margin-left: -200%;
+    }
+    100% {
+      margin-left: 0;
     }
   }
 
   @media all and (min-width: $bp0) {
-    margin: rem(70) rem(32);
-
-    &__slide {
+    &__row {
       height: rem(182);
+    }
+
+    &__item {
+      width: rem(361);
+      height: rem(182);
+    }
+
+    &__rows {
+      gap: 32px;
+    }
+    &__track {
+      gap: 40px;
     }
   }
 }

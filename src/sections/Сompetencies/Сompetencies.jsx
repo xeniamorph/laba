@@ -24,7 +24,7 @@ const items = [
     title: 'WEB',
   },
   {
-    video: video_2,
+    video: video_3,
     src: '#',
     title: 'MOBILE/ desktop',
   },
@@ -43,34 +43,40 @@ const items = [
 function Сompetencies() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const videoRefs = useRef([]);
+  const cursorRef = useRef(null);
+  const animationFrameId = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
+    const cursor = cursorRef.current;
+
+    const handleMouseMove = (e) => {
+      if (cursor) {
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+        }
+
+        animationFrameId.current = requestAnimationFrame(() => {
+          cursor.style.left = e.pageX + 'px';
+          cursor.style.top = e.pageY + 'px';
+        });
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
     window.addEventListener('resize', handleResize);
 
-    const cursor = document.querySelector('.custom-cursor');
-    const links = document.querySelectorAll('a, .Сompetencies__header, .Сompetencies__title');
-
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-
-    links.forEach((link) => {
-      link.addEventListener('mouseenter', () => {
-        cursor.classList.add('active');
-        link.classList.add('invert');
-      });
-      link.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-        link.classList.remove('invert');
-      });
-    });
-
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
   }, []);
 
   const handlePlayClick = (index) => {
@@ -84,7 +90,6 @@ function Сompetencies() {
 
   return (
     <section className={styles.Сompetencies}>
-      <div className="custom-cursor"></div>
       {/* Слайдер на мобилке */}
       {isMobile && (
         <div className={styles.Сompetencies__swiper}>
@@ -131,28 +136,31 @@ function Сompetencies() {
           <div className={styles.Сompetencies__pagination}></div>
         </div>
       )}
-
       {/* Плитка */}
       {!isMobile && (
-        <div className={styles.Сompetencies__items}>
-          {items.map((item, index) => (
-            <div className={styles.Сompetencies__item} key={index}>
-              <div className={styles.Сompetencies__title} dangerouslySetInnerHTML={{ __html: item.title }} />
-              <div className={styles.Сompetencies__preview}>
-                <button
-                  className={styles.Сompetencies__play}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handlePlayClick(index);
-                  }}></button>
-                <video ref={(el) => (videoRefs.current[index] = el)} loop muted>
-                  <source src={item.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+        <>
+          <div className={styles.Сompetencies__items}>
+            {items.map((item, index) => (
+              <div className={styles.Сompetencies__item} key={index}>
+                <div className={styles.Сompetencies__title} dangerouslySetInnerHTML={{ __html: item.title }} />
+                <div className={styles.Сompetencies__preview}>
+                  <button
+                    className={styles.Сompetencies__play}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlePlayClick(index);
+                    }}></button>
+                  <video ref={(el) => (videoRefs.current[index] = el)} loop muted>
+                    <source src={item.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          <div ref={cursorRef} className={styles.Сompetencies__circle}></div>
+        </>
       )}
     </section>
   );
