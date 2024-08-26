@@ -47,14 +47,17 @@ const items = [
 ];
 
 function Projects() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [isTablet] = useState(window.innerWidth < 1280);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
   const size = isHovered ? (screenWidth < 1600 ? 80 : 200) : 0;
   const videoRefs = useRef([]);
   const containerRef = useRef(null);
 
+  // Отслеживание позиции курсора
   const handleMouseMove = (e) => {
     if (containerRef.current) {
       const containerRect = containerRef.current.getBoundingClientRect();
@@ -64,11 +67,25 @@ function Projects() {
     }
   };
 
+  // Проверка, видимо ли пользователю блок
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
       setIsMobile(window.innerWidth < 1024);
     };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting); // Устанавливаем видимость в зависимости от состояния видимости элемента
+      },
+      {
+        threshold: 0.5, // Настраиваем порог видимости
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
@@ -76,9 +93,11 @@ function Projects() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
     };
   }, []);
 
+  // Проигрывание или остановка видео по нажатию на play
   const handlePlayClick = (index) => {
     const video = videoRefs.current[index];
     if (video.paused) {
@@ -101,7 +120,7 @@ function Projects() {
               clickable: true,
               bulletClass: styles.Projects__bullet,
               bulletActiveClass: styles.Projects__bullet_active,
-              renderBullet: (index, className) => `<span class="${className}"></span>`,
+              renderBullet: (className) => `<span class="${className}"></span>`,
             }}
             breakpoints={{
               320: {
@@ -134,7 +153,7 @@ function Projects() {
         </div>
       )}
       {!isMobile && (
-        <div className={styles.Projects__container} ref={containerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className={`${styles.Projects__container} ${isVisible ? styles.animate : ''}`} ref={containerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <motion.div
             className={styles.Projects__mask}
             style={{
@@ -143,7 +162,7 @@ function Projects() {
               WebkitMaskPosition: `${mousePosition.x - size / 2}px ${mousePosition.y - size / 2}px`,
               WebkitMaskSize: `${size}px`,
             }}>
-            <div className={styles.Projects__items}>
+            <div className={`${styles.Projects__items} `}>
               {items.map((item) => (
                 <div className={styles.Projects__item} key={item.id + '-mask'}>
                   <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -152,8 +171,7 @@ function Projects() {
               ))}
             </div>
           </motion.div>
-
-          <div className={styles.Projects__items}>
+          <div className={`${styles.Projects__items} `}>
             {items.map((item, index) => (
               <div className={styles.Projects__item} key={item.id}>
                 <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -164,7 +182,7 @@ function Projects() {
                       e.preventDefault();
                       handlePlayClick(index);
                     }}></button>
-                  <video ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isMobile} loop muted>
+                  <video ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isTablet} loop muted>
                     <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>

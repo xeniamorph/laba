@@ -1,6 +1,6 @@
 import styles from './Intro.module.scss';
 import video from '../../assets/videos/intro-cover.mp4';
-import CircleText from '../CircleText/CircleText';
+import CircleText from './CircleText/CircleText';
 
 function Intro() {
   return (

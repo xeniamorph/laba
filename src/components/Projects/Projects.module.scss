@@ -96,8 +96,11 @@
     }
   }
 
+  @media all and (min-width: $bp4) {
+  }
+
+  // Адаптация для tablet
   @media all and (min-width: $bp3) {
-    // Плитка на экранах tablet
     &__container {
       position: relative;
       width: 100%;
@@ -178,10 +181,135 @@
     }
   }
 
-  @media all and (min-width: $bp1) {
-    &__items {
-      display: grid;
-      grid-template-rows: repeat(3, rem(340));
+  // Адаптация для desktop
+  @media all and (min-width: $bp2) {
+    &__container {
+      overflow: hidden;
+      #{$s}__item {
+        #{$s}__title {
+          transition: transform 1s ease-in-out, opacity 2s ease;
+        }
+        #{$s}__preview {
+          transition: transform 1s ease-in-out, opacity 2s ease;
+        }
+
+        &:first-child {
+          #{$s}__title {
+            transform: translate(-100%, -100%);
+            opacity: 0;
+          }
+
+          #{$s}__preview {
+            transform: translate(100%, -100%);
+            opacity: 0;
+          }
+        }
+
+        &:nth-child(2) {
+          #{$s}__title {
+            transform: translate(-100%, 0);
+            opacity: 0;
+          }
+
+          #{$s}__preview {
+            transform: translate(-100%, 0);
+            opacity: 0;
+          }
+        }
+
+        &:nth-child(3) {
+          #{$s}__title {
+            transform: translate(100%, 0);
+            opacity: 0;
+          }
+        }
+
+        &:nth-child(4) {
+          #{$s}__title {
+            transform: translate(-100%, 100%);
+            opacity: 0;
+          }
+
+          #{$s}__preview {
+            transform: translate(-100%, 100%);
+            opacity: 0;
+          }
+        }
+
+        &:nth-child(5) {
+          #{$s}__title {
+            transform: translate(100%, 100%);
+            opacity: 0;
+          }
+
+          #{$s}__preview {
+            transform: translate(100%, 100%);
+            opacity: 0;
+          }
+        }
+      }
+
+      &.animate {
+        #{$s}__item {
+          #{$s}__title {
+            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+          }
+          #{$s}__preview {
+            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+          }
+
+          &:first-child {
+            #{$s}__title {
+              transform: none;
+              opacity: 1;
+            }
+
+            #{$s}__preview {
+              transform: none;
+              opacity: 1;
+            }
+          }
+          &:nth-child(2) {
+            #{$s}__title {
+              transform: none;
+              opacity: 1;
+            }
+
+            #{$s}__preview {
+              transform: none;
+              opacity: 1;
+            }
+          }
+          &:nth-child(3) {
+            #{$s}__title {
+              transform: none;
+              opacity: 1;
+            }
+          }
+          &:nth-child(4) {
+            #{$s}__title {
+              transform: none;
+              opacity: 1;
+            }
+
+            #{$s}__preview {
+              transform: none;
+              opacity: 1;
+            }
+          }
+          &:nth-child(5) {
+            #{$s}__title {
+              transform: none;
+              opacity: 1;
+            }
+
+            #{$s}__preview {
+              transform: none;
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
 
     &__title {
@@ -192,15 +320,6 @@
     &__play {
       display: none;
     }
-  }
-
-  .link-grow {
-    transform: scale(2);
-    background-color: black;
-  }
-
-  .hovered-link {
-    color: white;
   }
 
   @media all and (min-width: $bp0) {

@@ -18,7 +18,6 @@ import Footer from './components/Footer/Footer.jsx';
 import FormBrief from './components/FormBrief/FormBrief.jsx';
 import Partners from './components/Partners/Partners.jsx';
 import TextEffect from './components/TextEffect/TextEffect.jsx';
-import CounterCompanyMobile from './components/CounterCompanyMobile/CounterCompanyMobile.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -55,13 +54,14 @@ const App = () => {
           <Header />
           <main>
             <Intro />
+            <Intro />
+            <Intro />
             {/* <Ticker items={tickerItems} />
-            <Gallery /> */}
-            <Expertise />
-            <CounterCompanyMobile></CounterCompanyMobile>
-            {/* <Projects />
-            <Ticker items={tickerItems} star={true} />
-            <video
+            <Gallery />
+            <Expertise /> */}
+            <Projects />
+            {/* <Ticker items={tickerItems} star={true} /> */}
+            {/* <video
               autoPlay
               loop
               muted
@@ -73,10 +73,10 @@ const App = () => {
               }}>
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
-            <Ticker items={tickerItems} />
-            <AboutList />
-            <TextEffect />
+            </video> */}
+            {/* <Ticker items={tickerItems} /> */}
+            {/* <AboutList /> */}
+            {/* <TextEffect />
             <Partners />
             <FormBrief /> */}
           </main>

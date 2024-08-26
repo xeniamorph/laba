@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../../variables.scss';
 
 .CircleText {
   $s: &;
@@ -63,7 +63,7 @@
   }
 
   @media all and (min-width: $bp3) {
-    top: rem(290);
+    top: rem(240);
   }
 
   @media all and (min-width: $bp1) {
