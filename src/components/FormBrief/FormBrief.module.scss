@@ -1,5 +1,17 @@
 @import '../../variables.scss';
 
+@property --x2 {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --y2 {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0;
+}
+
 .FormBrief {
   $s: &;
   margin: rem(48) 0 rem(57) 0;
@@ -180,7 +192,7 @@
     &.active {
       background-color: var(--prime-3);
       color: white;
-      transition: 0.3s;
+      transition: background-color 0.3s;
     }
 
     input {
@@ -333,9 +345,30 @@
     margin-top: rem(40);
     transition: 0.3s;
     min-height: rem(56);
+    position: relative;
+    overflow: hidden;
 
-    &:hover {
+    &:hover::before {
+      width: 350px;
+      height: 350px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: var(--y2);
+      left: var(--x2);
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-radius: 50%;
       background-color: var(--prime-2);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    span {
+      position: relative;
+      z-index: 10;
     }
   }
 
@@ -345,6 +378,10 @@
     margin: rem(8) rem(16) 0 rem(16);
     font-family: var(--font-sec);
     font-weight: var(--fw-light);
+
+    &.active {
+      display: flex;
+    }
 
     a {
       display: flex;
@@ -365,10 +402,6 @@
       &:hover {
         background-color: var(--prime-2);
       }
-    }
-
-    &.active {
-      display: flex;
     }
   }
 
@@ -421,7 +454,6 @@
     }
 
     &__option {
-      display: flex;
       min-height: rem(56);
       padding: rem(16) rem(32);
       font-size: rem(16);
@@ -429,24 +461,63 @@
       border: 1px solid var(--prime-2);
       border-radius: rem(34);
       cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        background-color: var(--sec-3);
-        color: white;
-        transition: 0.3s;
-      }
+      position: relative;
+      overflow: hidden;
 
       &.active {
-        background-color: var(--prime-2);
+        background-color: var(--sec-4);
         color: white;
-        transition: 0.3s;
+        transition: none;
+
+        &::after {
+          width: 1000px;
+          height: 1000px;
+        }
+
+        &::before {
+          content: none;
+        }
       }
 
-      input {
-        visibility: hidden;
+      &:hover {
+        background-color: var(--sec-4);
+        transition: background-color 1.5s;
+
+        span {
+          color: white;
+        }
+
+        &::before {
+          width: 1000px;
+          height: 1000px;
+        }
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: var(--y2);
+        left: var(--x2);
+        transform: translate(-50%, -50%);
         width: 0;
         height: 0;
+        border-radius: 50%;
+        transition: width 1s, height 1s;
+      }
+
+      &::after {
+        background-color: var(--prime-2);
+      }
+
+      &::before {
+        background-color: var(--sec-4);
+      }
+
+      span {
+        transition: color 0.5s;
+        position: relative;
+        z-index: 10;
       }
     }
 
@@ -483,7 +554,6 @@
       position: absolute;
       bottom: auto;
       left: 0;
-      // transform: translateY(rem(-1));
     }
 
     &__checkbox label {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './FormBrief.module.scss';
 
 const options = [
@@ -19,6 +19,17 @@ function FormBrief() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+  const btnRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const { currentTarget: element } = e;
+    const x = e.pageX - element.offsetLeft;
+    const y = e.pageY - element.offsetTop;
+
+    element.style.setProperty('--x2', `${x}px`);
+    element.style.setProperty('--y2', `${y}px`);
+  };
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -52,18 +63,18 @@ function FormBrief() {
             <div className={`${styles.FormBrief__dropclick} ${isDropdownOpen ? styles.active : ''} ${selectedOptions.length > 0 ? styles.contain : ''}`} aria-expanded={isDropdownOpen}>
               <span onClick={handleDropdownToggle}>Выбрать услуги</span>
               <div className={styles.FormBrief__selectedItems}>
-                {selectedOptions.map((option, index) => (
-                  <div key={index} onClick={() => handleRemoveOption(option)}>
+                {selectedOptions.map((option) => (
+                  <div key={option.value} onClick={() => handleRemoveOption(option)}>
                     {options.find((o) => o.value === option).label}
                   </div>
                 ))}
               </div>
             </div>
             <div className={`${styles.FormBrief__select} ${isDropdownOpen ? styles.active : ''}`}>
-              {options.map((option, index) => (
-                <label key={index} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
+              {options.map((option) => (
+                <label key={option.value} ref={btnRef} onMouseMove={handleMouseMove} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
                   <input type="checkbox" name="services" value={option.value} checked={selectedOptions.includes(option.value)} onChange={handleOptionChange} />
-                  {option.label}
+                  <span>{option.label}</span>
                 </label>
               ))}
             </div>
@@ -85,8 +96,8 @@ function FormBrief() {
             <input id="agreement" name="agreement" type="checkbox" required />
             <label htmlFor="agreement">Подтвердите согласие на обработку персональных данных</label>
           </div>
-          <button className={styles.FormBrief__submit} type="submit">
-            Отправить заявку
+          <button ref={btnRef} onMouseMove={handleMouseMove} className={styles.FormBrief__submit} type="submit">
+            <span>Отправить заявку</span>
           </button>
         </div>
       </form>

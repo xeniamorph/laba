@@ -1,8 +1,9 @@
 @import '../../variables.scss';
 
-.Сompetencies {
-  // Слайдер на мобилке
+.Projects {
   $s: &;
+
+  // Слайдер на мобилке
   &__swiper {
     margin: rem(-144) 0 0 0;
     padding: 0 0 rem(122) 0;
@@ -95,92 +96,86 @@
     }
   }
 
-  // Плитка
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, rem(216));
-  }
-
-  &__item {
-    display: flex;
-    border-top: 1px solid #dcddde;
-
-    &:first-child {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      // background-color: rgb(49, 164, 168);
+  @media all and (min-width: $bp3) {
+    // Плитка на экранах tablet
+    &__container {
+      position: relative;
+      width: 100%;
     }
 
-    &:nth-child(2) {
-      // background-color: rgb(155, 96, 96);
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, rem(216));
+      width: 100%;
     }
 
-    &:nth-child(3) {
-      // background-color: rgb(137, 179, 137);
+    &__mask {
+      width: 100%;
+      position: absolute;
+      mask-image: url('../../assets/images/projects-mask.svg');
+      background: var(--prime-2);
+      mask-repeat: no-repeat;
+      mask-size: rem(150);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: url('../../assets/images/projects-ico.svg') 8 8, auto;
+      mix-blend-mode: difference;
+      transition: mask-size 1s;
+      z-index: 10;
+    }
 
-      #{$s}__preview {
-        display: none;
+    &__item {
+      display: flex;
+      border-top: 1px solid #dcddde;
+      position: relative;
+
+      &:first-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+
+      &:nth-child(3) {
+        #{$s}__preview {
+          display: none;
+        }
+      }
+
+      &:nth-child(4) {
+        flex-direction: row-reverse;
+      }
+
+      &:nth-child(5) {
+        flex-direction: row-reverse;
       }
     }
 
-    &:nth-child(4) {
-      flex-direction: row-reverse;
-      // background-color: rgb(123, 123, 177);
+    &__preview {
+      position: relative;
+      width: 50%;
+
+      video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
-    &:nth-child(5) {
-      flex-direction: row-reverse;
-      // background-color: rgb(175, 175, 126);
+    &__title {
+      width: 50%;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: rem(32);
+      font-weight: var(--fw-medium);
+      line-height: rem(40);
+      text-align: center;
+      overflow-wrap: break-word;
     }
-  }
-
-  &__preview {
-    position: relative;
-    width: 50%;
-
-    video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__title {
-    width: 50%;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: rem(32);
-    font-weight: var(--fw-medium);
-    line-height: rem(40);
-    text-align: center;
-    overflow-wrap: break-word;
-  }
-
-  &__circle {
-    opacity: 0;
-    position: fixed;
-    width: 0px;
-    height: 0px;
-    background-color: var(--prime-2);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: left 0.1s, top 0.1s;
-    mix-blend-mode: difference;
-    cursor: none;
-    transition: width 1s, height 1s, opacity 1s;
-    opacity: 1;
-  }
-
-  &__items:hover ~ &__circle {
-    width: 151px;
-    height: 151px;
-    transition: width 1s, height 1s, opacity 1s;
-    opacity: 1;
   }
 
   @media all and (min-width: $bp1) {
@@ -199,7 +194,20 @@
     }
   }
 
+  .link-grow {
+    transform: scale(2);
+    background-color: black;
+  }
+
+  .hovered-link {
+    color: white;
+  }
+
   @media all and (min-width: $bp0) {
+    &__mask {
+      cursor: url('../../assets/images/projects-ico-2.svg') 13 20, auto;
+    }
+
     &__title {
       font-size: rem(56);
       line-height: rem(64);

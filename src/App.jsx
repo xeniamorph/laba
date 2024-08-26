@@ -7,17 +7,18 @@ import './App.css';
 
 import video from './assets/videos/vr.mp4';
 
-import Header from './sections/Header/Header.jsx';
-import Intro from './sections/Intro/Intro.jsx';
-import Gallery from './sections/Gallery/Gallery.jsx';
-import Service from './sections/Service/Service.jsx';
-import Сompetencies from './sections/Сompetencies/Сompetencies.jsx';
-import Ticker from './sections/Ticker/Ticker.jsx';
-import AboutList from './sections/AboutList/AboutList.jsx';
-import Footer from './sections/Footer/Footer.jsx';
-import FormBrief from './sections/FormBrief/FormBrief.jsx';
-import Partners from './sections/Partners/Partners.jsx';
-import TextEffect from './sections/TextEffect/TextEffect.jsx';
+import Header from './components/Header/Header.jsx';
+import Intro from './components/Intro/Intro.jsx';
+import Gallery from './components/Gallery/Gallery.jsx';
+import Expertise from './components/Expertise/Expertise.jsx';
+import Projects from './components/Projects/Projects.jsx';
+import Ticker from './components/Ticker/Ticker.jsx';
+import AboutList from './components/AboutList/AboutList.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import FormBrief from './components/FormBrief/FormBrief.jsx';
+import Partners from './components/Partners/Partners.jsx';
+import TextEffect from './components/TextEffect/TextEffect.jsx';
+import CounterCompanyMobile from './components/CounterCompanyMobile/CounterCompanyMobile.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -54,10 +55,11 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <Ticker items={tickerItems} />
-            <Gallery />
-            <Service />
-            <Сompetencies />
+            {/* <Ticker items={tickerItems} />
+            <Gallery /> */}
+            <Expertise />
+            <CounterCompanyMobile></CounterCompanyMobile>
+            {/* <Projects />
             <Ticker items={tickerItems} star={true} />
             <video
               autoPlay
@@ -73,12 +75,10 @@ const App = () => {
               Your browser does not support the video tag.
             </video>
             <Ticker items={tickerItems} />
-            <Service />
-            <Сompetencies />
             <AboutList />
             <TextEffect />
             <Partners />
-            <FormBrief />
+            <FormBrief /> */}
           </main>
           <Footer />
         </div>
