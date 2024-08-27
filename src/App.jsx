@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
 
-import './App.css';
+import './App.scss';
 
 import video from './assets/videos/vr.mp4';
 
@@ -12,6 +12,7 @@ import Intro from './components/Intro/Intro.jsx';
 import Gallery from './components/Gallery/Gallery.jsx';
 import Expertise from './components/Expertise/Expertise.jsx';
 import Projects from './components/Projects/Projects.jsx';
+import Project from './components/Project/Project.jsx';
 import Ticker from './components/Ticker/Ticker.jsx';
 import AboutList from './components/AboutList/AboutList.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -54,14 +55,13 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <Intro />
-            <Intro />
-            {/* <Ticker items={tickerItems} />
+            <Ticker items={tickerItems} />
             <Gallery />
-            <Expertise /> */}
+            <Expertise />
             <Projects />
-            {/* <Ticker items={tickerItems} star={true} /> */}
-            {/* <video
+            <Project />
+            <Ticker items={tickerItems} star={true} />
+            <video
               autoPlay
               loop
               muted
@@ -73,12 +73,12 @@ const App = () => {
               }}>
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
-            </video> */}
-            {/* <Ticker items={tickerItems} /> */}
-            {/* <AboutList /> */}
-            {/* <TextEffect />
+            </video>
+            <Ticker items={tickerItems} />
+            <AboutList />
+            <TextEffect />
             <Partners />
-            <FormBrief /> */}
+            <FormBrief />
           </main>
           <Footer />
         </div>

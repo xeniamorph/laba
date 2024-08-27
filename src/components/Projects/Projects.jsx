@@ -120,7 +120,7 @@ function Projects() {
               clickable: true,
               bulletClass: styles.Projects__bullet,
               bulletActiveClass: styles.Projects__bullet_active,
-              renderBullet: (className) => `<span class="${className}"></span>`,
+              renderBullet: (index, className) => `<span class="${className}"></span>`,
             }}
             breakpoints={{
               320: {

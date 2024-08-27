@@ -21,10 +21,6 @@
       color: white;
       width: 100%;
       height: 100%;
-
-      &:hover video {
-        filter: brightness(30%);
-      }
     }
 
     video {
@@ -42,6 +38,9 @@
       left: rem(16);
       right: rem(16);
       z-index: 10;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
 
       span {
         display: inline-block;
@@ -83,49 +82,64 @@
     }
   }
 
-  // Адаптация для tablet
-  @media all and (min-width: $bp3) {
-    &__item a {
-      h2 {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        height: 42px;
-      }
-
-      span {
-        &:first-child {
-          opacity: 0;
-          max-width: 0;
-          transform: translateX(rem(-20));
-          transition: margin 1s ease, max-width 1s ease-in, transform 0.2s ease, opacity 0.3s ease-out;
-        }
-
-        &:last-child {
-          align-self: flex-end;
-          max-width: 100%;
-        }
-      }
-
-      &:hover {
+  // Адаптация для desktop
+  @media all and (min-width: $bp2) {
+    &__item {
+      &.long {
         span {
           &:first-child {
-            max-width: 49%;
-            opacity: 1;
-            transform: none;
-            transition: margin 1s ease, max-width 1s ease-out, transform 1s ease 1s, opacity 1s ease-out 1s;
-            margin-right: rem(10);
+            opacity: 0;
+            transform: translateX(rem(-100));
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
           }
-
           &:last-child {
-            max-width: 49%;
-            align-self: center;
+            width: 100%;
           }
         }
+
+        a:hover span {
+          &:first-child {
+            opacity: 1;
+            transform: translateX(0);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+          }
+        }
+      }
+
+      &.short {
+        h2 {
+          flex-wrap: nowrap;
+        }
+
+        span {
+          &:first-child {
+            opacity: 0;
+            white-space: nowrap;
+            max-width: 0;
+            transform: translateX(rem(-50));
+            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 1s ease-in-out, opacity 1s ease-in-out;
+            margin-right: 0;
+          }
+        }
+
+        a:hover span {
+          &:first-child {
+            max-width: 100%;
+            transform: translateX(0);
+            opacity: 1;
+            left: 0;
+            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 0.3s ease-in-out, opacity 1.4s ease-in-out;
+            margin-right: rem(8);
+          }
+        }
+      }
+
+      &:hover video {
+        filter: brightness(30%);
       }
     }
   }
-  // Адаптация для desktop
+
   @media all and (min-width: $bp1) {
     &__items {
       grid-template-columns: 1fr 1fr 1fr;

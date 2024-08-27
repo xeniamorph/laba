@@ -9,43 +9,55 @@ import video_6 from '../../assets/videos/gallery-6.mp4';
 
 const items = [
   {
+    id: 1,
     video: video_1,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация',
     autoplay: true,
+    long: false,
   },
   {
+    id: 2,
     video: video_2,
     src: '#',
     title: 'Проект Signature',
     desc: 'ЗD визуализация',
+    long: false,
   },
   {
+    id: 3,
     video: video_3,
     src: '#',
-    title: 'Проект Вуаля Вуаляшкин',
+    title: 'Проект Вуаля длинное название',
     desc: 'ЗD визуализация видео продакшн VR',
     autoplay: true,
+    long: true,
   },
   {
+    id: 4,
     video: video_4,
     src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
+    title: 'Проект Вуаля длинное название',
+    desc: 'ЗD визуализация',
+    long: true,
   },
   {
+    id: 5,
     video: video_5,
     src: '#',
     title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
+    desc: 'ЗD визуализация',
     autoplay: true,
+    long: false,
   },
   {
+    id: 6,
     video: video_6,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
+    long: false,
   },
 ];
 
@@ -65,8 +77,8 @@ function Gallery() {
   return (
     <section className={styles.Gallery}>
       <ul className={styles.Gallery__items}>
-        {items.map((element, index) => (
-          <li key={index} className={styles.Gallery__item}>
+        {items.map((element) => (
+          <li key={element.id} className={`${styles.Gallery__item} ${element.long ? styles.long : styles.short}`}>
             <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
               <video autoPlay={element.autoplay} loop muted>
                 <source src={element.video} type="video/mp4" />

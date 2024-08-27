@@ -1,43 +1,47 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import styles from './Project.module.scss';
 
-import video_1 from '../../assets/videos/gallery-1.mp4';
-import video_2 from '../../assets/videos/gallery-2.mp4';
-import video_3 from '../../assets/videos/gallery-3.mp4';
-import video_4 from '../../assets/videos/gallery-4.mp4';
-import video_5 from '../../assets/videos/gallery-6.mp4';
+import picture_1 from '../../assets/images/project-1.jpg';
+import picture_2 from '../../assets/images/project-2.jpg';
+import picture_3 from '../../assets/images/project-3.jpg';
+import picture_4 from '../../assets/images/project-4.jpg';
+import picture_5 from '../../assets/images/project-4.jpg';
 
 const items = [
   {
     id: 1,
-    picture: video_1,
+    picture: picture_1,
     src: '#',
     title: 'Проект такой то',
     text: 'Выполненные работы Выполненные работы Выполненные работы Выполненные работы Выполненные работы',
   },
   {
     id: 2,
-    picture: video_1,
+    picture: picture_2,
     src: '#',
     title: 'Проект такой то',
     text: 'Выполненные работы Выполненные работы Выполненные работы Выполненные работы Выполненные работы',
   },
   {
     id: 3,
-    picture: video_1,
+    picture: picture_3,
     src: '#',
     title: 'Проект такой то',
     text: 'Выполненные работы Выполненные работы Выполненные работы Выполненные работы Выполненные работы',
   },
   {
     id: 4,
-    picture: video_1,
+    picture: picture_4,
     src: '#',
     title: 'Проект такой то',
     text: 'Выполненные работы Выполненные работы Выполненные работы Выполненные работы Выполненные работы',
   },
   {
     id: 5,
-    picture: video_1,
+    picture: picture_5,
     src: '#',
     title: 'Проект такой то',
     text: 'Выполненные работы Выполненные работы Выполненные работы Выполненные работы Выполненные работы',
@@ -49,7 +53,7 @@ function Project() {
     <section className={`${styles.Project} `}>
       <div className={styles.Projects__swiper}>
         <Swiper
-          modules={[Pagination]}
+          modules={[Navigation]}
           speed={1000}
           keyboard={{ enabled: true }}
           pagination={{
@@ -66,11 +70,18 @@ function Project() {
               loop: true,
             },
           }}>
-          {items.map((item, index) => (
-            <SwiperSlide className={styles.Projects__slide} key={item.id + '-slide'}></SwiperSlide>
+          {items.map((item) => (
+            <SwiperSlide className={styles.Projects__slide} key={item.id}>
+              <div className={styles.Projects__text}>
+                <div className={styles.Projects__background}>
+                  <img src={item.picture} />
+                </div>
+                <div className={styles.Projects__title}>{item.title}</div>
+                <div className={styles.Projects__title}>{item.text}</div>
+              </div>
+            </SwiperSlide>
           ))}
         </Swiper>
-        <div className={styles.Projects__pagination}></div>
       </div>
     </section>
   );
