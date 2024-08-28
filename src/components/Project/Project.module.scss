@@ -1,7 +1,69 @@
 @import '../../variables.scss';
 
 .Project {
-  $s: &;
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100vw;
+    max-height: rem(1024);
+  }
+
+  &__half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 15;
+    background-color: transparent;
+    cursor: default;
+
+    &_left {
+      left: 0;
+      cursor: url('../../assets/images/arrow-left.svg'), auto;
+    }
+
+    &_right {
+      right: 0;
+      cursor: url('../../assets/images/arrow-right.svg'), auto;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    background-color: transparent;
+    padding: rem(20) rem(30);
+    max-width: 50%;
+  }
+
+  &__title {
+    font-size: rem(40);
+    font-weight: var(--fw-medium);
+    line-height: rem(48);
+    margin-bottom: rem(4);
+    position: relative;
+    z-index: 10;
+  }
+
+  &__desc {
+    font-family: var(--font-sec);
+    font-size: rem(14);
+    font-weight: var(--fw-light);
+    line-height: rem(22);
+    position: relative;
+    z-index: 10;
+  }
 
   @media all and (min-width: $bp4) {
   }

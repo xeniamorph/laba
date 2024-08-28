@@ -14,8 +14,6 @@ const items = [
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация',
-    autoplay: true,
-    long: false,
   },
   {
     id: 2,
@@ -23,7 +21,6 @@ const items = [
     src: '#',
     title: 'Проект Signature',
     desc: 'ЗD визуализация',
-    long: false,
   },
   {
     id: 3,
@@ -31,8 +28,6 @@ const items = [
     src: '#',
     title: 'Проект Вуаля длинное название',
     desc: 'ЗD визуализация видео продакшн VR',
-    autoplay: true,
-    long: true,
   },
   {
     id: 4,
@@ -40,7 +35,6 @@ const items = [
     src: '#',
     title: 'Проект Вуаля длинное название',
     desc: 'ЗD визуализация',
-    long: true,
   },
   {
     id: 5,
@@ -48,8 +42,6 @@ const items = [
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация',
-    autoplay: true,
-    long: false,
   },
   {
     id: 6,
@@ -57,40 +49,40 @@ const items = [
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
-    long: false,
   },
 ];
 
 function Gallery() {
   const handleMouseEnter = (video) => {
-    if (!video.autoplay) {
-      video.play();
-    }
+    video.play();
   };
 
   const handleMouseLeave = (video) => {
-    if (!video.autoplay) {
-      video.pause();
-    }
+    video.pause();
   };
 
   return (
     <section className={styles.Gallery}>
       <ul className={styles.Gallery__items}>
-        {items.map((element) => (
-          <li key={element.id} className={`${styles.Gallery__item} ${element.long ? styles.long : styles.short}`}>
-            <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
-              <video autoPlay={element.autoplay} loop muted>
-                <source src={element.video} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <h2>
-                <span>{element.title}</span>
-                <span>{element.desc}</span>
-              </h2>
-            </a>
-          </li>
-        ))}
+        {items.map((element, index) => {
+          const totalLength = element.title.length + element.desc.length;
+          const noverAnimateClass = totalLength > 34 ? styles.long : styles.short;
+
+          return (
+            <li key={element.id} className={`${styles.Gallery__item} ${noverAnimateClass}`}>
+              <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
+                <video autoPlay={index % 2 === 1} loop muted>
+                  <source src={element.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <h2>
+                  <span>{element.title}</span>
+                  <span>{element.desc}</span>
+                </h2>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

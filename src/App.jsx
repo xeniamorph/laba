@@ -19,6 +19,8 @@ import Footer from './components/Footer/Footer.jsx';
 import FormBrief from './components/FormBrief/FormBrief.jsx';
 import Partners from './components/Partners/Partners.jsx';
 import TextEffect from './components/TextEffect/TextEffect.jsx';
+import PageNotFound from './components/PageNotFound/PageNotFound.jsx';
+import GalleryTabs from './components/GalleryTabs/GalleryTabs.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -55,12 +57,13 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <Ticker items={tickerItems} />
-            <Gallery />
-            <Expertise />
-            <Projects />
+            {/* <Ticker items={tickerItems} /> */}
+            {/* <Gallery /> */}
+            <GalleryTabs />
+            {/* <Expertise /> */}
+            {/* <Projects /> */}
             <Project />
-            <Ticker items={tickerItems} star={true} />
+            {/* <Ticker items={tickerItems} star={true} />
             <video
               autoPlay
               loop
@@ -78,7 +81,8 @@ const App = () => {
             <AboutList />
             <TextEffect />
             <Partners />
-            <FormBrief />
+            <FormBrief /> */}
+            {/* <PageNotFound /> */}
           </main>
           <Footer />
         </div>
