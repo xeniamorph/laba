@@ -12,6 +12,28 @@
   initial-value: 0;
 }
 
+.itemEnter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.itemEnterActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1s, transform 1s;
+}
+
+.itemExit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.itemExitActive {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s, transform 1s;
+}
+
 .GalleryTabs {
   $s: &;
 
@@ -28,10 +50,12 @@
 
     ul {
       display: flex;
+      flex-wrap: nowrap;
       gap: rem(8);
       overflow-y: hidden;
-      overflow-x: scroll;
-      padding: 0 rem(16) rem(8) rem(16);
+      overflow-x: auto;
+      padding: 0 rem(16) rem(12) rem(16);
+      scrollbar-width: thin;
 
       button {
         display: flex;
@@ -83,9 +107,11 @@
       }
     }
   }
+
   &__items {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   &__item {
@@ -161,11 +187,18 @@
   }
 
   @media all and (min-width: $bp4) {
-    &__items {
-      grid-template-columns: 1fr 1fr;
+    &__filters {
+      margin-bottom: rem(8);
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-x: hidden;
+      }
     }
 
     &__item {
+      width: 50%;
       height: 50vw;
 
       &:nth-child(3) {
@@ -236,11 +269,9 @@
   }
 
   @media all and (min-width: $bp1) {
-    &__items {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
     &__item {
-      height: 33vw;
+      width: 33.33%;
+      height: 33.3vw;
 
       &:nth-child(3),
       &:nth-child(6) {
@@ -248,29 +279,4 @@
       }
     }
   }
-}
-
-// Анимация
-// Вход элементов
-.itemEnter {
-  opacity: 0;
-  transform: scale(0.95);
-}
-
-.itemEnterActive {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 1000ms, transform 1000ms;
-}
-
-// Выход элементов
-.itemExit {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.itemExitActive {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 1000ms, transform 1000ms;
 }

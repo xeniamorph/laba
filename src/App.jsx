@@ -21,6 +21,7 @@ import Partners from './components/Partners/Partners.jsx';
 import TextEffect from './components/TextEffect/TextEffect.jsx';
 import PageNotFound from './components/PageNotFound/PageNotFound.jsx';
 import GalleryTabs from './components/GalleryTabs/GalleryTabs.jsx';
+import Contacts from './components/Contacts/Contacts.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -57,13 +58,12 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            {/* <Ticker items={tickerItems} /> */}
-            {/* <Gallery /> */}
-            <GalleryTabs />
-            {/* <Expertise /> */}
-            {/* <Projects /> */}
+            <Ticker items={tickerItems} />
+            <Gallery />
+            <Expertise />
+            <Projects />
             <Project />
-            {/* <Ticker items={tickerItems} star={true} />
+            <Ticker items={tickerItems} star={true} />
             <video
               autoPlay
               loop
@@ -81,8 +81,10 @@ const App = () => {
             <AboutList />
             <TextEffect />
             <Partners />
-            <FormBrief /> */}
-            {/* <PageNotFound /> */}
+            <FormBrief />
+            <PageNotFound />
+            <Contacts />
+            <GalleryTabs />
           </main>
           <Footer />
         </div>

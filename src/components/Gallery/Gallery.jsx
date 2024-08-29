@@ -53,6 +53,7 @@ const items = [
 ];
 
 function Gallery() {
+  // Функции остановки или воспроизведения видео
   const handleMouseEnter = (video) => {
     video.play();
   };
@@ -68,10 +69,18 @@ function Gallery() {
           const totalLength = element.title.length + element.desc.length;
           const noverAnimateClass = totalLength > 34 ? styles.long : styles.short;
 
+          const videoProps =
+            index % 2 === 1
+              ? { autoPlay: true }
+              : {
+                  onMouseEnter: (e) => handleMouseEnter(e.currentTarget),
+                  onMouseLeave: (e) => handleMouseLeave(e.currentTarget),
+                };
+
           return (
             <li key={element.id} className={`${styles.Gallery__item} ${noverAnimateClass}`}>
               <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
-                <video autoPlay={index % 2 === 1} loop muted>
+                <video {...videoProps} loop muted>
                   <source src={element.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>

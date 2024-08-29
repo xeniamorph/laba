@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './GalleryTabs.module.scss';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'; // Для анимации элементов
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import video_1 from '../../assets/videos/gallery-1.mp4';
 import video_2 from '../../assets/videos/gallery-2.mp4';
@@ -8,13 +8,14 @@ import video_3 from '../../assets/videos/gallery-3.mp4';
 import video_4 from '../../assets/videos/gallery-4.mp4';
 import video_5 from '../../assets/videos/gallery-5.mp4';
 import video_6 from '../../assets/videos/gallery-6.mp4';
+import video_7 from '../../assets/videos/gallery-7.mp4';
 
 const items = [
   {
     id: 1,
     video: video_1,
     src: '#',
-    title: 'Проект Вуаля',
+    title: 'Проект ТЕСТ 3D',
     desc: 'ЗD визуализация',
     type: '3d',
   },
@@ -56,15 +57,15 @@ const items = [
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
-    type: 'web',
+    type: '3d',
   },
   {
     id: 7,
-    video: video_1,
+    video: video_7,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
-    type: '',
+    type: 'video',
   },
   {
     id: 8,
@@ -82,11 +83,67 @@ const items = [
     desc: 'ЗD визуализация видео продакшн VR',
     type: 'video',
   },
+  {
+    id: 10,
+    video: video_6,
+    src: '#',
+    title: 'Проект Вуаля',
+    desc: 'ЗD визуализация видео продакшн VR',
+    type: 'web',
+  },
+  {
+    id: 11,
+    video: video_1,
+    src: '#',
+    title: 'Проект Вуаля',
+    desc: 'ЗD визуализация видео продакшн VR',
+    type: 'web',
+  },
+  {
+    id: 12,
+    video: video_2,
+    src: '#',
+    title: 'Проект Вуаля',
+    desc: 'ЗD визуализация видео продакшн VR',
+    type: 'video',
+  },
+  {
+    id: 13,
+    video: video_3,
+    src: '#',
+    title: 'Проект Вуаля',
+    desc: 'ЗD визуализация видео продакшн VR',
+    type: 'video',
+  },
+];
+
+const typesfilters = [
+  {
+    id: 1,
+    title: 'Все',
+    type: 'all',
+  },
+  {
+    id: 2,
+    title: '3D визуализация',
+    type: '3d',
+  },
+  {
+    id: 3,
+    title: 'Web',
+    type: 'web',
+  },
+  {
+    id: 4,
+    title: 'Видео продакшн',
+    type: 'video',
+  },
 ];
 
 function GalleryTabs() {
   const [activeFilter, setActiveFilter] = useState('all');
 
+  // Функции остановки или воспроизведения видео
   const handleMouseEnter = (video) => {
     video.play();
   };
@@ -95,6 +152,7 @@ function GalleryTabs() {
     video.pause();
   };
 
+  // Функция определения координат курсора для передачи в CSS
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -104,10 +162,12 @@ function GalleryTabs() {
     e.currentTarget.style.setProperty('--y4', `${y}px`);
   };
 
+  // Функция смены фильтра
   const handleFilterChange = (type) => {
     setActiveFilter(type);
   };
 
+  // Применение фильтрации
   const filteredItems = activeFilter === 'all' ? items : items.filter((item) => item.type === activeFilter);
 
   return (
@@ -115,46 +175,45 @@ function GalleryTabs() {
       <h1 className={styles.GalleryTabs__title}>ПОРТФОЛИО</h1>
       <nav className={styles.GalleryTabs__filters}>
         <ul>
-          <li>
-            <button onMouseMove={handleMouseMove} className={activeFilter === 'all' ? styles.active : ''} onClick={() => handleFilterChange('all')}>
-              <span>Все</span>
-            </button>
-          </li>
-          <li>
-            <button onMouseMove={handleMouseMove} className={activeFilter === '3d' ? styles.active : ''} onClick={() => handleFilterChange('3d')}>
-              <span>3D визуализация</span>
-            </button>
-          </li>
-          <li>
-            <button onMouseMove={handleMouseMove} className={activeFilter === 'web' ? styles.active : ''} onClick={() => handleFilterChange('web')}>
-              <span>Web</span>
-            </button>
-          </li>
-          <li>
-            <button onMouseMove={handleMouseMove} className={activeFilter === 'video' ? styles.active : ''} onClick={() => handleFilterChange('video')}>
-              <span>Видео продакшн</span>
-            </button>
-          </li>
+          {typesfilters.map((element) => {
+            return (
+              <li key={element.id}>
+                <button onMouseMove={handleMouseMove} className={activeFilter === `${element.type}` ? styles.active : ''} onClick={() => handleFilterChange(`${element.type}`)}>
+                  <span>{element.title}</span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </nav>
+
       <TransitionGroup component="ul" className={styles.GalleryTabs__items}>
         {filteredItems.map((element, index) => {
+          const uniqueKey = `${element.id}-${activeFilter}`;
           const totalLength = element.title.length + element.desc.length;
-          const noverAnimateClass = totalLength > 34 ? styles.long : styles.short;
+          const hoverAnimateClass = totalLength > 34 ? styles.long : styles.short;
+
+          const videoProps =
+            index % 2 === 1
+              ? { autoPlay: true }
+              : {
+                  onMouseEnter: (e) => handleMouseEnter(e.currentTarget),
+                  onMouseLeave: (e) => handleMouseLeave(e.currentTarget),
+                };
 
           return (
             <CSSTransition
-              key={element.id}
+              key={uniqueKey}
               timeout={1000}
               classNames={{
-                enter: styles.itemEnter,
-                enterActive: styles.itemEnterActive,
-                exit: styles.itemExit,
-                exitActive: styles.itemExitActive,
+                enter: styles.itemEnter, //Класс, применяемый при начале появления элемента.
+                enterActive: styles.itemEnterActive, // Класс для активной фазы появления (анимации).
+                exit: styles.itemExit, // Класс, применяемый при начале исчезновения элемента.
+                exitActive: styles.itemExitActive, // Класс для активной фазы исчезновения (анимации).
               }}>
-              <li className={`${styles.GalleryTabs__item} ${noverAnimateClass}`}>
-                <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
-                  <video autoPlay={index % 2 === 1} loop muted>
+              <li className={`${styles.GalleryTabs__item} ${hoverAnimateClass}`}>
+                <a href={element.src}>
+                  <video {...videoProps} preload="auto" loop muted>
                     <source src={element.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
