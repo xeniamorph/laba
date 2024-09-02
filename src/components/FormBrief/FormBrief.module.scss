@@ -258,6 +258,19 @@
         }
       }
 
+      &:invalid {
+        color: var(--sec-1);
+        box-shadow: 0 2px 0 0 var(--sec-1);
+
+        & + #{$s}__error {
+          display: block;
+          height: auto;
+          opacity: 1;
+          transition: 0.5s;
+          transform: translateY(0);
+        }
+      }
+
       &:autofill,
       &:autofill:hover,
       &:autofill:focus,
@@ -337,8 +350,8 @@
     align-self: flex-start;
     padding: rem(16) rem(40);
     font-size: rem(16);
-    background-color: var(--sec-4);
     color: var(--prime-1);
+    background-color: var(--prime-2);
     border: none;
     cursor: pointer;
     border-radius: rem(34);
@@ -348,9 +361,13 @@
     position: relative;
     overflow: hidden;
 
-    &:hover::before {
-      width: 350px;
-      height: 350px;
+    &:disabled {
+      background-color: var(--sec-4);
+      cursor: initial;
+
+      &:hover::before {
+        content: none;
+      }
     }
 
     &::before {
@@ -362,8 +379,13 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background-color: var(--prime-2);
+      background-color: var(--prime-3);
       transition: width 0.5s, height 0.5s;
+    }
+
+    &:hover::before {
+      width: 350px;
+      height: 350px;
     }
 
     span {
@@ -463,11 +485,12 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      transition: border 0.2s;
 
       &.active {
-        background-color: var(--sec-4);
         color: white;
         transition: none;
+        border: 1px solid var(--prime-3);
 
         &::after {
           width: 1000px;
@@ -480,11 +503,12 @@
       }
 
       &:hover {
-        background-color: var(--sec-4);
         transition: background-color 1.5s;
+        background-color: var(--prime-2);
 
         span {
           color: white;
+          transition: color 1s;
         }
 
         &::before {
@@ -507,15 +531,15 @@
       }
 
       &::after {
-        background-color: var(--prime-2);
+        background-color: var(--prime-3);
       }
 
       &::before {
-        background-color: var(--sec-4);
+        background-color: var(--prime-2);
       }
 
       span {
-        transition: color 0.5s;
+        transition: color 0.5s 0.2s;
         position: relative;
         z-index: 10;
       }

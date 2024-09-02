@@ -19,6 +19,7 @@ function FormBrief() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const btnRef = useRef(null);
 
@@ -29,6 +30,10 @@ function FormBrief() {
 
     element.style.setProperty('--x2', `${x}px`);
     element.style.setProperty('--y2', `${y}px`);
+  };
+
+  const handleAgreementChange = (e) => {
+    setIsAgreed(e.target.checked);
   };
 
   const handleDropdownToggle = () => {
@@ -85,7 +90,7 @@ function FormBrief() {
           <h3 className={styles.FormBrief__subtitle}>Контактные данные</h3>
           <div className={styles.FormBrief__inputs}>
             <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name}`}>
-              <input type="text" id="name" name="name" autoComplete="name" placeholder="Ваше имя" />
+              <input type="text" id="name" name="name" autoComplete="name" placeholder="Ваше имя" required />
             </div>
             <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_email}`}>
               <input type="email" id="email" name="email" autoComplete="email" placeholder="Еmail" required />
@@ -93,10 +98,10 @@ function FormBrief() {
             </div>
           </div>
           <div className={`${styles.FormBrief__checkbox}`}>
-            <input id="agreement" name="agreement" type="checkbox" required />
+            <input id="agreement" name="agreement" type="checkbox" onChange={handleAgreementChange} required />
             <label htmlFor="agreement">Подтвердите согласие на обработку персональных данных</label>
           </div>
-          <button ref={btnRef} onMouseMove={handleMouseMove} className={styles.FormBrief__submit} type="submit">
+          <button disabled={!isAgreed} ref={btnRef} onMouseMove={handleMouseMove} className={styles.FormBrief__submit} type="submit">
             <span>Отправить заявку</span>
           </button>
         </div>
