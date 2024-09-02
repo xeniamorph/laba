@@ -22,7 +22,7 @@
     font-size: rem(15);
   }
 
-  &__mr {
+  &__mg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,7 +237,7 @@
       border-bottom: rem(2) solid var(--prime-1);
     }
 
-    #{$s}__mr svg * {
+    #{$s}__mg svg * {
       fill: var(--prime-1);
     }
 
@@ -323,6 +323,7 @@
     &__inner {
       min-height: 95vh;
       max-height: rem(1024);
+      position: relative;
 
       &::before {
         top: rem(59);
@@ -332,6 +333,23 @@
 
     nav {
       padding: rem(195) 0 0 49.5%;
+    }
+
+    &__links {
+      position: absolute;
+      top: rem(24);
+      right: rem(30);
+    }
+
+    &__contacts {
+      a {
+        transition: 0.3s;
+        opacity: 0.6;
+        &:hover {
+          color: var(--prime-1);
+          opacity: 1;
+        }
+      }
     }
   }
 }

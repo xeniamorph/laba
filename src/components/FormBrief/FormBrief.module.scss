@@ -215,6 +215,7 @@
   }
 
   &__input {
+    position: relative;
     input {
       width: calc(100% + rem(5));
       min-height: rem(34);
@@ -245,31 +246,31 @@
         caret-color: var(--prime-3);
       }
 
-      &:not(:placeholder-shown):invalid {
-        color: var(--sec-1);
-        box-shadow: 0 2px 0 0 var(--sec-1);
+      // &:not(:placeholder-shown):invalid {
+      //   color: var(--sec-1);
+      //   box-shadow: 0 2px 0 0 var(--sec-1);
 
-        & + #{$s}__error {
-          display: block;
-          height: auto;
-          opacity: 1;
-          transition: 0.5s;
-          transform: translateY(0);
-        }
-      }
+      //   & + #{$s}__error {
+      //     display: block;
+      //     height: auto;
+      //     opacity: 1;
+      //     transition: 0.5s;
+      //     transform: translateY(0);
+      //   }
+      // }
 
-      &:invalid {
-        color: var(--sec-1);
-        box-shadow: 0 2px 0 0 var(--sec-1);
+      // &:invalid {
+      //   color: var(--sec-1);
+      //   box-shadow: 0 2px 0 0 var(--sec-1);
 
-        & + #{$s}__error {
-          display: block;
-          height: auto;
-          opacity: 1;
-          transition: 0.5s;
-          transform: translateY(0);
-        }
-      }
+      //   & + #{$s}__error {
+      //     display: block;
+      //     height: auto;
+      //     opacity: 1;
+      //     transition: 0.5s;
+      //     transform: translateY(0);
+      //   }
+      // }
 
       &:autofill,
       &:autofill:hover,
@@ -288,14 +289,13 @@
 
     &_email {
       margin-bottom: rem(22);
-      position: relative;
     }
   }
 
   &__error {
     display: block;
-    height: 0;
-    opacity: 0;
+    height: auto;
+    opacity: 1;
     font-size: rem(10);
     line-height: rem(18);
     color: var(--sec-1);

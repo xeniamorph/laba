@@ -140,7 +140,7 @@ function Projects() {
                         e.preventDefault();
                         handlePlayClick(index);
                       }}></button>
-                    <video ref={(el) => (videoRefs.current[index] = el)} loop muted>
+                    <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} loop muted>
                       <source src={item.video} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
@@ -182,7 +182,7 @@ function Projects() {
                       e.preventDefault();
                       handlePlayClick(index);
                     }}></button>
-                  <video ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isTablet} loop muted>
+                  <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isTablet} loop muted>
                     <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>

@@ -79,8 +79,8 @@ function Gallery() {
 
           return (
             <li key={element.id} className={`${styles.Gallery__item} ${noverAnimateClass}`}>
-              <a href={element.src} onMouseEnter={(e) => handleMouseEnter(e.currentTarget.querySelector('video'))} onMouseLeave={(e) => handleMouseLeave(e.currentTarget.querySelector('video'))}>
-                <video {...videoProps} loop muted>
+              <a href={element.src}>
+                <video {...videoProps} preload="auto" loop muted>
                   <source src={element.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>

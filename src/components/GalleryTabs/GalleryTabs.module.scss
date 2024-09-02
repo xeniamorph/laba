@@ -37,12 +37,19 @@
 .GalleryTabs {
   $s: &;
 
+  &__header {
+    margin: rem(48) 0 rem(40) 0;
+    padding: 0 rem(16);
+  }
+
   &__title {
     font-size: rem(40);
     font-weight: var(--fw-medium);
     line-height: rem(48);
-    margin: rem(48) 0 rem(40) 0;
-    padding: 0 rem(16);
+  }
+
+  &__links {
+    display: none;
   }
 
   &__filters {
@@ -67,24 +74,18 @@
         font-family: var(--font-sec);
         color: var(--prime-2);
         border: 1px solid var(--prime-2);
+        background-color: var(--prime-1);
         cursor: pointer;
         border-radius: rem(34);
         transition: 0.3s;
         min-height: rem(40);
         position: relative;
         overflow: hidden;
+        transition: border 0.1s;
 
-        &:hover {
-          border: 1px solid var(--prime-3);
-        }
-
-        &.active {
-          color: white;
-          border: 1px solid var(--prime-3);
-          &::before {
-            width: 1000px;
-            height: 1000px;
-          }
+        span {
+          position: relative;
+          z-index: 10;
         }
 
         &::before {
@@ -96,13 +97,45 @@
           width: 0;
           height: 0;
           border-radius: 50%;
-          background-color: var(--prime-3);
           transition: width 1s, height 1s;
         }
 
-        span {
-          position: relative;
-          z-index: 10;
+        &::after {
+          content: '';
+          position: absolute;
+          top: var(--y4);
+          left: var(--x4);
+          transform: translate(-50%, -50%);
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          transition: width 1s, height 1s;
+        }
+
+        &:hover {
+          color: var(--prime-1);
+          border: 1px solid var(--prime-3);
+
+          &::before {
+            border: 1px solid var(--prime-3);
+            background-color: var(--prime-3);
+            width: 500px;
+            height: 500px;
+          }
+        }
+
+        &:hover.active {
+          border: 1px solid var(--prime-2);
+        }
+
+        &.active {
+          color: var(--prime-1);
+
+          &::after {
+            width: 500px;
+            height: 500px;
+            background-color: var(--prime-2);
+          }
         }
       }
     }
@@ -210,6 +243,39 @@
     }
   }
 
+  @media all and (min-width: $bp3) {
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: rem(110) 0 rem(93) 0;
+      padding: 0 rem(30);
+    }
+
+    &__title {
+      font-size: rem(56);
+      line-height: rem(64);
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: rem(18);
+
+      a {
+        font-size: rem(24);
+        line-height: rem(24);
+        text-align: right;
+        transition: 0.3s;
+
+        &:hover {
+          color: var(--prime-3);
+        }
+      }
+    }
+  }
+
   // Адаптация для desktop
   @media all and (min-width: $bp2) {
     &__item {
@@ -269,6 +335,11 @@
   }
 
   @media all and (min-width: $bp1) {
+    &__title {
+      font-size: rem(88);
+      line-height: rem(96);
+    }
+
     &__item {
       width: 33.33%;
       height: 33.3vw;

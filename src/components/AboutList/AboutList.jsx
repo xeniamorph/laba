@@ -79,7 +79,7 @@ function AboutList() {
               <div className={`${styles.AboutList__desc} ${animateIndices.includes(index) ? styles.animate : ''}`} dangerouslySetInnerHTML={{ __html: el.desc }} />
             </div>
             <div className={styles.AboutList__video}>
-              <video autoPlay loop muted>
+              <video preload="auto" autoPlay loop muted>
                 <source src={el.video} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

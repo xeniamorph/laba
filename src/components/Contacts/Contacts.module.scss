@@ -56,14 +56,17 @@
   }
 
   &__map {
-    height: 50vh;
+    height: 60vh;
     max-height: rem(482);
+    filter: grayscale(90%) contrast(80%) invert(100%) hue-rotate(20deg);
+    overflow: hidden;
 
     img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
     }
   }
 
@@ -105,7 +108,7 @@
 
   @media all and (min-width: $bp3) {
     &__content {
-      padding: rem(52) rem(32);
+      padding: rem(52) rem(32) rem(38) rem(32);
     }
 
     &__title {
@@ -116,6 +119,7 @@
     }
 
     &__mail {
+      font-family: var(--font-prime);
       font-size: rem(40);
       font-weight: var(--fw-medium);
       line-height: rem(48);
@@ -133,6 +137,16 @@
       width: rem(196);
       height: rem(196);
     }
+
+    &__map {
+      max-height: rem(669);
+
+      img {
+        width: 261%;
+        height: auto;
+        object-position: bottom 842px right 1191px;
+      }
+    }
   }
 
   @media all and (min-width: $bp0) {
@@ -140,6 +154,10 @@
     &__tel,
     &__address {
       margin-left: rem(260);
+    }
+
+    &__tel {
+      margin-bottom: rem(14);
     }
 
     &__call {

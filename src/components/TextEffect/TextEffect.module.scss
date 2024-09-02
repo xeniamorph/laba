@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
     &_secondary {
       display: none;
@@ -117,9 +118,9 @@
   }
 
   @media all and (min-width: $bp2) {
-    margin: rem(100) rem(32);
+    margin: rem(100) rem(16);
     cursor: none;
-    
+
     &.animate {
       #{$s}__layer_secondary {
         --mask: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black 15%, transparent 0);

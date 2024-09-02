@@ -99,7 +99,9 @@ const Expertise = () => {
             <div>
               <Number n={85} />
             </div>
-            <p>Серверов в&nbsp;собственном дата-центре для&nbsp;просчета компьютерной графики</p>
+            <p>
+              Серверов в&nbsp;собственном дата-центре<br></br> для&nbsp;просчета компьютерной графики
+            </p>
           </div>
           <div className={`${styles.Expertise__item} ${isVisible && isMobile ? styles.active : ''}`}>
             <div>
@@ -115,7 +117,7 @@ const Expertise = () => {
           </div>
         </div>
         <div className={styles.Expertise__video}>
-          <video autoPlay loop muted>
+          <video preload="auto" autoPlay loop muted>
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>

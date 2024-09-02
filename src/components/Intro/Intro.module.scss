@@ -82,6 +82,7 @@
       gap: rem(40);
       margin-left: rem(30);
       margin-right: rem(30);
+      padding-top: rem(90);
     }
 
     &__brief {
@@ -101,6 +102,12 @@
     }
     to {
       transform: rotate(360deg);
+    }
+  }
+
+  @media all and (min-width: $bp0) {
+    &__company {
+      padding-top: rem(80);
     }
   }
 }

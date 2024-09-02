@@ -9,6 +9,11 @@ import video_4 from '../../assets/videos/gallery-4.mp4';
 import video_5 from '../../assets/videos/gallery-5.mp4';
 import video_6 from '../../assets/videos/gallery-6.mp4';
 import video_7 from '../../assets/videos/gallery-7.mp4';
+import video_8 from '../../assets/videos/gallery-8.mp4';
+import video_9 from '../../assets/videos/gallery-9.mp4';
+import video_10 from '../../assets/videos/gallery-10.mp4';
+import video_11 from '../../assets/videos/gallery-11.mp4';
+import video_12 from '../../assets/videos/gallery-12.mp4';
 
 const items = [
   {
@@ -69,7 +74,7 @@ const items = [
   },
   {
     id: 8,
-    video: video_2,
+    video: video_8,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
@@ -77,7 +82,7 @@ const items = [
   },
   {
     id: 9,
-    video: video_3,
+    video: video_9,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
@@ -85,7 +90,7 @@ const items = [
   },
   {
     id: 10,
-    video: video_6,
+    video: video_10,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
@@ -93,7 +98,7 @@ const items = [
   },
   {
     id: 11,
-    video: video_1,
+    video: video_11,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
@@ -101,15 +106,7 @@ const items = [
   },
   {
     id: 12,
-    video: video_2,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'video',
-  },
-  {
-    id: 13,
-    video: video_3,
+    video: video_12,
     src: '#',
     title: 'Проект Вуаля',
     desc: 'ЗD визуализация видео продакшн VR',
@@ -152,6 +149,11 @@ function GalleryTabs() {
     video.pause();
   };
 
+  // Функция смены фильтра
+  const handleFilterChange = (type) => {
+    setActiveFilter(type);
+  };
+
   // Функция определения координат курсора для передачи в CSS
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -162,17 +164,22 @@ function GalleryTabs() {
     e.currentTarget.style.setProperty('--y4', `${y}px`);
   };
 
-  // Функция смены фильтра
-  const handleFilterChange = (type) => {
-    setActiveFilter(type);
-  };
-
   // Применение фильтрации
   const filteredItems = activeFilter === 'all' ? items : items.filter((item) => item.type === activeFilter);
 
   return (
     <section className={styles.GalleryTabs}>
-      <h1 className={styles.GalleryTabs__title}>ПОРТФОЛИО</h1>
+      <div className={styles.GalleryTabs__header}>
+        <h1 className={styles.GalleryTabs__title}>ПОРТФОЛИО</h1>
+        <div className={styles.GalleryTabs__links}>
+          <a className={styles.GalleryTabs__mail} href="#">
+            mail@marksgroup.ru
+          </a>
+          <a className={styles.GalleryTabs__tel} href="#">
+            тел. +7 (495) 120-12-26
+          </a>
+        </div>
+      </div>
       <nav className={styles.GalleryTabs__filters}>
         <ul>
           {typesfilters.map((element) => {
