@@ -77,11 +77,12 @@
 
   @media all and (min-width: $bp5) {
     &__text {
-      font-size: clamp(rem(28), 8vw, rem(200));
+      font-size: clamp(rem(28), 7.7vw, rem(200));
     }
   }
 
   @media all and (min-width: $bp3) {
+    margin: rem(74) rem(32) rem(74) rem(32);
     user-select: none;
 
     &.animate {

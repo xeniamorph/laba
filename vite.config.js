@@ -16,5 +16,5 @@ export default defineConfig({
     port: 2000,
     open: true,
   },
-  base: '/laba/',
+  base: './',
 });

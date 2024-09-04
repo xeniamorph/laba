@@ -2,13 +2,13 @@
 
 .Projects {
   $s: &;
+  z-index: 101;
+  position: relative;
 
-  // Слайдер на мобилке
   &__swiper {
-    margin: rem(-144) 0 0 0;
-    padding: 0 0 rem(122) 0;
     position: relative;
     z-index: 10;
+    margin-top: rem(-144);
   }
 
   &__slide {
@@ -75,8 +75,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: static;
     gap: rem(16);
-    margin: rem(24) 0;
+    margin: rem(24) 0 rem(80) 0;
+    z-index: 10;
   }
 
   &__bullet {

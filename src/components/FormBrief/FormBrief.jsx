@@ -21,7 +21,14 @@ function FormBrief() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
 
-  const btnRef = useRef(null);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  // Проверка на пустоту
+  const isError = inputValue.trim() === '';
 
   const handleMouseMove = (e) => {
     const { currentTarget: element } = e;
@@ -77,7 +84,7 @@ function FormBrief() {
             </div>
             <div className={`${styles.FormBrief__select} ${isDropdownOpen ? styles.active : ''}`}>
               {options.map((option) => (
-                <label key={option.value} ref={btnRef} onMouseMove={handleMouseMove} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
+                <label key={option.value} onMouseMove={handleMouseMove} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
                   <input type="checkbox" name="services" value={option.value} checked={selectedOptions.includes(option.value)} onChange={handleOptionChange} />
                   <span>{option.label}</span>
                 </label>
@@ -89,19 +96,20 @@ function FormBrief() {
         <div className={styles.FormBrief__contacts}>
           <h3 className={styles.FormBrief__subtitle}>Контактные данные</h3>
           <div className={styles.FormBrief__inputs}>
-            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name}`}>
-              <input type="text" id="name" name="name" autoComplete="name" placeholder="Ваше имя" required />
+            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name} ${isError ? 'FormBrief__input_error' : ''}`}>
+              <input type="text" value={inputValue} onChange={handleInputChange} id="name" name="name" autoComplete="name" placeholder="Ваше имя" required />
+              <span className={styles.FormBrief__textError}>Заполните поле</span>
             </div>
             <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_email}`}>
               <input type="email" id="email" name="email" autoComplete="email" placeholder="Еmail" required />
-              <span className={styles.FormBrief__error}>Не корректный Email</span>
+              <span className={styles.FormBrief__textError}>Не корректный Email</span>
             </div>
           </div>
           <div className={`${styles.FormBrief__checkbox}`}>
             <input id="agreement" name="agreement" type="checkbox" onChange={handleAgreementChange} required />
             <label htmlFor="agreement">Подтвердите согласие на обработку персональных данных</label>
           </div>
-          <button disabled={!isAgreed} ref={btnRef} onMouseMove={handleMouseMove} className={styles.FormBrief__submit} type="submit">
+          <button disabled={!isAgreed} onMouseMove={handleMouseMove} className={styles.FormBrief__submit} type="submit">
             <span>Отправить заявку</span>
           </button>
         </div>

@@ -58,11 +58,10 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            {/* <Ticker items={tickerItems} />
+            <Ticker items={tickerItems} />
             <Gallery />
             <Expertise />
             <Projects />
-            <Project />
             <Ticker items={tickerItems} star={true} />
             <video
               preload="auto"
@@ -81,11 +80,12 @@ const App = () => {
             <Ticker items={tickerItems} />
             <AboutList />
             <TextEffect />
-            <Partners /> */}
+            <Partners />
+            <Project />
             <FormBrief />
-            {/* <PageNotFound />
+            <PageNotFound />
             <Contacts />
-            <GalleryTabs /> */}
+            <GalleryTabs />
           </main>
           <Footer />
         </div>

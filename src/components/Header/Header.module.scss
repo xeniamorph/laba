@@ -15,6 +15,7 @@
     padding: rem(8) 0 rem(16) 0;
     margin: 0 rem(16);
     z-index: 30;
+    border-bottom: rem(2) solid var(--prime-2);
   }
 
   &__desc {
@@ -39,7 +40,7 @@
       div,
       div::after,
       div::before {
-        box-shadow: 0 rem(1) rem(12) rgba(0, 0, 0, 0.5);
+        background-color: var(--prime-3);
       }
     }
 
@@ -48,7 +49,7 @@
       height: rem(2);
       background-color: var(--prime-2);
       position: relative;
-      transition: 0.1s;
+      transition: all 0.3s, height 0.1s, background-color 0.3s;
 
       &::after,
       &::before {
@@ -59,7 +60,7 @@
         background-color: var(--prime-2);
         left: 0;
         position: absolute;
-        transition: 0.3s;
+        transition: all 0.3s, background-color 0.3s;
       }
       &::after {
         top: rem(6);
@@ -152,6 +153,7 @@
 
   &__links {
     font-family: var(--font-sec);
+    font-weight: var(--fw-light);
     z-index: 20;
     display: flex;
     align-self: flex-end;
@@ -246,7 +248,7 @@
         div,
         div::after,
         div::before {
-          box-shadow: 0 rem(1) rem(12) rgb(255, 255, 255);
+          background-color: var(--prime-3);
         }
       }
 
@@ -330,7 +332,15 @@
         left: rem(-43);
       }
     }
+    &__top {
+      border-bottom: rem(3) solid var(--prime-1);
+    }
 
+    &.active {
+      #{$s}__top {
+        border-bottom: rem(3) solid var(--prime-1);
+      }
+    }
     nav {
       padding: rem(195) 0 0 49.5%;
     }

@@ -33,13 +33,6 @@
     flex-wrap: wrap;
     align-items: baseline;
     font-weight: var(--fw-regular);
-    border-top: 2px solid var(--prime-2);
-
-    span:first-child {
-      align-self: flex-start;
-      font-size: rem(108);
-      line-height: rem(108);
-    }
 
     span:last-child {
       align-self: flex-end;
@@ -48,11 +41,45 @@
     }
   }
 
+  &__laba {
+    flex-shrink: 1;
+    margin-bottom: rem(18);
+    width: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   video {
     display: block;
     width: 100%;
     height: 100vw;
     object-fit: cover;
+  }
+
+  @media all and (min-width: $bp5) {
+    &__company {
+      flex-direction: row;
+      gap: rem(24);
+
+      span:last-child {
+        align-self: baseline;
+      }
+    }
+
+    &__laba {
+      margin-bottom: rem(18);
+      width: 45%;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
   @media all and (min-width: $bp4) {
@@ -108,6 +135,10 @@
   @media all and (min-width: $bp0) {
     &__company {
       padding-top: rem(80);
+    }
+
+    &__laba {
+      width: 30%;
     }
   }
 }

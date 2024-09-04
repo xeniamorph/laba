@@ -216,6 +216,22 @@
 
   &__input {
     position: relative;
+
+    &_error {
+      input {
+        color: var(--sec-1);
+        box-shadow: 0 2px 0 0 var(--sec-1);
+
+        & + #{$s}__textError {
+          display: block;
+          height: auto;
+          opacity: 1;
+          transition: 0.5s;
+          transform: translateY(0);
+        }
+      }
+    }
+
     input {
       width: calc(100% + rem(5));
       min-height: rem(34);
@@ -246,31 +262,18 @@
         caret-color: var(--prime-3);
       }
 
-      // &:not(:placeholder-shown):invalid {
-      //   color: var(--sec-1);
-      //   box-shadow: 0 2px 0 0 var(--sec-1);
+      &:not(:placeholder-shown):invalid {
+        color: var(--sec-1);
+        box-shadow: 0 2px 0 0 var(--sec-1);
 
-      //   & + #{$s}__error {
-      //     display: block;
-      //     height: auto;
-      //     opacity: 1;
-      //     transition: 0.5s;
-      //     transform: translateY(0);
-      //   }
-      // }
-
-      // &:invalid {
-      //   color: var(--sec-1);
-      //   box-shadow: 0 2px 0 0 var(--sec-1);
-
-      //   & + #{$s}__error {
-      //     display: block;
-      //     height: auto;
-      //     opacity: 1;
-      //     transition: 0.5s;
-      //     transform: translateY(0);
-      //   }
-      // }
+        & + #{$s}__textError {
+          display: block;
+          height: auto;
+          opacity: 1;
+          transition: 0.5s;
+          transform: translateY(0);
+        }
+      }
 
       &:autofill,
       &:autofill:hover,
@@ -292,10 +295,10 @@
     }
   }
 
-  &__error {
+  &__textError {
     display: block;
-    height: auto;
-    opacity: 1;
+    height: 0;
+    opacity: 0;
     font-size: rem(10);
     line-height: rem(18);
     color: var(--sec-1);
@@ -427,6 +430,11 @@
     }
   }
 
+  @media all and (min-width: $bp5) {
+    form p br {
+      display: block;
+    }
+  }
   // Адаптация для tablet
   @media all and (min-width: $bp3) {
     &__header {
@@ -443,10 +451,6 @@
       p {
         margin: 0 rem(32) 0 rem(32);
         font-size: rem(24);
-
-        br {
-          display: block;
-        }
       }
     }
 
@@ -482,15 +486,18 @@
       line-height: rem(24);
       border: 1px solid var(--prime-2);
       border-radius: rem(34);
+      background-color: var(--prime-1);
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: border 0.2s;
+      transition: border 0s;
 
       &.active {
         color: white;
         transition: none;
         border: 1px solid var(--prime-3);
+        transition: width 1s, height 1s, border 0.1s;
+        background-color: var(--prime-2);
 
         &::after {
           width: 1000px;
@@ -503,9 +510,17 @@
       }
 
       &:hover {
-        transition: background-color 1.5s;
-        background-color: var(--prime-2);
+        transition: all 1.5s, border 0.1s;
 
+        &.active {
+          transition: width 1s, height 1s, border 0.1s;
+          background-color: var(--prime-2);
+
+          &::after {
+            width: 1000px;
+            height: 1000px;
+          }
+        }
         span {
           color: white;
           transition: color 1s;
@@ -574,7 +589,7 @@
       }
     }
 
-    &__error {
+    &__textError {
       position: absolute;
       bottom: auto;
       left: 0;

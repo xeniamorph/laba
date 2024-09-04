@@ -78,7 +78,6 @@
     }
 
     &__call {
-      display: block;
       width: rem(140);
       height: rem(140);
       background-color: var(--prime-2);
@@ -90,12 +89,51 @@
       font-size: rem(16);
       font-weight: var(--fw-light);
       line-height: rem(20);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transition: border-radius 1.5s ease-in-out, background-color 0.5s;
       cursor: pointer;
+      position: relative;
+      animation-play-state: paused;
 
       &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 rem(20) var(--prime-3), 0 0 rem(40) var(--prime-3), 0 0 rem(60) var(--prime-3);
+        transition: border-radius 1s ease-in-out, background-color 1s;
+        animation: jelly 10s linear 0.3s infinite alternate-reverse forwards;
+        background-color: var(--prime-3);
+      }
+
+      @keyframes jelly {
+        0% {
+          border-radius: 100%;
+        }
+        10% {
+          border-radius: 55% 45% 65% 35% / 60% 55% 45% 50%;
+        }
+        20% {
+          border-radius: 60% 40% 70% 30% / 55% 65% 35% 45%;
+        }
+        30% {
+          border-radius: 65% 35% 60% 40% / 50% 70% 30% 50%;
+        }
+        40% {
+          border-radius: 60% 40% 65% 35% / 55% 60% 40% 45%;
+        }
+        50% {
+          border-radius: 55% 45% 70% 30% / 60% 50% 50% 40%;
+        }
+        60% {
+          border-radius: 65% 35% 60% 40% / 45% 70% 35% 55%;
+        }
+        70% {
+          border-radius: 60% 40% 65% 35% / 50% 60% 40% 50%;
+        }
+        80% {
+          border-radius: 55% 45% 70% 30% / 55% 50% 45% 60%;
+        }
+        90% {
+          border-radius: 60% 40% 65% 35% / 60% 55% 50% 45%;
+        }
+        100% {
+          border-radius: 50% 50% 60% 40% / 50% 60% 40% 50%;
+        }
       }
 
       span {

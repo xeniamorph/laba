@@ -110,45 +110,47 @@ function Projects() {
   return (
     <section className={styles.Projects}>
       {isMobile && (
-        <div className={styles.Projects__swiper}>
-          <Swiper
-            modules={[Pagination]}
-            speed={1000}
-            keyboard={{ enabled: true }}
-            pagination={{
-              el: `.${styles.Projects__pagination}`,
-              clickable: true,
-              bulletClass: styles.Projects__bullet,
-              bulletActiveClass: styles.Projects__bullet_active,
-              renderBullet: (index, className) => `<span class="${className}"></span>`,
-            }}
-            breakpoints={{
-              320: {
-                spaceBetween: 0,
-                slidesPerView: 1,
-                loop: true,
-              },
-            }}>
-            {items.map((item, index) => (
-              <SwiperSlide className={styles.Projects__slide} key={item.id + '-slide'}>
-                <a href={item.src}>
-                  <div className={styles.Projects__header} dangerouslySetInnerHTML={{ __html: item.title }} />
-                  <div className={styles.Projects__video}>
-                    <button
-                      className={styles.Projects__play}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handlePlayClick(index);
-                      }}></button>
-                    <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} loop muted>
-                      <source src={item.video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </a>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <div className={styles.Projects__container}>
+          <div className={styles.Projects__swiper}>
+            <Swiper
+              modules={[Pagination]}
+              speed={1000}
+              keyboard={{ enabled: true }}
+              pagination={{
+                el: `.${styles.Projects__pagination}`,
+                clickable: true,
+                bulletClass: styles.Projects__bullet,
+                bulletActiveClass: styles.Projects__bullet_active,
+                renderBullet: (index, className) => `<span class="${className}"></span>`,
+              }}
+              breakpoints={{
+                320: {
+                  spaceBetween: 0,
+                  slidesPerView: 1,
+                  loop: true,
+                },
+              }}>
+              {items.map((item, index) => (
+                <SwiperSlide className={styles.Projects__slide} key={item.id + '-slide'}>
+                  <a href={item.src}>
+                    <div className={styles.Projects__header} dangerouslySetInnerHTML={{ __html: item.title }} />
+                    <div className={styles.Projects__video}>
+                      <button
+                        className={styles.Projects__play}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePlayClick(index);
+                        }}></button>
+                      <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} loop muted>
+                        <source src={item.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </a>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
           <div className={styles.Projects__pagination}></div>
         </div>
       )}

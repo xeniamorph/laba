@@ -1,14 +1,14 @@
 import styles from './Partners.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import logo_1 from '../../assets/images/partners-1.png';
-import logo_2 from '../../assets/images/partners-2.png';
-import logo_3 from '../../assets/images/partners-3.png';
-import logo_4 from '../../assets/images/partners-4.png';
+import logo_1 from '../../assets/images/partners-1.svg';
+import logo_2 from '../../assets/images/partners-2.svg';
+import logo_3 from '../../assets/images/partners-3.svg';
+import logo_4 from '../../assets/images/partners-1.svg';
 
 const items = [
   { logo: logo_1, title: 'Партнер 1' },
@@ -55,7 +55,7 @@ function Partners() {
         <div>
           <Swiper
             className={styles.Partners__swiper}
-            modules={[Pagination]}
+            modules={[Pagination, Autoplay]}
             speed={1000}
             keyboard={{ enabled: true }}
             pagination={{
@@ -69,6 +69,10 @@ function Partners() {
               320: { spaceBetween: 32, slidesPerView: 1, loop: true },
               768: { spaceBetween: 32, slidesPerView: 2, loop: true },
               1024: { spaceBetween: 32, slidesPerView: 4, loop: true },
+            }}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
             }}>
             {items.map((item, index) => (
               <SwiperSlide className={styles.Partners__slide} key={index}>

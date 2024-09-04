@@ -30,7 +30,7 @@
   }
 
   &__text {
-    padding: rem(24);
+    padding: rem(24) rem(16) rem(24) rem(24);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +39,7 @@
   &__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: rem(16);
     font-family: var(--font-sec);
     font-weight: var(--fw-light);
@@ -54,18 +55,24 @@
   }
 
   &__num {
-    max-width: 12%;
-    height: rem(53);
+    width: auto;
+    height: 100%;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
       display: block;
-      height: 100%;
       width: auto;
+      height: 100%;
+      max-height: rem(53);
+      margin: auto;
     }
   }
 
   &__subtitle {
+    width: 82%;
     font-size: rem(24);
     line-height: rem(32);
     align-self: center;
@@ -85,7 +92,7 @@
   }
 
   &__video {
-    height: rem(160);
+    height: 43vw;
     overflow: hidden;
     border-top: 1px solid var(--sec-5);
 
@@ -96,6 +103,19 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+    }
+  }
+
+  @media all and (min-width: $bp5) {
+    &__header {
+      gap: rem(24);
+    }
+
+    &__subtitle {
+      width: 90%;
+    }
+    &__video {
+      height: 33vh;
     }
   }
 
@@ -152,16 +172,16 @@
 
     &__text {
       width: 60%;
-      padding: rem(32);
-    }
-
-    &__num {
-      height: rem(70);
+      padding: rem(32) rem(12) rem(32) rem(32);
     }
 
     &__subtitle {
-      font-size: rem(32);
+      font-size: rem(28);
       line-height: 1.1;
+    }
+
+    &__num img {
+      max-height: rem(58);
     }
 
     &__video {
@@ -173,11 +193,18 @@
 
   // Адаптация для tablet
   @media all and (min-width: $bp3) {
+    &__num img {
+      max-height: rem(66.8);
+    }
+
     &__subtitle {
-      font-family: var(--font-prime);
-      font-weight: var(--fw-medium);
-      font-size: rem(32);
+      font-size: rem(42);
       line-height: rem(40);
+    }
+
+    &__text {
+      width: 67%;
+      padding: rem(32);
     }
 
     &__desc {
@@ -187,7 +214,7 @@
   }
 
   // Адаптация для desktop
-  @media all and (min-width: $bp1) {
+  @media all and (min-width: $bp0) {
     &__item {
       height: rem(346);
     }

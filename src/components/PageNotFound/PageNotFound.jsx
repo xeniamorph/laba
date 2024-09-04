@@ -22,7 +22,7 @@ function PageNotFound() {
           <img src={error404} alt="Page not found" />
         </div>
         <p className={styles.PageNotFound__explain}>К&nbsp;сожалению, страница не&nbsp;найдена</p>
-        <p className={styles.PageNotFound__desc}>Возможно вы&nbsp;неправильно набрали URL&#8209;адрес или страница была удалена</p>
+        <p className={styles.PageNotFound__desc}>Возможно вы&nbsp;неправильно набрали URL&#8209;адрес или страница была&nbsp;удалена</p>
         <a ref={btnRef} onMouseMove={handleMouseMove} href="#" className={styles.PageNotFound__button}>
           <span>Перейти на главную</span>
         </a>

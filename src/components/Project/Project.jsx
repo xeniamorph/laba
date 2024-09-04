@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -51,6 +51,8 @@ const items = [
 
 function Project() {
   const swiperRef = useRef(null);
+  const cursorRef = useRef(null);
+  const projectRef = useRef(null);
 
   const handleSlide = (direction) => {
     if (direction === 'prev') {
@@ -60,8 +62,19 @@ function Project() {
     }
   };
 
+  const handleMouseMove = (e) => {
+    const projectRect = projectRef.current.getBoundingClientRect();
+
+    const x = e.clientX - projectRect.left;
+    const y = e.clientY - projectRect.top;
+
+    cursorRef.current.style.left = `${x}px`;
+    cursorRef.current.style.top = `${y}px`;
+  };
+
   return (
-    <section className={styles.Project}>
+    <section ref={projectRef} className={styles.Project} onMouseMove={handleMouseMove}>
+      <div ref={cursorRef} className={styles.Project__cursor}></div>
       <div className={styles.Project__swiper}>
         <Swiper
           ref={swiperRef}
