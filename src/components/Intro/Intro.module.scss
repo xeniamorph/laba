@@ -57,6 +57,7 @@
     display: block;
     width: 100%;
     height: 100vw;
+    min-height: rem(450);
     object-fit: cover;
   }
 
@@ -117,10 +118,6 @@
       margin-left: rem(30);
       margin-right: rem(30);
     }
-
-    video {
-      height: 75vh;
-    }
   }
 
   @keyframes rotate {
@@ -132,6 +129,14 @@
     }
   }
 
+  
+  @media all and (min-width: $bp2) {
+    video {
+      height: 75vh;
+      max-height: rem(1024);
+    }
+  }
+
   @media all and (min-width: $bp0) {
     &__company {
       padding-top: rem(80);
@@ -139,6 +144,10 @@
 
     &__laba {
       width: 30%;
+    }
+    
+    video {
+      max-height: rem(1440);
     }
   }
 }

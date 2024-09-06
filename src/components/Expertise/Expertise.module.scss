@@ -49,7 +49,8 @@
     video {
       display: block;
       width: 100%;
-      min-height: 80vh;
+      height: 75vh;
+      max-height: rem(686);
       object-fit: cover;
     }
   }
@@ -120,6 +121,12 @@
       div {
         font-size: rem(128);
         line-height: rem(128);
+      }
+    }
+
+    &__video {
+      video {
+        max-height: rem(830);
       }
     }
   }

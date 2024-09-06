@@ -67,7 +67,7 @@ function Projects() {
     }
   };
 
-  // Проверка, видимо ли пользователю блок
+  // Проверка, видим ли пользователю блок
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -164,7 +164,7 @@ function Projects() {
               WebkitMaskPosition: `${mousePosition.x - size / 2}px ${mousePosition.y - size / 2}px`,
               WebkitMaskSize: `${size}px`,
             }}>
-            <div className={`${styles.Projects__items} `}>
+            <div className={`${styles.Projects__items} ${styles.Projects__items_mask}`}>
               {items.map((item) => (
                 <div className={styles.Projects__item} key={item.id + '-mask'}>
                   <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -173,7 +173,7 @@ function Projects() {
               ))}
             </div>
           </motion.div>
-          <div className={`${styles.Projects__items} `}>
+          <div className={`${styles.Projects__items}  ${styles.Projects__items_origin}`}>
             {items.map((item, index) => (
               <div className={styles.Projects__item} key={item.id}>
                 <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />

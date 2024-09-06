@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from './FormBrief.module.scss';
 
-const options = [
+const OPTIONS = [
   { label: '3D визуализация и анимационный ролик', value: 'option1' },
   { label: 'Виртуальный тур / Панорама 360°', value: 'option2' },
   { label: 'Рекламный анимационный ролик', value: 'option3' },
@@ -15,20 +15,25 @@ const options = [
   { label: 'Фирменный стиль и брендбук', value: 'option11' },
 ];
 
+const INPUT_NAMES = {
+  name: 'name',
+  email: 'email',
+};
+
+const ERROR_TEXT = {
+  empty: 'Заполните поле',
+  email: 'Некорректный Email',
+};
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function FormBrief() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
-
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  // Проверка на пустоту
-  const isError = inputValue.trim() === '';
+  const [isFormValid, setIsFormValid] = useState(false);
+  const formRef = useRef(null);
 
   const handleMouseMove = (e) => {
     const { currentTarget: element } = e;
@@ -56,9 +61,63 @@ function FormBrief() {
     setSelectedOptions((prevSelected) => prevSelected.filter((option) => option !== value));
   };
 
+  const validateInputStringEmail = (string) => {
+    return !EMAIL_REGEX.test(string.trim());
+  };
+
+  const validateInput = (e) => {
+    const value = e.currentTarget.value;
+    const name = e.currentTarget.name;
+    const parent = e.currentTarget.parentNode;
+
+    const setError = (element, errorMessage) => {
+      element.classList.add(styles.FormBrief__input_error);
+      const errorElement = element.querySelector(`.${styles.FormBrief__textError}`);
+
+      if (errorElement) {
+        errorElement.textContent = errorMessage;
+      }
+    };
+
+    const clearError = (element) => {
+      element.classList.remove(styles.FormBrief__input_error);
+      const errorElement = element.querySelector(`.${styles.FormBrief__textError}`);
+
+      if (errorElement) {
+        errorElement.textContent = '';
+      }
+    };
+
+    if (name === INPUT_NAMES.name) {
+      if (!value.trim()) {
+        setError(parent, ERROR_TEXT.empty);
+      } else {
+        clearError(parent);
+      }
+    }
+
+    if (name === INPUT_NAMES.email) {
+      if (!value.trim()) {
+        setError(parent, ERROR_TEXT.empty);
+      } else if (validateInputStringEmail(value)) {
+        setError(parent, ERROR_TEXT.email);
+      } else {
+        setIsFormValid(true);
+        clearError(parent);
+      }
+    }
+  };
+
+  const handleBlur = (e) => {
+    validateInput(e);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsFormSubmitted(true);
+    if (isFormValid) {
+      formRef.current.submit();
+      setIsFormSubmitted(true);
+    }
   };
 
   return (
@@ -66,7 +125,7 @@ function FormBrief() {
       <div className={styles.FormBrief__header}>
         <h2>Заполните бриф</h2>
       </div>
-      <form action="#" method="post" className={isFormSubmitted ? styles.success : ''} onSubmit={handleSubmit}>
+      <form noValidate ref={formRef} action="https://echo.htmlacademy.ru/" method="post" className={isFormSubmitted ? styles.success : ''} onSubmit={handleSubmit}>
         <p>
           Выберете подходящие вам услуги, либо звоните, мы&nbsp;пообщаемся <br></br>и&nbsp;подберем лучшее решение для вашей компании
         </p>
@@ -77,13 +136,13 @@ function FormBrief() {
               <div className={styles.FormBrief__selectedItems}>
                 {selectedOptions.map((option) => (
                   <div key={option.value} onClick={() => handleRemoveOption(option)}>
-                    {options.find((o) => o.value === option).label}
+                    {OPTIONS.find((o) => o.value === option).label}
                   </div>
                 ))}
               </div>
             </div>
             <div className={`${styles.FormBrief__select} ${isDropdownOpen ? styles.active : ''}`}>
-              {options.map((option) => (
+              {OPTIONS.map((option) => (
                 <label key={option.value} onMouseMove={handleMouseMove} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
                   <input type="checkbox" name="services" value={option.value} checked={selectedOptions.includes(option.value)} onChange={handleOptionChange} />
                   <span>{option.label}</span>
@@ -96,13 +155,15 @@ function FormBrief() {
         <div className={styles.FormBrief__contacts}>
           <h3 className={styles.FormBrief__subtitle}>Контактные данные</h3>
           <div className={styles.FormBrief__inputs}>
-            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name} ${isError ? 'FormBrief__input_error' : ''}`}>
-              <input type="text" value={inputValue} onChange={handleInputChange} id="name" name="name" autoComplete="name" placeholder="Ваше имя" required />
+            <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_name}`}>
+              <input type="text" id="name" name={INPUT_NAMES.name} onChange={validateInput} onBlur={handleBlur} placeholder=" " autoComplete="name" />
+              <span className={styles.FormBrief__placeholder}>Ваше имя</span>
               <span className={styles.FormBrief__textError}>Заполните поле</span>
             </div>
             <div className={`${styles.FormBrief__input} ${styles.FormBrief__input_email}`}>
-              <input type="email" id="email" name="email" autoComplete="email" placeholder="Еmail" required />
-              <span className={styles.FormBrief__textError}>Не корректный Email</span>
+              <input type="text" id="email" name={INPUT_NAMES.email} onChange={validateInput} onBlur={handleBlur} placeholder=" " autoComplete="email" />
+              <span className={styles.FormBrief__placeholder}>Email</span>
+              <span className={styles.FormBrief__textError}>Заполните поле</span>
             </div>
           </div>
           <div className={`${styles.FormBrief__checkbox}`}>

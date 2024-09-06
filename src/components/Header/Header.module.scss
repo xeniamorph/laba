@@ -320,6 +320,7 @@
   @media all and (min-width: $bp1) {
     &__top {
       padding: rem(20) 0 rem(16) 0;
+      border-bottom: rem(3) solid var(--prime-2);
     }
 
     &__inner {
@@ -331,9 +332,6 @@
         top: rem(59);
         left: rem(-43);
       }
-    }
-    &__top {
-      border-bottom: rem(3) solid var(--prime-1);
     }
 
     &.active {
