@@ -1,0 +1,151 @@
+@import '../../variables.scss';
+
+.Partners {
+  $s: &;
+  margin: rem(74) 0;
+
+  &__swiper {
+    padding: 0 16px;
+  }
+
+  &__slide {
+    height: rem(182);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcddde;
+  }
+
+  &__img {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(16);
+    margin: rem(24) 0;
+  }
+
+  &__bullet {
+    display: inline-block;
+    width: rem(8);
+    height: rem(8);
+    background-color: var(--prime-3);
+    border-radius: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &_active {
+      background-color: var(--sec-3);
+      cursor: initial;
+    }
+  }
+
+  // Для ленты
+
+  &__rows {
+    margin: rem(70) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+    }
+
+    .animate {
+      animation: fast-scroll 2s ease-in-out forwards, slow-scroll 100s linear infinite;
+      animation-delay: 0s, 2s;
+    }
+  }
+
+  &__row {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: rem(112);
+
+    &:nth-child(even) #{$s}__track {
+      animation-direction: reverse;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: rem(216);
+    height: rem(112);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcddde;
+  }
+
+  &__picture {
+    width: 80%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  @keyframes fast-scroll {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -200%;
+    }
+  }
+
+  @keyframes slow-scroll {
+    0% {
+      margin-left: -200%;
+    }
+    100% {
+      margin-left: 0;
+    }
+  }
+
+  @media all and (min-width: $bp0) {
+    &__row {
+      height: rem(182);
+    }
+
+    &__item {
+      width: rem(361);
+      height: rem(182);
+    }
+
+    &__rows {
+      gap: 32px;
+    }
+    &__track {
+      gap: 40px;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+@import '../../variables.scss';
+
+@property --x {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --y {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+.TextEffect {
+  position: relative;
+  $s: &;
+  margin: rem(40) rem(16) 0 rem(16);
+
+  &.animate {
+    #{$s}__icons {
+      opacity: 1;
+      transition: opacity 2s;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &_secondary {
+      display: none;
+    }
+  }
+
+  &__text {
+    font-size: clamp(rem(28), 7.5vw, rem(200));
+    text-transform: uppercase;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    div:nth-child(3) {
+      margin-left: auto;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -108px;
+    gap: 16px;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  &__icon {
+    width: rem(81);
+    height: rem(71);
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  @media all and (min-width: $bp5) {
+    &__text {
+      font-size: clamp(rem(28), 7.7vw, rem(200));
+    }
+  }
+
+  @media all and (min-width: $bp3) {
+    margin: rem(74) rem(32) rem(74) rem(32);
+    user-select: none;
+
+    &.animate {
+      #{$s}__icon {
+        opacity: 1;
+        transform: scale(1);
+        transition: transform 2s, opacity 2s;
+      }
+    }
+
+    &__icons {
+      position: static;
+      display: flex;
+      gap: 0;
+      transform: none;
+    }
+
+    &__icon {
+      position: absolute;
+      opacity: 0;
+      transform: scale(0.1);
+      transition: transform 1s, opacity 2s;
+
+      &:nth-child(1) {
+        top: 51%;
+        left: 9%;
+      }
+
+      &:nth-child(2) {
+        top: 29%;
+        right: 13%;
+      }
+    }
+  }
+
+  @media all and (min-width: $bp2) {
+    margin: rem(100) rem(16);
+    cursor: none;
+
+    &.animate {
+      #{$s}__layer_secondary {
+        --mask: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black 15%, transparent 0);
+        color: var(--prime-3);
+        transition: color 2s;
+        cursor: none;
+        pointer-events: none;
+      }
+    }
+
+    &__wrapper {
+      position: relative;
+    }
+
+    &__layer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &_secondary {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        color: transparent;
+        -webkit-mask-image: var(--mask);
+        mask-image: var(--mask);
+        transition: --x 0.2s ease-out, --y 0.2s ease-out;
+      }
+    }
+
+    &__icon {
+      width: rem(110);
+      height: rem(100);
+
+      &:nth-child(1) {
+        top: 51%;
+        left: 6%;
+      }
+
+      &:nth-child(2) {
+        top: 28%;
+        right: 11%;
+      }
+    }
+  }
+
+  @media all and (min-width: $bp2) {
+    &__icon {
+      &:nth-child(1) {
+        top: 53%;
+      }
+
+      &:nth-child(2) {
+        top: 31%;
+      }
+    }
+  }
+}
