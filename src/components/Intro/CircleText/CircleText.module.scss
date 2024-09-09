@@ -6,10 +6,8 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  height: rem(186);
-  width: rem(186);
-  top: rem(350);
-  right: rem(32);
+  height: 100%;
+  width: 100%;
   font-weight: bold;
   color: var(--prime-1);
   backdrop-filter: blur(4px);
@@ -60,18 +58,11 @@
 
   @media all and (min-width: $bp4) {
     display: flex;
-    top: rem(230);
-  }
-
-  @media all and (min-width: $bp3) {
-    top: rem(350);
   }
 
   @media all and (min-width: $bp1) {
-    top: rem(300);
     height: rem(250);
     width: rem(250);
-    right: rem(48);
 
     &__breaf {
       font-size: rem(24);

@@ -22,6 +22,7 @@ import TextEffect from './components/TextEffect/TextEffect.jsx';
 import PageNotFound from './components/PageNotFound/PageNotFound.jsx';
 import GalleryTabs from './components/GalleryTabs/GalleryTabs.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
+import CookieAgreement from './components/CookieAgreement/CookieAgreement.jsx';
 
 const tickerItems = [
   'Компьютерная графика',
@@ -58,7 +59,8 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <Ticker items={tickerItems} />
+            <CookieAgreement />
+            {/* <Ticker items={tickerItems} />
             <Gallery />
             <Expertise />
             <Projects />
@@ -85,7 +87,7 @@ const App = () => {
             <FormBrief />
             <PageNotFound />
             <Contacts />
-            <GalleryTabs />
+            <GalleryTabs /> */}
           </main>
           <Footer />
         </div>

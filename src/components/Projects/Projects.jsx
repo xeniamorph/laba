@@ -57,8 +57,9 @@ function Projects() {
   const [dynamicSize, setDynamicSize] = useState(size);
   const videoRefs = useRef([]);
   const containerRef = useRef(null);
-  const itemsRef = useRef([]); // Для хранения ссылок на все элементы Projects__item
+  const itemsRef = useRef([]);
 
+  // Отслеживание позиции курсора
   const handleMouseMove = (e) => {
     const containerRect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - containerRect.left;
@@ -66,12 +67,13 @@ function Projects() {
 
     setMousePosition({ x, y });
 
+    // Остлеживание близости к границам элементов
     let nearBorder = false;
 
     itemsRef.current.forEach((item) => {
       if (item) {
         const rect = item.getBoundingClientRect();
-        const offset = 100;
+        const offset = 50;
 
         if (
           (e.clientX > rect.left - offset && e.clientX < rect.left + offset) ||
@@ -84,14 +86,16 @@ function Projects() {
       }
     });
 
+    // Устанавливаем размер круга в зависимоти от близости к границам элементов
     if (nearBorder) {
-      setDynamicSize(150);
+      setDynamicSize(40);
     } else {
       setDynamicSize(size);
     }
   };
 
   useEffect(() => {
+    // Отслеживание видимости блока 
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -184,7 +188,7 @@ function Projects() {
               maskSize: `${dynamicSize}px`,
             }}
             transition={{
-              maskSize: { duration: 1, ease: 'easeInOut' },
+              maskSize: { duration: 0.01, ease: 'easeInOut' },
             }}
             style={{
               maskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
@@ -212,7 +216,7 @@ function Projects() {
                       e.preventDefault();
                       handlePlayClick(index);
                     }}></button>
-                  <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} loop muted>
+                  <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isTablet} loop muted>
                     <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>

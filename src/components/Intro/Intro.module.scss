@@ -6,9 +6,10 @@
 
   &.active {
     position: relative;
-    height: 95vh;
+    height: 100vw;
+    min-height: rem(550);
     z-index: 100;
-    margin-top: -2px;
+    margin-top: -5px;
 
     video {
       position: absolute;
@@ -35,6 +36,23 @@
         }
       }
     }
+
+    @media all and (min-width: $bp4) {
+      #{$s}__circle {
+        top: rem(240);
+        right: rem(32);
+      }
+    }
+
+    @media all and (min-width: $bp0) {
+      #{$s}__circle {
+        top: rem(40);
+      }
+    }
+  }
+
+  &__circle {
+    display: none;
   }
 
   &__company {
@@ -105,6 +123,15 @@
   }
 
   @media all and (min-width: $bp4) {
+    &__circle {
+      display: flex;
+      position: absolute;
+      top: rem(380);
+      right: rem(32);
+      height: rem(186);
+      width: rem(186);
+    }
+
     &__company {
       gap: rem(30);
 
@@ -154,6 +181,13 @@
     video {
       height: 75vh;
       max-height: rem(1024);
+    }
+  }
+
+  @media all and (min-width: $bp1) {
+    &__circle {
+      height: rem(250);
+      width: rem(250);
     }
   }
 

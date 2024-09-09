@@ -7,7 +7,7 @@ import CircleText from './CircleText/CircleText';
 
 function Intro() {
   return (
-    <section className={`${styles.Intro} ${styles.active}  `}>
+    <section className={`${styles.Intro}   `}>
       <div className={styles.Intro__company}>
         <div className={styles.Intro__laba}>
           <img src={labaBlack}></img>
@@ -20,7 +20,9 @@ function Intro() {
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <CircleText />
+        <div className={styles.Intro__circle}>
+          <CircleText />
+        </div>
       </div>
     </section>
   );
