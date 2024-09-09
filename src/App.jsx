@@ -59,8 +59,7 @@ const App = () => {
           <Header />
           <main>
             <Intro />
-            <CookieAgreement />
-            {/* <Ticker items={tickerItems} />
+            <Ticker items={tickerItems} />
             <Gallery />
             <Expertise />
             <Projects />
@@ -87,7 +86,8 @@ const App = () => {
             <FormBrief />
             <PageNotFound />
             <Contacts />
-            <GalleryTabs /> */}
+            <GalleryTabs />
+            <CookieAgreement />
           </main>
           <Footer />
         </div>
