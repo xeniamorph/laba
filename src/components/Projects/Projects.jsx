@@ -39,7 +39,7 @@ const items = [
     id: 4,
   },
   {
-    video: video_5,
+    video_5,
     src: '#',
     title: 'VR / AR',
     id: 5,
@@ -54,38 +54,61 @@ function Projects() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const size = isHovered ? (screenWidth < 1600 ? 80 : 200) : 0;
+  const [dynamicSize, setDynamicSize] = useState(size);
   const videoRefs = useRef([]);
   const containerRef = useRef(null);
+  const itemsRef = useRef([]); // Для хранения ссылок на все элементы Projects__item
 
-  // Отслеживание позиции курсора
   const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const x = e.clientX - containerRect.left;
-      const y = e.clientY - containerRect.top;
-      setMousePosition({ x, y });
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - containerRect.left;
+    const y = e.clientY - containerRect.top;
+
+    setMousePosition({ x, y });
+
+    let nearBorder = false;
+
+    itemsRef.current.forEach((item) => {
+      if (item) {
+        const rect = item.getBoundingClientRect();
+        const offset = 100;
+
+        if (
+          (e.clientX > rect.left - offset && e.clientX < rect.left + offset) ||
+          (e.clientX > rect.right - offset && e.clientX < rect.right + offset) ||
+          (e.clientY > rect.top - offset && e.clientY < rect.top + offset) ||
+          (e.clientY > rect.bottom - offset && e.clientY < rect.bottom + offset)
+        ) {
+          nearBorder = true;
+        }
+      }
+    });
+
+    if (nearBorder) {
+      setDynamicSize(150);
+    } else {
+      setDynamicSize(size);
     }
   };
 
-  // Проверка, видим ли пользователю блок
   useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-      setIsMobile(window.innerWidth < 1024);
-    };
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting); // Устанавливаем видимость в зависимости от состояния видимости элемента
+        setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.5, // Настраиваем порог видимости
+        threshold: 0.5,
       }
     );
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
+
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+      setIsMobile(window.innerWidth < 1024);
+    };
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
@@ -95,9 +118,8 @@ function Projects() {
       window.removeEventListener('resize', handleResize);
       observer.disconnect();
     };
-  }, []);
+  }, [size]);
 
-  // Проигрывание или остановка видео по нажатию на play
   const handlePlayClick = (index) => {
     const video = videoRefs.current[index];
     if (video.paused) {
@@ -158,24 +180,30 @@ function Projects() {
         <div className={`${styles.Projects__container} ${isVisible ? styles.animate : ''}`} ref={containerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <motion.div
             className={styles.Projects__mask}
+            animate={{
+              maskSize: `${dynamicSize}px`,
+            }}
+            transition={{
+              maskSize: { duration: 1, ease: 'easeInOut' },
+            }}
             style={{
-              maskPosition: `${mousePosition.x - size / 2}px ${mousePosition.y - size / 2}px`,
-              maskSize: `${size}px`,
-              WebkitMaskPosition: `${mousePosition.x - size / 2}px ${mousePosition.y - size / 2}px`,
-              WebkitMaskSize: `${size}px`,
+              maskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
+              WebkitMaskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
+              WebkitMaskSize: `${dynamicSize}px`, // WebkitMaskSize тоже должен обновляться динамически
             }}>
             <div className={`${styles.Projects__items} ${styles.Projects__items_mask}`}>
-              {items.map((item) => (
-                <div className={styles.Projects__item} key={item.id + '-mask'}>
+              {items.map((item, index) => (
+                <div className={styles.Projects__item} key={item.id + '-mask'} ref={(el) => (itemsRef.current[index] = el)}>
                   <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
                   <div className={styles.Projects__preview}></div>
                 </div>
               ))}
             </div>
           </motion.div>
+
           <div className={`${styles.Projects__items}  ${styles.Projects__items_origin}`}>
             {items.map((item, index) => (
-              <div className={styles.Projects__item} key={item.id}>
+              <div className={styles.Projects__item} key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
                 <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
                 <div className={styles.Projects__preview}>
                   <button
@@ -184,7 +212,7 @@ function Projects() {
                       e.preventDefault();
                       handlePlayClick(index);
                     }}></button>
-                  <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} autoPlay={!isTablet} loop muted>
+                  <video preload="auto" ref={(el) => (videoRefs.current[index] = el)} loop muted>
                     <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
