@@ -7,6 +7,8 @@
   &.active {
     position: relative;
     height: 95vh;
+    z-index: 100;
+    margin-top: -2px;
 
     video {
       position: absolute;
@@ -20,6 +22,18 @@
       padding-top: rem(80);
       color: white;
       border-top: none;
+    }
+
+    #{$s}__laba {
+      img {
+        &:nth-child(1) {
+          display: none;
+        }
+
+        &:nth-child(2) {
+          display: block;
+        }
+      }
     }
   }
 
@@ -47,9 +61,16 @@
     width: 100%;
 
     img {
-      display: block;
       width: 100%;
       height: auto;
+
+      &:nth-child(1) {
+        display: block;
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
     }
   }
 
@@ -129,7 +150,6 @@
     }
   }
 
-  
   @media all and (min-width: $bp2) {
     video {
       height: 75vh;
@@ -145,7 +165,7 @@
     &__laba {
       width: 30%;
     }
-    
+
     video {
       max-height: rem(1440);
     }

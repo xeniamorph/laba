@@ -1,15 +1,17 @@
 import styles from './Intro.module.scss';
 import video from '../../assets/videos/intro-cover.mp4';
-import laba from '../../assets/images/header-laba.svg';
+import labaBlack from '../../assets/images/intro-laba-black.svg';
+import labaWhite from '../../assets/images/intro-laba-white.svg';
 
 import CircleText from './CircleText/CircleText';
 
 function Intro() {
   return (
-    <section className={`${styles.Intro} `}>
+    <section className={`${styles.Intro} ${styles.active}  `}>
       <div className={styles.Intro__company}>
         <div className={styles.Intro__laba}>
-          <img src={laba}></img>
+          <img src={labaBlack}></img>
+          <img src={labaWhite}></img>
         </div>
         <span>digital agency&nbsp;.</span>
       </div>

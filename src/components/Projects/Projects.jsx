@@ -189,7 +189,7 @@ function Projects() {
             style={{
               maskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
               WebkitMaskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
-              WebkitMaskSize: `${dynamicSize}px`, // WebkitMaskSize тоже должен обновляться динамически
+              WebkitMaskSize: `${dynamicSize}px`,
             }}>
             <div className={`${styles.Projects__items} ${styles.Projects__items_mask}`}>
               {items.map((item, index) => (
