@@ -16,6 +16,9 @@ function Intro() {
         <span>digital agency&nbsp;.</span>
       </div>
       <div className={styles.Intro__cover}>
+      <video preload="auto" autoPlay loop muted>
+      <video preload="auto" autoPlay loop muted>
+      <video preload="auto" autoPlay loop muted>
         <video preload="auto" autoPlay loop muted>
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
