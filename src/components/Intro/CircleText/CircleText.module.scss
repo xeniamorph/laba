@@ -60,13 +60,15 @@
 
   @media all and (min-width: $bp4) {
     display: flex;
+    top: rem(230);
   }
 
   @media all and (min-width: $bp3) {
-    top: rem(280);
+    top: rem(350);
   }
 
   @media all and (min-width: $bp1) {
+    top: rem(300);
     height: rem(250);
     width: rem(250);
     right: rem(48);
