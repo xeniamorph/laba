@@ -23,6 +23,7 @@
     min-height: rem(88);
     padding: 0 rem(32);
     font-family: var(--font-sec);
+    background-color: white;
   }
 
   &__text {
@@ -61,8 +62,18 @@
     &:hover {
       color: white;
       &::before {
-        width: 350px;
-        height: 350px;
+        width: rem(350);
+        height: rem(350);
+      }
+    }
+
+    @media (pointer: coarse) {
+      &:hover {
+        color: var(--prime-1);
+
+        &::before {
+          content: none;
+        }
       }
     }
 
@@ -75,8 +86,8 @@
   @media all and (max-width: $bp4) {
     &__company {
       flex-direction: column;
-      gap: 16px;
-      padding: 16px;
+      gap: rem(16);
+      padding: rem(16);
     }
 
     &__button {

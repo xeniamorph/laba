@@ -9,7 +9,7 @@
     height: 100vw;
     min-height: rem(550);
     z-index: 100;
-    margin-top: -5px;
+    margin-top: rem(-5);
 
     video {
       position: absolute;
@@ -153,6 +153,10 @@
   }
 
   @media all and (min-width: $bp3) {
+    &__circle {
+      top: rem(320);
+    }
+
     &__company {
       flex-direction: row;
       gap: rem(40);
@@ -188,6 +192,7 @@
     &__circle {
       height: rem(250);
       width: rem(250);
+      top: rem(300);
     }
   }
 

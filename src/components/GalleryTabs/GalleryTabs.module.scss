@@ -112,6 +112,17 @@
           transition: width 1s, height 1s;
         }
 
+        @media (pointer: coarse) {
+          &:hover {
+            color: var(--prime-2);
+            border: 1px solid var(--prime-2);
+
+            &::before {
+              content: none;
+            }
+          }
+        }
+
         &:hover {
           color: var(--prime-1);
           border: 1px solid var(--prime-3);
@@ -119,8 +130,8 @@
           &::before {
             border: 1px solid var(--prime-3);
             background-color: var(--prime-3);
-            width: 500px;
-            height: 500px;
+            width: rem(700);
+            height: rem(700);
           }
         }
 
@@ -132,8 +143,8 @@
           color: var(--prime-1);
 
           &::after {
-            width: 500px;
-            height: 500px;
+            width: rem(700);
+            height: rem(700);
             background-color: var(--prime-2);
           }
         }

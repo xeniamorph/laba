@@ -11,7 +11,7 @@ import video_1 from '../../assets/videos/gallery-1.mp4';
 import video_2 from '../../assets/videos/gallery-2.mp4';
 import video_3 from '../../assets/videos/gallery-3.mp4';
 import video_4 from '../../assets/videos/gallery-4.mp4';
-import video_5 from '../../assets/videos/gallery-6.mp4';
+import video_5 from '../../assets/videos/gallery-5.mp4';
 
 const items = [
   {
@@ -39,7 +39,7 @@ const items = [
     id: 4,
   },
   {
-    video_5,
+    video: video_5,
     src: '#',
     title: 'VR / AR',
     id: 5,
@@ -47,14 +47,13 @@ const items = [
 ];
 
 function Projects() {
-  const [isTablet] = useState(window.innerWidth < 1280);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isTablet] = useState(window.innerWidth < 1024);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const size = isHovered ? (screenWidth < 1600 ? 80 : 200) : 0;
-  const [dynamicSize, setDynamicSize] = useState(size);
+  const [maskSize, setMaskSize] = useState(0);
   const videoRefs = useRef([]);
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -86,16 +85,12 @@ function Projects() {
       }
     });
 
-    // Устанавливаем размер круга в зависимоти от близости к границам элементов
-    if (nearBorder) {
-      setDynamicSize(40);
-    } else {
-      setDynamicSize(size);
-    }
+    // Устанавливаем размер маски в зависимоти от близости к границам элементов, а так же увеличение размера при появлении курсора
+    setMaskSize(isHovered ? (nearBorder ? 150 : screenWidth < 1600 ? 80 : 200) : 0);
   };
 
   useEffect(() => {
-    // Отслеживание видимости блока 
+    // Отслеживание видимости блока
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -111,7 +106,7 @@ function Projects() {
 
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 900);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -122,7 +117,7 @@ function Projects() {
       window.removeEventListener('resize', handleResize);
       observer.disconnect();
     };
-  }, [size]);
+  }, [isHovered, screenWidth]);
 
   const handlePlayClick = (index) => {
     const video = videoRefs.current[index];
@@ -185,17 +180,17 @@ function Projects() {
           <motion.div
             className={styles.Projects__mask}
             animate={{
-              maskSize: `${dynamicSize}px`,
+              maskSize: `${maskSize}px`,
             }}
             transition={{
               maskSize: { duration: 0.01, ease: 'easeInOut' },
             }}
             style={{
-              maskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
-              WebkitMaskPosition: `${mousePosition.x - dynamicSize / 2}px ${mousePosition.y - dynamicSize / 2}px`,
-              WebkitMaskSize: `${dynamicSize}px`,
+              maskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`,
+              WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`,
+              WebkitMaskSize: `${maskSize}px`,
             }}>
-            <div className={`${styles.Projects__items} ${styles.Projects__items_mask}`}>
+            <div className={`${styles.Projects__items} `}>
               {items.map((item, index) => (
                 <div className={styles.Projects__item} key={item.id + '-mask'} ref={(el) => (itemsRef.current[index] = el)}>
                   <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -205,7 +200,7 @@ function Projects() {
             </div>
           </motion.div>
 
-          <div className={`${styles.Projects__items}  ${styles.Projects__items_origin}`}>
+          <div className={`${styles.Projects__items} `}>
             {items.map((item, index) => (
               <div className={styles.Projects__item} key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
                 <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />

@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.Project {
+.ProjectsSlider {
   $s: &;
   display: none;
   position: relative;
@@ -10,14 +10,18 @@
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border-radius: 50%;
     background-color: var(--prime-2);
     pointer-events: none;
     z-index: -1;
     transition: background-color 0.3s ease, width 0.3s, height 0.3s;
     mix-blend-mode: multiply;
+
+    @media (pointer: coarse) {
+      display: none;
+    }
   }
 
   &__container {
@@ -44,6 +48,16 @@
     &_right {
       right: 0;
       cursor: url('../../assets/images/arrow-right.svg') 10 10, auto;
+    }
+
+    @media (pointer: coarse) {
+      &_left {
+        cursor: default;
+      }
+
+      &_right {
+        cursor: default;
+      }
     }
   }
 
@@ -90,8 +104,8 @@
 
     &:hover {
       #{$s}__cursor {
-        width: 62px;
-        height: 62px;
+        width: rem(62);
+        height: rem(62);
         z-index: 100;
       }
     }

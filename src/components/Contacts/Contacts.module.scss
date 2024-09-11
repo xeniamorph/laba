@@ -105,18 +105,19 @@
         animation-play-state: paused;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: transparent;
         &::before {
           transition: border-radius 1s ease-in-out, background-color 1s, transform 3s;
-          animation: jelly 6s linear 0s infinite alternate-reverse none;
+          animation: jelly 6s linear 0s infinite alternate none;
           background-color: var(--prime-3);
         }
       }
 
       @keyframes jelly {
         0% {
-          border-radius: 55% 45% 65% 35% / 60% 55% 45% 50%;
+          border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
           transform: scale(1) rotate(10deg);
         }
         10% {
@@ -133,14 +134,13 @@
         }
         60% {
           border-radius: 60% 30% 80% 40% / 60% 50% 70% 40%;
-          transform: scale(1) rotate(0deg);
         }
         80% {
           border-radius: 50% 60% 50% 60% / 50% 60% 50% 60%;
           transform: scale(0.95) rotate(15deg);
         }
         100% {
-          border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+          border-radius: 60% 30% 80% 40% / 60% 50% 70% 40%;
           transform: scale(1) rotate(0deg);
         }
       }

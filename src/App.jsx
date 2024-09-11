@@ -12,7 +12,7 @@ import Intro from './components/Intro/Intro.jsx';
 import Gallery from './components/Gallery/Gallery.jsx';
 import Expertise from './components/Expertise/Expertise.jsx';
 import Projects from './components/Projects/Projects.jsx';
-import Project from './components/Project/Project.jsx';
+import ProjectsSlider from './components/ProjectsSlider/ProjectsSlider.jsx';
 import Ticker from './components/Ticker/Ticker.jsx';
 import AboutList from './components/AboutList/AboutList.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -73,6 +73,7 @@ const App = () => {
                 display: 'block',
                 width: '100%',
                 height: '100vh',
+                maxHeight: '1024px',
                 objectFit: 'cover',
               }}>
               <source src={video} type="video/mp4" />
@@ -82,7 +83,7 @@ const App = () => {
             <AboutList />
             <TextEffect />
             <Partners />
-            <Project />
+            <ProjectsSlider />
             <FormBrief />
             <PageNotFound />
             <Contacts />

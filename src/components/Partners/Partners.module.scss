@@ -5,7 +5,7 @@
   margin: rem(74) 0;
 
   &__swiper {
-    padding: 0 16px;
+    padding: 0 rem(16);
   }
 
   &__slide {
@@ -57,7 +57,7 @@
     margin: rem(70) 0;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: rem(24);
     overflow: hidden;
     width: 100%;
     list-style: none;
@@ -88,7 +88,7 @@
 
   &__track {
     display: flex;
-    gap: 32px;
+    gap: rem(32);
     width: max-content;
   }
 
@@ -142,10 +142,10 @@
     }
 
     &__rows {
-      gap: 32px;
+      gap: rem(32);
     }
     &__track {
-      gap: 40px;
+      gap: rem(40);
     }
   }
 }

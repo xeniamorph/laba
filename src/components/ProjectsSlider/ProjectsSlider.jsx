@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import styles from './Project.module.scss';
+import styles from './ProjectsSlider.module.scss';
 
 import picture_1 from '../../assets/images/project-1.jpg';
 import picture_2 from '../../assets/images/project-2.jpg';
@@ -49,7 +49,7 @@ const items = [
   },
 ];
 
-function Project() {
+function ProjectsSlider() {
   const swiperRef = useRef(null);
   const cursorRef = useRef(null);
   const projectRef = useRef(null);
@@ -73,9 +73,9 @@ function Project() {
   };
 
   return (
-    <section ref={projectRef} className={styles.Project} onMouseMove={handleMouseMove}>
-      <div ref={cursorRef} className={styles.Project__cursor}></div>
-      <div className={styles.Project__swiper}>
+    <section ref={projectRef} className={styles.ProjectsSlider} onMouseMove={handleMouseMove}>
+      <div ref={cursorRef} className={styles.ProjectsSlider__cursor}></div>
+      <div className={styles.ProjectsSlider__swiper}>
         <Swiper
           ref={swiperRef}
           modules={[Navigation]}
@@ -89,16 +89,16 @@ function Project() {
             },
           }}>
           {items.map((item) => (
-            <SwiperSlide className={styles.Project__slide} key={item.id}>
-              <div className={styles.Project__container}>
-                <div className={styles.Project__background}>
+            <SwiperSlide className={styles.ProjectsSlider__slide} key={item.id}>
+              <div className={styles.ProjectsSlider__container}>
+                <div className={styles.ProjectsSlider__background}>
                   <img src={item.picture} alt={item.title} />
                 </div>
-                <div className={`${styles.Project__half} ${styles.Project__half_left}`} onClick={() => handleSlide('prev')}></div>
-                <div className={`${styles.Project__half} ${styles.Project__half_right}`} onClick={() => handleSlide('next')}></div>
-                <div className={styles.Project__text}>
-                  <div className={styles.Project__title}>{item.title}</div>
-                  <div className={styles.Project__desc}>{item.desc}</div>
+                <div className={`${styles.ProjectsSlider__half} ${styles.ProjectsSlider__half_left}`} onClick={() => handleSlide('prev')}></div>
+                <div className={`${styles.ProjectsSlider__half} ${styles.ProjectsSlider__half_right}`} onClick={() => handleSlide('next')}></div>
+                <div className={styles.ProjectsSlider__text}>
+                  <div className={styles.ProjectsSlider__title}>{item.title}</div>
+                  <div className={styles.ProjectsSlider__desc}>{item.desc}</div>
                 </div>
               </div>
             </SwiperSlide>
@@ -109,4 +109,4 @@ function Project() {
   );
 }
 
-export default Project;
+export default ProjectsSlider;

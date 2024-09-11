@@ -105,7 +105,7 @@
   }
 
   // Адаптация для tablet
-  @media all and (min-width: $bp3) {
+  @media all and (min-width: $bp4) {
     &__mask {
       display: none;
     }
@@ -118,7 +118,7 @@
     &__items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, minmax(auto, min(34vh, 216px)));
+      grid-template-rows: repeat(3, minmax(auto, min(34vh, rem(216))));
       width: 100%;
       height: 100%;
     }
@@ -188,7 +188,7 @@
       mask-repeat: no-repeat;
       mask-size: rem(150);
       color: white;
-      cursor: url('../../assets/images/projects-ico.svg') 8 8, auto;
+      cursor: url('../../assets/images/projects-ico-2.svg') 13 20, auto;
       mix-blend-mode: difference;
       transition: mask-size 1s;
       z-index: 10;
@@ -197,7 +197,7 @@
     &__items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, minmax(auto, min(34vh, 341px)));
+      grid-template-rows: repeat(3, minmax(auto, min(34vh, rem(341))));
       width: 100%;
     }
 
@@ -271,10 +271,10 @@
       &.animate {
         #{$s}__item {
           #{$s}__title {
-            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
           }
           #{$s}__preview {
-            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
           }
 
           &:first-child {
@@ -289,6 +289,9 @@
             }
           }
           &:nth-child(2) {
+            & > * {
+              transition-delay: 0.2s;
+            }
             #{$s}__title {
               transform: none;
               opacity: 1;
@@ -300,12 +303,18 @@
             }
           }
           &:nth-child(3) {
+            & > * {
+              transition-delay: 0.4s;
+            }
             #{$s}__title {
               transform: none;
               opacity: 1;
             }
           }
           &:nth-child(4) {
+            & > * {
+              transition-delay: 0.6s;
+            }
             #{$s}__title {
               transform: none;
               opacity: 1;
@@ -317,6 +326,9 @@
             }
           }
           &:nth-child(5) {
+            & > * {
+              transition-delay: 0.6s;
+            }
             #{$s}__title {
               transform: none;
               opacity: 1;
@@ -343,11 +355,7 @@
 
   @media all and (min-width: $bp0) {
     &__items {
-      grid-template-rows: repeat(3, minmax(auto, min(38vh, 819px)));
-    }
-
-    &__mask {
-      cursor: url('../../assets/images/projects-ico-2.svg') 13 20, auto;
+      grid-template-rows: repeat(3, minmax(auto, min(36vh, rem(470))));
     }
 
     &__title {

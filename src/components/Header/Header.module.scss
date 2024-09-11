@@ -318,6 +318,11 @@
 
   // Адаптация для desktop
   @media all and (min-width: $bp1) {
+    &__mg svg {
+      width: rem(56);
+      height: rem(20);
+    }
+
     &__top {
       padding: rem(20) 0 rem(16) 0;
       border-bottom: rem(3) solid var(--prime-2);
