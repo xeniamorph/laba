@@ -1,144 +1,31 @@
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
+
 import styles from './GalleryTabs.module.scss';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { itemsGalleryTabs } from '../../constants/itemsGalleryTabs';
+import { typesfiltersGalerryTabs } from '../../constants/typesfiltersGalerryTabs';
 
-import video_1 from '../../assets/videos/gallery-1.mp4';
-import video_2 from '../../assets/videos/gallery-2.mp4';
-import video_3 from '../../assets/videos/gallery-3.mp4';
-import video_4 from '../../assets/videos/gallery-4.mp4';
-import video_5 from '../../assets/videos/gallery-5.mp4';
-import video_6 from '../../assets/videos/gallery-6.mp4';
-import video_7 from '../../assets/videos/gallery-7.mp4';
-import video_8 from '../../assets/videos/gallery-8.mp4';
-import video_9 from '../../assets/videos/gallery-9.mp4';
-import video_10 from '../../assets/videos/gallery-10.mp4';
-import video_11 from '../../assets/videos/gallery-11.mp4';
-import video_12 from '../../assets/videos/gallery-12.mp4';
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+ScrollTrigger.create({
+  trigger: '.ScrollSmoother-wrapper',
+  onUpdate: (self) => {
+    console.log(self);
+  },
+});
 
-const items = [
-  {
-    id: 1,
-    video: video_1,
-    src: '#',
-    title: 'Проект ТЕСТ 3D',
-    desc: 'ЗD визуализация',
-    type: '3d',
-  },
-  {
-    id: 2,
-    video: video_2,
-    src: '#',
-    title: 'Проект Signature',
-    desc: 'ЗD визуализация',
-    type: 'web',
-  },
-  {
-    id: 3,
-    video: video_3,
-    src: '#',
-    title: 'Проект Вуаля длинное название',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: '3d',
-  },
-  {
-    id: 4,
-    video: video_4,
-    src: '#',
-    title: 'Проект Вуаля длинное название',
-    desc: 'ЗD визуализация',
-    type: '3d',
-  },
-  {
-    id: 5,
-    video: video_5,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация',
-    type: 'web',
-  },
-  {
-    id: 6,
-    video: video_6,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: '3d',
-  },
-  {
-    id: 7,
-    video: video_7,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'video',
-  },
-  {
-    id: 8,
-    video: video_8,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'video',
-  },
-  {
-    id: 9,
-    video: video_9,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'video',
-  },
-  {
-    id: 10,
-    video: video_10,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'web',
-  },
-  {
-    id: 11,
-    video: video_11,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'web',
-  },
-  {
-    id: 12,
-    video: video_12,
-    src: '#',
-    title: 'Проект Вуаля',
-    desc: 'ЗD визуализация видео продакшн VR',
-    type: 'video',
-  },
-];
-
-const typesfilters = [
-  {
-    id: 1,
-    title: 'Все',
-    type: 'all',
-  },
-  {
-    id: 2,
-    title: '3D визуализация',
-    type: '3d',
-  },
-  {
-    id: 3,
-    title: 'Web',
-    type: 'web',
-  },
-  {
-    id: 4,
-    title: 'Видео продакшн',
-    type: 'video',
-  },
-];
-
-function GalleryTabs() {
+export default function GalleryTabs() {
   const [activeFilter, setActiveFilter] = useState('all');
+
+  useLayoutEffect(() => {
+    ScrollSmoother.create({
+      smooth: 1,
+      effects: true,
+      smoothTouch: 0.1,
+    });
+  }, []);
 
   // Функции остановки или воспроизведения видео
   const handleMouseEnter = (video) => {
@@ -165,7 +52,7 @@ function GalleryTabs() {
   };
 
   // Применение фильтрации
-  const filteredItems = activeFilter === 'all' ? items : items.filter((item) => item.type === activeFilter);
+  const filteredItems = activeFilter === 'all' ? itemsGalleryTabs : itemsGalleryTabs.filter((item) => item.type === activeFilter);
 
   return (
     <section className={styles.GalleryTabs}>
@@ -182,7 +69,7 @@ function GalleryTabs() {
       </div>
       <nav className={styles.GalleryTabs__filters}>
         <ul>
-          {typesfilters.map((element) => {
+          {typesfiltersGalerryTabs.map((element) => {
             return (
               <li key={element.id}>
                 <button onMouseMove={handleMouseMove} className={activeFilter === `${element.type}` ? styles.active : ''} onClick={() => handleFilterChange(`${element.type}`)}>
@@ -237,5 +124,3 @@ function GalleryTabs() {
     </section>
   );
 }
-
-export default GalleryTabs;

@@ -1,10 +1,9 @@
-import { useRef } from 'react';
 import styles from './PageNotFound.module.scss';
 // import picture from '../../assets/images/page-not-found.jpg';
 import error404 from '../../assets/images/page-not-found-404.svg';
+import { Link } from 'react-router-dom';
 
 function PageNotFound() {
-  const btnRef = useRef(null);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -23,9 +22,9 @@ function PageNotFound() {
         </div>
         <p className={styles.PageNotFound__explain}>К&nbsp;сожалению, страница не&nbsp;найдена</p>
         <p className={styles.PageNotFound__desc}>Возможно вы&nbsp;неправильно набрали URL&#8209;адрес или страница была&nbsp;удалена</p>
-        <a ref={btnRef} onMouseMove={handleMouseMove} href="#" className={styles.PageNotFound__button}>
+        <Link to="/" onClick={localStorage.setItem('activeTab', '/')} onMouseMove={handleMouseMove} href="#" className={styles.PageNotFound__button}>
           <span>Перейти на главную</span>
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,20 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
+  const [activeTab, setActiveTab] = useState('/');
+  const location = useLocation();
 
-  const toggleActiveClass = () => {
-    setIsActive(!isActive);
+  // Хук для установки активной вкладки
+  useEffect(() => {
+    const savedTab = localStorage.getItem('activeTab') || location.pathname;
+    setActiveTab(savedTab);
+  }, [location.pathname]);
+
+  // Хук для блокировки/разблокировки скролла страницы
+  useEffect(() => {
+    document.body.style.overflow = isActive ? 'hidden' : '';
+    return () => (document.body.style.overflow = '');
+  }, [isActive]);
+
+  const toggleActiveClass = () => setIsActive((prev) => !prev);
+
+  const handleTabClick = (path) => {
+    if (path !== activeTab) {
+      setActiveTab(path);
+      localStorage.setItem('activeTab', path);
+      setIsActive(false);
+    }
   };
 
   return (
     <header className={`${styles.Header} ${isActive ? styles.active : ''}`}>
       <div className={styles.Header__top}>
-        <a href="#" className={styles.Header__desc}>
+        <Link to="/" className={styles.Header__desc} onClick={() => handleTabClick('/')}>
           digital agency
-        </a>
-        <a href="#" className={styles.Header__mg}>
+        </Link>
+        <Link to="/" className={styles.Header__mg} onClick={() => handleTabClick('/')}>
           <svg width="57" height="20" viewBox="0 0 57 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.12162 19.7553H0.632812V0.231445H8.96187L15.5584 12.4266L22.2614 0.231445H30.4768V19.7553H25.0164V5.84166L17.3761 19.7553H13.6909L6.12162 5.84166V19.7553Z" fill="#1D2E43" />
             <path
@@ -22,7 +43,7 @@ function Header() {
               fill="#1D2E43"
             />
           </svg>
-        </a>
+        </Link>
         <button className={styles.Header__toggle} onClick={toggleActiveClass}>
           <div></div>
         </button>
@@ -31,15 +52,19 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <a className={styles.active} href="#">
+              <Link className={activeTab === '/' ? styles.active : ''} to="/" onClick={() => handleTabClick('/')}>
                 Главная
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">Портфолио</a>
+              <Link className={activeTab === '/portfolio' ? styles.active : ''} to="/portfolio" onClick={() => handleTabClick('/portfolio')}>
+                Портфолио
+              </Link>
             </li>
             <li>
-              <a href="#">Контакты</a>
+              <Link className={activeTab === '/contact' ? styles.active : ''} to="/contact" onClick={() => handleTabClick('/contact')}>
+                Контакты
+              </Link>
             </li>
           </ul>
         </nav>
