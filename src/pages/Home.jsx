@@ -8,7 +8,7 @@ import Gallery from '../components/Gallery/Gallery';
 import Intro from '../components/Intro/Intro';
 import Partners from '../components/Partners/Partners';
 import Projects from '../components/Projects/Projects';
-import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
+// import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
 import TextEffect from '../components/TextEffect/TextEffect';
 import Ticker from '../components/Ticker/Ticker';
 import video from '../assets/videos/vr.mp4';
@@ -53,7 +53,7 @@ export default function Home() {
           <AboutList />
           <TextEffect />
           <Partners />
-          <ProjectsSlider />
+          {/* <ProjectsSlider /> */}
         </main>
     //   </div>
     // </div>
