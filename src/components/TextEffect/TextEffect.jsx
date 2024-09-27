@@ -40,7 +40,9 @@ const TextEffect = () => {
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      observer.unobserve(heroRef.current);
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [isVisible]);

@@ -3,9 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
 import AboutList from '../components/AboutList/AboutList';
-import CookieAgreement from '../components/CookieAgreement/CookieAgreement';
 import Expertise from '../components/Expertise/Expertise';
-import FormBrief from '../components/FormBrief/FormBrief';
 import Gallery from '../components/Gallery/Gallery';
 import Intro from '../components/Intro/Intro';
 import Partners from '../components/Partners/Partners';
@@ -56,8 +54,6 @@ export default function Home() {
           <TextEffect />
           <Partners />
           <ProjectsSlider />
-          <FormBrief />
-          <CookieAgreement />
         </main>
     //   </div>
     // </div>
