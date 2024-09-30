@@ -69,9 +69,9 @@ function Header() {
           </ul>
         </nav>
         <ul className={styles.Header__links}>
-          <li>
+          {/* <li>
             <a href="#">Реквизиты</a>
-          </li>
+          </li> */}
           <li>
             <a href="#">Презентация</a>
           </li>
