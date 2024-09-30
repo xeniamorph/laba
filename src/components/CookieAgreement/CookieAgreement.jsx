@@ -33,10 +33,12 @@ function CookieAgreement() {
   }
 
   return (
-    <section className={styles.CookieAgreement__company}>
-      <div className={styles.CookieAgreement__text}>OOO «Media» использует файлы cookie и инструменты аналитики на сайте</div>
-      <div onMouseMove={handleMouseMove} onClick={handleAgreement} className={styles.CookieAgreement__button}>
-        <span>Понятно</span>
+    <section className={styles.CookieAgreement}>
+      <div className={styles.CookieAgreement__container}>
+        <div className={styles.CookieAgreement__text}>OOO «Media» использует файлы cookie и инструменты аналитики на сайте</div>
+        <div onMouseMove={handleMouseMove} onClick={handleAgreement} className={styles.CookieAgreement__button}>
+          <span>Понятно</span>
+        </div>
       </div>
     </section>
   );

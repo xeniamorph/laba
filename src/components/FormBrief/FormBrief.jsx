@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import styles from './FormBrief.module.scss';
-import CookieAgreement from '../CookieAgreement/CookieAgreement'
 import { OPTIONS } from '../../constants/options';
 
 const INPUT_NAMES = {
@@ -167,7 +166,6 @@ function FormBrief() {
         <p>Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
         <a href="#">Перейти на главную</a>
       </div>
-      <CookieAgreement />
     </section>
   );
 }
