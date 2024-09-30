@@ -25,8 +25,8 @@ function Header() {
     if (path !== activeTab) {
       setActiveTab(path);
       localStorage.setItem('activeTab', path);
-      setIsActive(false);
     }
+    setIsActive(false);
   };
 
   return (
@@ -77,13 +77,15 @@ function Header() {
           </li>
         </ul>
         <div className={styles.Header__contacts}>
-          <a className={styles.Header__mail} href="#">
+          <a className={styles.Header__mail} href="mailto:mail@marksgroup.ru">
             mail@marksgroup.ru
           </a>
-          <a className={styles.Header__tel} href="#">
-            тел. +7 (495) 120-12-26
+          <a href="tel:+74951201226" className={styles.Header__tel}>
+            +7 (495) 120-12-26
           </a>
-          <a href="#">г. Москва ул. 3-я Ямского Поля д. 20 с1</a>
+          <a href="https://yandex.ru/profile/1116551737" target="_black">
+            г. Москва ул. 3-я Ямского Поля д. 20 с1
+          </a>
         </div>
       </div>
     </header>

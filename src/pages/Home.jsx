@@ -3,14 +3,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
 import AboutList from '../components/AboutList/AboutList';
-import CookieAgreement from '../components/CookieAgreement/CookieAgreement';
 import Expertise from '../components/Expertise/Expertise';
-import FormBrief from '../components/FormBrief/FormBrief';
 import Gallery from '../components/Gallery/Gallery';
 import Intro from '../components/Intro/Intro';
 import Partners from '../components/Partners/Partners';
 import Projects from '../components/Projects/Projects';
-import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
+// import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
 import TextEffect from '../components/TextEffect/TextEffect';
 import Ticker from '../components/Ticker/Ticker';
 import video from '../assets/videos/vr.mp4';
@@ -55,9 +53,7 @@ export default function Home() {
           <AboutList />
           <TextEffect />
           <Partners />
-          <ProjectsSlider />
-          <FormBrief />
-          <CookieAgreement />
+          {/* <ProjectsSlider /> */}
         </main>
     //   </div>
     // </div>

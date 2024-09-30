@@ -6,6 +6,7 @@ import GalleryTabs from './components/GalleryTabs/GalleryTabs.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
 import './App.scss';
 import Home from './pages/Home.jsx';
+import FormBrief from './components/FormBrief/FormBrief.jsx';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<GalleryTabs />} />
             <Route path="/contact" element={<Contacts />} />
+            <Route path='/form' element={<FormBrief />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <Footer />

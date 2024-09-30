@@ -1,19 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from './FormBrief.module.scss';
-
-const OPTIONS = [
-  { label: '3D визуализация и анимационный ролик', value: 'option1' },
-  { label: 'Виртуальный тур / Панорама 360°', value: 'option2' },
-  { label: 'Рекламный анимационный ролик', value: 'option3' },
-  { label: 'Интерактивная модель / VR / AR', value: 'option4' },
-  { label: 'Видео продакшн', value: 'option5' },
-  { label: 'Промо Лэндинг', value: 'option6' },
-  { label: 'Многостраничный сайт', value: 'option7' },
-  { label: 'Корпоративный сайт', value: 'option8' },
-  { label: 'Редизайн', value: 'option9' },
-  { label: 'Разработка приложения', value: 'option10' },
-  { label: 'Фирменный стиль и брендбук', value: 'option11' },
-];
+import CookieAgreement from '../CookieAgreement/CookieAgreement'
+import { OPTIONS } from '../../constants/options';
 
 const INPUT_NAMES = {
   name: 'name',
@@ -136,13 +124,13 @@ function FormBrief() {
               <div className={styles.FormBrief__selectedItems}>
                 {selectedOptions.map((option) => (
                   <div key={option.value} onClick={() => handleRemoveOption(option)}>
-                    {OPTIONS.find((o) => o.value === option).label}
+                    {OPTIONS?.find((o) => o.value === option).label}
                   </div>
                 ))}
               </div>
             </div>
             <div className={`${styles.FormBrief__select} ${isDropdownOpen ? styles.active : ''}`}>
-              {OPTIONS.map((option) => (
+              {OPTIONS?.map((option) => (
                 <label key={option.value} onMouseMove={handleMouseMove} className={`${styles.FormBrief__option} ${selectedOptions.includes(option.value) ? styles.active : ''}`}>
                   <input type="checkbox" name="services" value={option.value} checked={selectedOptions.includes(option.value)} onChange={handleOptionChange} />
                   <span>{option.label}</span>
@@ -179,6 +167,7 @@ function FormBrief() {
         <p>Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
         <a href="#">Перейти на главную</a>
       </div>
+      <CookieAgreement />
     </section>
   );
 }
