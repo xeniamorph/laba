@@ -39,8 +39,7 @@
       right: rem(16);
       z-index: 10;
       display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
 
       span {
         display: inline-block;
@@ -50,7 +49,6 @@
           font-size: rem(24);
           line-height: rem(32);
           color: var(--prime-1);
-          margin-right: rem(8);
         }
 
         &:last-child {
@@ -91,6 +89,7 @@
       &:nth-child(3) {
         order: 4;
       }
+
       &:nth-child(6) {
         order: 5;
       }
@@ -100,52 +99,23 @@
   // Адаптация для desktop
   @media all and (min-width: $bp2) {
     &__item {
-      &.long {
-        span {
-          &:first-child {
-            opacity: 0;
-            transform: translateX(rem(-100));
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-          }
-          &:last-child {
-            width: 100%;
-          }
+      span {
+        &:first-child {
+          opacity: 0;
+          transform: translateX(rem(-100));
+          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
         }
 
-        a:hover span {
-          &:first-child {
-            opacity: 1;
-            transform: translateX(0);
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-          }
+        &:last-child {
+          width: 100%;
         }
       }
 
-      &.short {
-        h2 {
-          flex-wrap: nowrap;
-        }
-
-        span {
-          &:first-child {
-            opacity: 0;
-            white-space: nowrap;
-            max-width: 0;
-            transform: translateX(rem(-50));
-            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 1s ease-in-out, opacity 1s ease-in-out;
-            margin-right: 0;
-          }
-        }
-
-        a:hover span {
-          &:first-child {
-            max-width: 100%;
-            transform: translateX(0);
-            opacity: 1;
-            left: 0;
-            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 0.3s ease-in-out, opacity 1.4s ease-in-out;
-            margin-right: rem(8);
-          }
+      a:hover span {
+        &:first-child {
+          opacity: 1;
+          transform: translateX(0);
+          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
         }
       }
 

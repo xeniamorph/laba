@@ -66,9 +66,6 @@ function Gallery() {
     <section className={styles.Gallery}>
       <ul className={styles.Gallery__items}>
         {items.map((element, index) => {
-          const totalLength = element.title.length + element.desc.length;
-          const noverAnimateClass = totalLength > 34 ? styles.long : styles.short;
-
           const videoProps =
             index % 2 === 1
               ? { autoPlay: true }
@@ -78,7 +75,7 @@ function Gallery() {
                 };
 
           return (
-            <li key={element.id} className={`${styles.Gallery__item} ${noverAnimateClass}`}>
+            <li key={element.id} className={`${styles.Gallery__item}`}>
               <a href={element.src}>
                 <video {...videoProps} preload="auto" loop muted>
                   <source src={element.video} type="video/mp4" />
