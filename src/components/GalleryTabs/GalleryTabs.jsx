@@ -1,32 +1,12 @@
-import { useLayoutEffect, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother.min';
-
+import { useState } from 'react';
 import styles from './GalleryTabs.module.scss';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { itemsGalleryTabs } from '../../constants/itemsGalleryTabs';
 import { typesfiltersGalerryTabs } from '../../constants/typesfiltersGalerryTabs';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-ScrollTrigger.create({
-  trigger: '.ScrollSmoother-wrapper',
-  onUpdate: (self) => {
-    console.log(self);
-  },
-});
 
 export default function GalleryTabs() {
   const [activeFilter, setActiveFilter] = useState('all');
-
-  useLayoutEffect(() => {
-    ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-      smoothTouch: 0.1,
-    });
-  }, []);
-
   // Функции остановки или воспроизведения видео
   const handleMouseEnter = (video) => {
     video.play();
