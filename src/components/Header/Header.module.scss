@@ -2,11 +2,26 @@
 
 .Header {
   $s: &;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  transition: 0.3s;
-  overflow: hidden;
+  height: 65px;
+  background: var(--prime-1);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transition: ease 0.4s;
+  z-index: 9999;
+
+  &--scrolled {
+    height: 40px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: 0.3s;
+    overflow: hidden;
+  }
 
   &__top {
     display: flex;
@@ -228,7 +243,7 @@
     }
   }
 
-  &.active {
+  &__container.active {
     background-color: var(--prime-2);
     color: var(--prime-1);
     z-index: 30;
@@ -339,7 +354,7 @@
       }
     }
 
-    &.active {
+    &__container.active {
       #{$s}__top {
         border-bottom: rem(3) solid var(--prime-1);
       }

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './Header.css';
 import styles from './Header.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,33 +23,32 @@ function Header() {
     return () => (document.body.style.overflow = '');
   }, [isActive]);
 
- useEffect(() => {
-   const showAnim = gsap.fromTo(
-     '.main-tool-bar',
-     { yPercent: 0 },
-     {
-       yPercent: -100,
-       paused: true,
-       duration: 0.2,
-       ease: 'power1.out',
-     }
-   );
+  useEffect(() => {
+    const showAnim = gsap.fromTo(
+      '#main-tool-bar',
+      { yPercent: 0 },
+      {
+        yPercent: -100,
+        paused: true,
+        duration: 0.2,
+        ease: 'power1.out',
+      }
+    );
 
-   ScrollTrigger.create({
-     trigger: '#smooth-content', // Используй правильный триггер для ScrollSmoother
-     start: 'top top',
-     end: 'bottom top',
-     onUpdate: (self) => {
-       if (self.direction === -1) {
-         showAnim.reverse();
-       } else {
-         showAnim.play();
-       }
-     },
-     scrub: true,
-   });
- }, []);
-
+    ScrollTrigger.create({
+      trigger: '#smooth-content', // Используй правильный триггер для ScrollSmoother
+      start: 'top top',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        if (self.direction === -1) {
+          showAnim.reverse();
+        } else {
+          showAnim.play();
+        }
+      },
+      scrub: true,
+    });
+  }, []);
 
   const toggleActiveClass = () => setIsActive((prev) => !prev);
 
@@ -63,8 +61,8 @@ function Header() {
   };
 
   return (
-    <div className="main-tool-bar">
-      <header className={`${styles.Header} ${isActive ? styles.active : ''}`}>
+    <header id="main-tool-bar" className={styles.Header}>
+      <div className={`${styles.Header__container} ${isActive ? styles.active : ''}`}>
         <div className={styles.Header__top}>
           <Link to="/" className={styles.Header__desc} onClick={() => handleTabClick('/')}>
             digital agency
@@ -122,8 +120,8 @@ function Header() {
             </a>
           </div>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 
