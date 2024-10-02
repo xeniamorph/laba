@@ -65,6 +65,7 @@
     flex-wrap: wrap;
     align-items: baseline;
     font-weight: var(--fw-regular);
+    border-top: 2px solid var(--prime-2);
 
     span:last-child {
       align-self: flex-end;
@@ -199,6 +200,7 @@
   @media all and (min-width: $bp0) {
     &__company {
       padding-top: rem(80);
+      border-top: 3px solid var(--prime-2);
     }
 
     &__laba {

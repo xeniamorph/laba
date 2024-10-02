@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 /* Ubuntu */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
@@ -51,6 +53,28 @@
   overflow: hidden;
 }
 
+// это нужно для контейнера gsap который расчитывает высоту нашего макета и на этой высоте работает тяжелый скрол, если мы это уберём то наш footer не показывается полностью. я добавл отступ сверху для того, чтоб gsap расчитывал высоту чуть больше. напиши мне если будет как-то не корректно работать =)
+#smooth-content {
+  padding-top: 46px;
+  /* Добавляет отступ снизу для Footer */
+
+  @media all and (min-width: $bp4) {
+    padding-top: 48px;
+  }
+
+  @media all and (min-width: $bp1) {
+    padding-top: 58px;
+  }
+
+  @media all and (min-width: $bp) {
+    padding-top: 73px;
+  }
+
+  @media all and (min-width: 2560px) {
+    padding-top: 94px;
+  }
+}
+
 main {
   min-height: 100%;
 }
@@ -61,13 +85,14 @@ html {
   /* Уменьшение толщины полосы прокрутки в Firefox */
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
-  -webkit-tap-highlight-color: transparent; /* Убирает подсветку при таче */
+  /* Убирает подсветку при таче */
+  -webkit-tap-highlight-color: transparent;
 
-  @media all and (min-width: 1920px) {
+  @media all and (min-width: $bp) {
     font-size: 20px;
   }
 
-  @media all and (min-width: 2500px) {
+  @media all and (min-width: 2560px) {
     font-size: 26px;
   }
 }
@@ -165,10 +190,4 @@ section {
 button,
 select {
   text-transform: none;
-}
-
-// это нужно для контейнера gsap который расчитывает высоту нашего макета и на этой высоте работает тяжелый скрол, если мы это уберём то наш footer не показывается полностью. я добавл отступ сверху для того, чтоб gsap расчитывал высоту чуть больше. напиши мне если будет как-то не корректно работать =)
-#smooth-content {
-  padding-top: 80px;
-  /* Добавляет отступ снизу для Footer */
 }

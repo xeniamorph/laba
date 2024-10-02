@@ -2,8 +2,7 @@
 
 .Header {
   $s: &;
-  height: 65px;
-  background: var(--prime-1);
+  height: 46px;
   position: fixed;
   width: 100%;
   left: 0;
@@ -11,11 +10,24 @@
   transition: ease 0.4s;
   z-index: 9999;
 
-  &--scrolled {
-    height: 40px;
+  @media all and (min-width: $bp4) {
+    height: 48px;
+  }
+
+  @media all and (min-width: $bp1) {
+    height: 56px;
+  }
+
+  @media all and (min-width: $bp) {
+    height: 70px;
+  }
+
+  @media all and (min-width: 2560px) {
+    height: 91px;
   }
 
   &__container {
+    background: var(--prime-1);
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -30,7 +42,6 @@
     padding: rem(8) 0 rem(16) 0;
     margin: 0 rem(16);
     z-index: 30;
-    border-bottom: rem(2) solid var(--prime-2);
   }
 
   &__desc {
@@ -340,7 +351,7 @@
 
     &__top {
       padding: rem(20) 0 rem(16) 0;
-      border-bottom: rem(3) solid var(--prime-2);
+      // border-bottom: rem(3) solid var(--prime-2);
     }
 
     &__inner {
