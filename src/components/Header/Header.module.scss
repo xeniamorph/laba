@@ -49,7 +49,7 @@
     font-size: rem(15);
   }
 
-  &__mg {
+  &__logo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,41 +58,114 @@
   &__toggle {
     width: rem(62);
     min-height: rem(18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
 
-    &:hover {
-      div,
-      div::after,
-      div::before {
-        background-color: var(--prime-3);
+    span {
+      position: absolute;
+      width: 100%;
+      height: rem(2);
+      background-color: var(--prime-2);
+      transition: all 0.5s;
+
+      &:first-child {
+        top: 0;
+        right: 0;
+        left: auto;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+        right: 0;
+        left: 0;
+      }
+
+      &:last-child {
+        top: 100%;
+        left: 0;
+        right: auto;
       }
     }
 
-    div {
-      width: rem(62);
-      height: rem(2);
-      background-color: var(--prime-2);
-      position: relative;
-      transition: all 0.3s, height 0.1s, background-color 0.3s;
+    &:hover {
+      span {
+        width: rem(5);
+        height: rem(5);
+        transition: all 0.5s;
 
-      &::after,
-      &::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: rem(2);
-        background-color: var(--prime-2);
-        left: 0;
-        position: absolute;
-        transition: all 0.3s, background-color 0.3s;
+        &:first-child {
+          top: 50%;
+          right: rem(12);
+          left: auto;
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+          right: 50%;
+          left: 50%;
+        }
+
+        &:last-child {
+          top: 50%;
+          left: rem(17);
+          right: auto;
+        }
       }
-      &::after {
-        top: rem(6);
+    }
+
+    /* Сброс ховера для сенсорных устройств */
+    @media (hover: none) and (pointer: coarse) {
+      &:hover {
+        span {
+          position: absolute;
+          width: 100%;
+          height: rem(2);
+          background-color: var(--prime-2);
+          transition: all 0.5s;
+
+          &:first-child {
+            top: 0;
+            right: 0;
+            left: auto;
+          }
+
+          &:nth-child(2) {
+            top: 50%;
+            right: 0;
+            left: 0;
+          }
+
+          &:last-child {
+            top: 100%;
+            left: 0;
+            right: auto;
+          }
+        }
       }
-      &::before {
-        top: rem(-6);
+    }
+
+    &:hover {
+      span {
+        width: rem(5);
+        height: rem(5);
+        transition: all 0.5s;
+
+        &:first-child {
+          top: 50%;
+          right: rem(12);
+          left: auto;
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+          right: 50%;
+          left: 50%;
+        }
+
+        &:last-child {
+          top: 50%;
+          left: rem(17);
+          right: auto;
+        }
       }
     }
   }
@@ -265,33 +338,70 @@
       border-bottom: rem(2) solid var(--prime-1);
     }
 
-    #{$s}__mg svg * {
-      fill: var(--prime-1);
+    #{$s}__logo img {
+      filter: invert(1) grayscale(1) brightness(1000%);
     }
 
     #{$s}__toggle {
-      &:hover {
-        div,
-        div::after,
-        div::before {
-          background-color: var(--prime-3);
+      span {
+        background-color: var(--prime-1);
+        top: auto;
+        bottom: auto;
+
+        &:first-child,
+        &:last-child {
+          width: rem(32);
+          height: 0.125rem;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:first-child {
+          transform: translateY(-50%) rotate(-30deg);
+          top: 50%;
+          right: rem(15);
+          left: auto;
+        }
+
+        &:last-child {
+          transform: translateY(-50%) rotate(30deg);
+          top: 50%;
+          left: rem(15);
+          right: auto;
         }
       }
 
-      div {
-        width: rem(32);
-        height: 0;
-        background-color: var(--prime-1);
-
-        &::after,
-        &::before {
-          top: 0;
-          transform: rotate(-30deg);
-          transition: 0.3s;
-          background-color: var(--prime-1);
+      &:hover {
+        span {
+          &:first-child {
+            transform: translateY(-50%) rotate(30deg);
+          }
+          &:last-child {
+            transform: translateY(-50%) rotate(-30deg);
+          }
         }
-        &::before {
-          transform: rotate(30deg);
+      }
+
+      /* Сброс ховера для сенсорных устройств */
+      @media (hover: none) and (pointer: coarse) {
+        &:hover {
+          span {
+            &:first-child {
+              transform: translateY(-50%) rotate(-30deg);
+              top: 50%;
+              right: rem(15);
+              left: auto;
+            }
+
+            &:last-child {
+              transform: translateY(-50%) rotate(30deg);
+              top: 50%;
+              left: rem(15);
+              right: auto;
+            }
+          }
         }
       }
     }
@@ -344,14 +454,8 @@
 
   // Адаптация для desktop
   @media all and (min-width: $bp1) {
-    &__mg svg {
-      width: rem(56);
-      height: rem(20);
-    }
-
     &__top {
       padding: rem(20) 0 rem(16) 0;
-      // border-bottom: rem(3) solid var(--prime-2);
     }
 
     &__inner {
@@ -385,6 +489,7 @@
       a {
         transition: 0.3s;
         opacity: 0.6;
+
         &:hover {
           color: var(--prime-1);
           opacity: 1;
