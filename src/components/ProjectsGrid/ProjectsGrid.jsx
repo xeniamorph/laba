@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import styles from './Projects.module.scss';
+import styles from './ProjectsGrid.module.scss';
 import { motion } from 'framer-motion';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -46,7 +46,7 @@ const items = [
   },
 ];
 
-function Projects() {
+function ProjectsGrid() {
   const [isTablet] = useState(window.innerWidth < 1024);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [isHovered, setIsHovered] = useState(false);
@@ -129,19 +129,19 @@ function Projects() {
   };
 
   return (
-    <section className={styles.Projects}>
+    <section className={styles.ProjectsGrid}>
       {isMobile && (
-        <div className={styles.Projects__container}>
-          <div className={styles.Projects__swiper}>
+        <div className={styles.ProjectsGrid__container}>
+          <div className={styles.ProjectsGrid__swiper}>
             <Swiper
               modules={[Pagination]}
               speed={1000}
               keyboard={{ enabled: true }}
               pagination={{
-                el: `.${styles.Projects__pagination}`,
+                el: `.${styles.ProjectsGrid__pagination}`,
                 clickable: true,
-                bulletClass: styles.Projects__bullet,
-                bulletActiveClass: styles.Projects__bullet_active,
+                bulletClass: styles.ProjectsGrid__bullet,
+                bulletActiveClass: styles.ProjectsGrid__bullet_active,
                 renderBullet: (index, className) => `<span class="${className}"></span>`,
               }}
               breakpoints={{
@@ -152,12 +152,12 @@ function Projects() {
                 },
               }}>
               {items.map((item, index) => (
-                <SwiperSlide className={styles.Projects__slide} key={item.id + '-slide'}>
+                <SwiperSlide className={styles.ProjectsGrid__slide} key={item.id + '-slide'}>
                   <a href={item.src}>
-                    <div className={styles.Projects__header} dangerouslySetInnerHTML={{ __html: item.title }} />
-                    <div className={styles.Projects__video}>
+                    <div className={styles.ProjectsGrid__header} dangerouslySetInnerHTML={{ __html: item.title }} />
+                    <div className={styles.ProjectsGrid__video}>
                       <button
-                        className={styles.Projects__play}
+                        className={styles.ProjectsGrid__play}
                         onClick={(e) => {
                           e.preventDefault();
                           handlePlayClick(index);
@@ -172,13 +172,13 @@ function Projects() {
               ))}
             </Swiper>
           </div>
-          <div className={styles.Projects__pagination}></div>
+          <div className={styles.ProjectsGrid__pagination}></div>
         </div>
       )}
       {!isMobile && (
-        <div className={`${styles.Projects__container} ${isVisible ? styles.animate : ''}`} ref={containerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className={`${styles.ProjectsGrid__container} ${isVisible ? styles.animate : ''}`} ref={containerRef} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <motion.div
-            className={styles.Projects__mask}
+            className={styles.ProjectsGrid__mask}
             animate={{
               maskSize: `${maskSize}px`,
             }}
@@ -190,23 +190,23 @@ function Projects() {
               WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`,
               WebkitMaskSize: `${maskSize}px`,
             }}>
-            <div className={`${styles.Projects__items} `}>
+            <div className={`${styles.ProjectsGrid__items} `}>
               {items.map((item, index) => (
-                <div className={styles.Projects__item} key={item.id + '-mask'} ref={(el) => (itemsRef.current[index] = el)}>
-                  <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
-                  <div className={styles.Projects__preview}></div>
+                <div className={styles.ProjectsGrid__item} key={item.id + '-mask'} ref={(el) => (itemsRef.current[index] = el)}>
+                  <div className={styles.ProjectsGrid__title} dangerouslySetInnerHTML={{ __html: item.title }} />
+                  <div className={styles.ProjectsGrid__preview}></div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <div className={`${styles.Projects__items} `}>
+          <div className={`${styles.ProjectsGrid__items} `}>
             {items.map((item, index) => (
-              <div className={styles.Projects__item} key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
-                <div className={styles.Projects__title} dangerouslySetInnerHTML={{ __html: item.title }} />
-                <div className={styles.Projects__preview}>
+              <div className={styles.ProjectsGrid__item} key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
+                <div className={styles.ProjectsGrid__title} dangerouslySetInnerHTML={{ __html: item.title }} />
+                <div className={styles.ProjectsGrid__preview}>
                   <button
-                    className={styles.Projects__play}
+                    className={styles.ProjectsGrid__play}
                     onClick={(e) => {
                       e.preventDefault();
                       handlePlayClick(index);
@@ -225,4 +225,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default ProjectsGrid;
