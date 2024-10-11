@@ -136,7 +136,7 @@
     div {
       display: inline;
       gap: rem(6);
-      background-color: white;
+      background-color: var(--prime-4);
       padding: rem(8.5) rem(30) rem(8.5) rem(16);
       border-radius: rem(20);
       max-width: 100%;
@@ -191,7 +191,7 @@
 
     &.active {
       background-color: var(--prime-3);
-      color: white;
+      color: var(--prime-4);
       transition: background-color 0.3s;
     }
 
@@ -510,7 +510,7 @@
       transition: border 0s;
 
       &.active {
-        color: white;
+        color: var(--prime-4);
         transition: none;
         border: 1px solid var(--prime-3);
         transition: width 1s, height 1s, border 0.1s;
@@ -539,7 +539,7 @@
           }
         }
         span {
-          color: white;
+          color: var(--prime-4);
           transition: color 1s;
         }
 

@@ -27,7 +27,7 @@
     min-height: rem(88);
     padding: 0 rem(32);
     font-family: var(--font-sec);
-    background-color: white;
+    background-color: var(--prime-4);
   }
 
   &__text {
@@ -64,7 +64,7 @@
     }
 
     &:hover {
-      color: white;
+      color: var(--prime-4);
       &::before {
         width: rem(350);
         height: rem(350);

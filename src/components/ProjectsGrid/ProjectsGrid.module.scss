@@ -187,7 +187,7 @@
       background-color: var(--prime-2);
       mask-repeat: no-repeat;
       mask-size: rem(150);
-      color: white;
+      color: var(--prime-4);
       cursor: url('../../assets/images/projects-ico-2.svg') 13 20, auto;
       mix-blend-mode: difference;
       transition: mask-size 1s;
