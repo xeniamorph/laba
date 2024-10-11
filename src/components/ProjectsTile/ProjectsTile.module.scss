@@ -2,22 +2,117 @@
 
 .ProjectsTile {
   $s: &;
+  $slide-height: 54vh;
+  $slide-width: 82vw;
+  $animation-duration: 3s;
 
   &__items {
-    display: flex;
+    position: relative;
     width: 100%;
+    height: $slide-height;
+    overflow: hidden;
   }
 
   &__item {
-    width: 82%;
-    height: 93vh;
+    width: $slide-width;
+    height: $slide-height;
+    max-height: rem(444);
+    position: absolute;
+    top: 0;
+    border-left: 1px solid var(--sec-5);
+    left: $slide-width;
+
+    &:nth-child(1) {
+      left: 0;
+      border-left: none;
+    }
+
+    &:nth-child(2) {
+      animation: slide-2-left $animation-duration linear 0s 1 forwards;
+      z-index: 30;
+    }
+
+    &:nth-child(3) {
+      animation: slide-3-left $animation-duration linear 3s 1 forwards;
+      z-index: 20;
+    }
+
+    &:nth-child(4) {
+      width: 100vw;
+      animation: slide-4-left $animation-duration linear 6s 1 forwards;
+      z-index: 10;
+    }
+  }
+
+  @keyframes slide-2-left {
+    0% {
+      z-index: 30;
+      left: $slide-width;
+    }
+
+    100% {
+      z-index: 30;
+      left: 0;
+    }
+  }
+
+  @keyframes slide-3-left {
+    0% {
+      z-index: 40;
+      left: $slide-width;
+    }
+
+    100% {
+      z-index: 40;
+      left: 0;
+    }
+  }
+
+  @keyframes slide-4-left {
+    0% {
+      z-index: 50;
+      left: $slide-width;
+    }
+
+    100% {
+      z-index: 50;
+      left: 0;
+    }
   }
 
   &__picture {
+    width: 100%;
+    height: 100%;
+
     img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
+  }
+
+  &__text {
+    position: absolute;
+    top: 68%;
+    left: rem(16);
+    transform: translateY(-68%);
+    font-weight: var(--fw-medium);
+    color: var(--prime-4);
+  }
+
+  &__num {
+    font-family: var(--font-prime);
+    font-size: rem(48);
+    font-weight: var(--fw-medium);
+    line-height: 1.16;
+    margin-bottom: rem(24);
+  }
+
+  &__title {
+    font-family: var(--font-sec);
+    font-size: rem(30);
+    line-height: 1.26;
   }
 }
