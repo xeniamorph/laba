@@ -6,6 +6,6 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "arrowParens": "always",
-  "jsxBracketSameLine": true,
+  "bracketSameLine": false,
   "printWidth": 200
 }

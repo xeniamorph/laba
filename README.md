@@ -1,8 +1,26 @@
-# React + Vite
+# Laba Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект создан с использованием Vite и React.
+В нем настроены ESLint, Prettier и EditorConfig для поддержания качества кода в едином стиле
 
-Currently, two official plugins are available:
+## Структура проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+laba/
+├── .editorconfig # Настройки правил для редактора
+├── .prettierrc # Настройки форматирования Prettier
+├── .eslintrc.cjs # Конфигурация ESLint для проверки стиля и качества кода
+├── .gitignore # Игнорирование файлов и папок в Git
+├── index.html # Основной HTML файл
+├── package.json # Файл с зависимостями и скриптами проекта
+├── package-lock.json # Lock-файл зависимостей
+├── vite.config.js # Конфигурация Vite
+├── public/ # Статические файлы
+├── src/ # Исходный код проекта
+│ ├── App.jsx # Главный компонент приложения
+│ ├── App.scss # Стили для приложения
+│ ├── main.jsx # Входной файл приложения
+│ ├── variables.scss # Переменные стилей
+│ ├── assets/ # Медиа-ресурсы (изображения, видео, шрифты и т.д.)
+│ ├── components/ # Компоненты React
+│ ├── constants/ # Константы проекта
+│ └── pages/ # Страницы приложения
