@@ -3,9 +3,9 @@
 .ProjectsTile {
   $s: &;
   $slide-height: 54vh;
-  $slide-width: 82vw;
+  $slide-width: 80vw;
   $remains: calc(100vw - $slide-width);
-  $animation-duration: 2s;
+  $animation-duration: 3s;
 
   &__items {
     position: relative;
@@ -14,6 +14,7 @@
     overflow: hidden;
   }
 
+  // prettier-ignore
   &__item {
     width: $slide-width;
     height: $slide-height;
@@ -22,28 +23,34 @@
     top: 0;
     border-left: 1px solid var(--sec-5);
 
+
     &:nth-child(1) {
       left: 0;
       border-left: none;
     }
 
     &:nth-child(2) {
-      animation: slide-2-left $animation-duration ease-in-out 0s 1 forwards, slide-2-right 3s ease-in 6s 1 forwards;
       left: $slide-width;
       z-index: 30;
+      animation:  slide-2-left $animation-duration ease-in-out 0s 1 forwards,
+                  slide-2-right 4.2s ease-in 9.9s 1 forwards;
     }
 
     &:nth-child(3) {
-      animation: slide-3-prepare 1s ease-out 1s 1 forwards, slide-3-left $animation-duration ease-in-out 2s 1 forwards, slide-3-right 2.5s ease-in 6s 1 forwards;
       z-index: 20;
-      left: 100vw;
+      left: $slide-width;
+      animation:  slide-3-prepare 1.5s ease-out 1.5s 1 forwards,
+                  slide-3-left $animation-duration ease-in-out 3s 1 forwards,
+                  slide-3-right 3.8s ease-in 9.6s 1 forwards;
     }
 
     &:nth-child(4) {
       width: 100vw;
-      animation: slide-3-prepare 1s ease-out 3s 1 forwards, slide-4-left $animation-duration ease-in-out 4s 1 forwards, slide-4-right 2s ease-in 6s 1 forwards;
       z-index: 10;
-      left: 100vw;
+      left: $slide-width;
+      animation:  slide-4-prepare 1.5s ease-out 4.5s 1 forwards,
+                  slide-4-left $animation-duration ease-in-out 6s 1 forwards,
+                  slide-4-right 3.3s  ease-in 9.3s 1 forwards;
     }
   }
 
@@ -75,13 +82,11 @@
     0% {
       z-index: 40;
       left: 100vw;
-      filter: blur(100);
     }
 
     100% {
       z-index: 40;
       left: $slide-width;
-      filter: blur(100);
     }
   }
 
@@ -89,7 +94,6 @@
     0% {
       z-index: 40;
       left: $slide-width;
-      filter: blur(100);
     }
 
     100% {
@@ -110,7 +114,7 @@
     }
   }
 
-  @keyframes slide-4-left {
+  @keyframes slide-4-prepare {
     0% {
       z-index: 50;
       left: 100vw;
@@ -162,6 +166,7 @@
   &__text {
     position: absolute;
     top: 68%;
+    max-width: 92%;
     left: rem(16);
     transform: translateY(-68%);
     font-weight: var(--fw-medium);
