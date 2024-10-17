@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import styles from './ProjectsTile.module.scss';
 
 import picture_1 from '../../assets/images/project-tile-1.jpg';
@@ -33,9 +34,29 @@ const items = [
 ];
 
 function ProjectsTile() {
+  const animationRef = useRef(null);
+
+  // Функция для сброса анимации
+  const resetAnimation = () => {
+    if (animationRef.current) {
+      // Удаляем анимацию
+      animationRef.current.classList.remove(styles.animate);
+      setTimeout(() => {
+        // Запускаем анимацию заново
+        animationRef.current.classList.add(styles.animate);
+      }, 50);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(resetAnimation, 14100);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className={styles.ProjectsTile}>
-      <div className={styles.ProjectsTile__items}>
+      {/* <div className={`${styles.ProjectsTile__items} `}> */}
+      <div className={`${styles.ProjectsTile__items} ${styles.animate}`} ref={animationRef}>
         {items.map(({ id, picture, src, title }) => (
           <div key={id} className={styles.ProjectsTile__item}>
             <a className={styles.ProjectsTile__link} href={src}>
