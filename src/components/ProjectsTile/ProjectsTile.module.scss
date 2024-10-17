@@ -4,7 +4,6 @@
   $s: &;
   $slide-height: 54vh;
   $slide-width: 80vw;
-  $remains: calc(100vw - $slide-width);
   $animation-duration: 3s;
 
   &__items {
@@ -197,5 +196,114 @@
     font-family: var(--font-sec);
     font-size: rem(30);
     line-height: 1.26;
+  }
+
+  @media all and (min-width: $bp3) {
+    $slide-width: 61vw;
+
+    &__items {
+      &.animate {
+        // prettier-ignore
+        #{$s}__item {
+          &:nth-child(2) {
+            animation:  slide-2-left $animation-duration ease-in-out 0s 1 forwards,
+                        slide-2-right 3s ease-in 9s 1 forwards;
+          }
+
+          &:nth-child(3) {
+            animation:  slide-3-left $animation-duration ease-in-out 3s 1 forwards,
+                        slide-3-right 3s ease-in 9s 1 forwards;
+          }
+
+          &:nth-child(4) {
+            animation:  slide-4-left $animation-duration ease-in-out 6s 1 forwards,
+                        slide-4-right 3s  ease-in 9s 1 forwards;
+          }
+        }
+      }
+    }
+
+    &__item {
+      width: 100vw;
+      &:nth-child(2) {
+        left: $slide-width;
+      }
+
+      &:nth-child(3) {
+        z-index: 30;
+        left: calc($slide-width + 13vw);
+      }
+
+      &:nth-child(4) {
+        width: 100vw;
+        z-index: 40;
+        left: calc($slide-width + 26vw);
+      }
+    }
+
+    @keyframes slide-2-left {
+      0% {
+        left: $slide-width;
+      }
+
+      100% {
+        left: 0;
+      }
+    }
+
+    @keyframes slide-2-right {
+      0% {
+        z-index: 30;
+        left: 0;
+      }
+
+      100% {
+        z-index: 30;
+        left: $slide-width;
+      }
+    }
+
+    @keyframes slide-3-left {
+      0% {
+        left: calc($slide-width + 13vw);
+      }
+
+      100% {
+        left: 0;
+      }
+    }
+
+    @keyframes slide-3-right {
+      0% {
+        left: 0;
+      }
+
+      100% {
+        left: calc($slide-width + 13vw);
+      }
+    }
+
+    @keyframes slide-4-left {
+      0% {
+        left: calc($slide-width + 26vw);
+      }
+
+      100% {
+        left: 0;
+      }
+    }
+
+    @keyframes slide-4-right {
+      0% {
+        left: 0;
+      }
+
+      100% {
+        left: calc($slide-width + 26vw);
+      }
+    }
+  }
+
+  @media all and (min-width: $bp3) {
   }
 }
