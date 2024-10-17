@@ -4,7 +4,8 @@
   $s: &;
   $slide-height: 54vh;
   $slide-width: 82vw;
-  $animation-duration: 3s;
+  $remains: calc(100vw - $slide-width);
+  $animation-duration: 2s;
 
   &__items {
     position: relative;
@@ -20,7 +21,6 @@
     position: absolute;
     top: 0;
     border-left: 1px solid var(--sec-5);
-    left: $slide-width;
 
     &:nth-child(1) {
       left: 0;
@@ -28,19 +28,22 @@
     }
 
     &:nth-child(2) {
-      animation: slide-2-left $animation-duration linear 0s 1 forwards;
+      animation: slide-2-left $animation-duration ease-in-out 0s 1 forwards, slide-2-right 3s ease-in 6s 1 forwards;
+      left: $slide-width;
       z-index: 30;
     }
 
     &:nth-child(3) {
-      animation: slide-3-left $animation-duration linear 3s 1 forwards;
+      animation: slide-3-prepare 1s ease-out 1s 1 forwards, slide-3-left $animation-duration ease-in-out 2s 1 forwards, slide-3-right 2.5s ease-in 6s 1 forwards;
       z-index: 20;
+      left: 100vw;
     }
 
     &:nth-child(4) {
       width: 100vw;
-      animation: slide-4-left $animation-duration linear 6s 1 forwards;
+      animation: slide-3-prepare 1s ease-out 3s 1 forwards, slide-4-left $animation-duration ease-in-out 4s 1 forwards, slide-4-right 2s ease-in 6s 1 forwards;
       z-index: 10;
+      left: 100vw;
     }
   }
 
@@ -56,15 +59,66 @@
     }
   }
 
+  @keyframes slide-2-right {
+    0% {
+      z-index: 30;
+      left: 0;
+    }
+
+    100% {
+      z-index: 30;
+      left: $slide-width;
+    }
+  }
+
+  @keyframes slide-3-prepare {
+    0% {
+      z-index: 40;
+      left: 100vw;
+      filter: blur(100);
+    }
+
+    100% {
+      z-index: 40;
+      left: $slide-width;
+      filter: blur(100);
+    }
+  }
+
   @keyframes slide-3-left {
     0% {
       z-index: 40;
       left: $slide-width;
+      filter: blur(100);
     }
 
     100% {
       z-index: 40;
       left: 0;
+    }
+  }
+
+  @keyframes slide-3-right {
+    0% {
+      z-index: 40;
+      left: 0;
+    }
+
+    100% {
+      z-index: 40;
+      left: 100vw;
+    }
+  }
+
+  @keyframes slide-4-left {
+    0% {
+      z-index: 50;
+      left: 100vw;
+    }
+
+    100% {
+      z-index: 50;
+      left: $slide-width;
     }
   }
 
@@ -77,6 +131,18 @@
     100% {
       z-index: 50;
       left: 0;
+    }
+  }
+
+  @keyframes slide-4-right {
+    0% {
+      z-index: 50;
+      left: 0;
+    }
+
+    100% {
+      z-index: 50;
+      left: 100vw;
     }
   }
 
