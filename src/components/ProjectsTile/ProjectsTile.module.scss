@@ -1,13 +1,14 @@
 @import '../../variables.scss';
 
 $slide-height: 55vh;
+$max-slide-height: rem(444);
 $slide-width: 80vw;
 $animation-duration: 3s;
 
 .ProjectsTile {
   $s: &;
   height: $slide-height;
-  max-height: rem(444);
+  max-height: $max-slide-height;
 
   &__container {
     position: relative;
@@ -17,7 +18,7 @@ $animation-duration: 3s;
     position: relative;
     width: 100%;
     height: $slide-height;
-    max-height: rem(444);
+    max-height: $max-slide-height;
     overflow: hidden;
     z-index: 10;
 
@@ -334,10 +335,14 @@ $animation-duration: 3s;
   }
 
   @media all and (min-width: $bp1) {
+    $max-slide-height: rem(530);
+    max-height: $max-slide-height;
+
     &__items {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       position: relative;
+      max-height: $max-slide-height;
     }
 
     &__item {
@@ -346,6 +351,39 @@ $animation-duration: 3s;
 
       a {
         position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backdrop-filter: blur(0px);
+          transition: none;
+          animation: blur-out-animation 1s forwards;
+        }
+
+        &:hover::before {
+          animation: blur-in-animation 1s forwards;
+        }
+      }
+
+      // Блюр по ховеру через анимацию, поскольку браузеры не поддерживают transition для backdrop-filter
+      @keyframes blur-in-animation {
+        0% {
+          backdrop-filter: blur(0px);
+        }
+        100% {
+          backdrop-filter: blur(16px);
+        }
+      }
+
+      @keyframes blur-out-animation {
+        0% {
+          backdrop-filter: blur(16px);
+        }
+        100% {
+          backdrop-filter: blur(0px);
+        }
       }
 
       &:nth-child(1) {
@@ -397,7 +435,7 @@ $animation-duration: 3s;
     &__images {
       width: 100%;
       height: $slide-height;
-      max-height: rem(444);
+      max-height: $max-slide-height;
       display: block;
       position: absolute;
       top: 0;

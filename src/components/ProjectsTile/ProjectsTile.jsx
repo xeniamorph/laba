@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './ProjectsTile.module.scss';
 
-import picture_1 from '../../assets/images/project-tile-1.jpg';
-import picture_2 from '../../assets/images/project-tile-2.jpg';
-import picture_3 from '../../assets/images/project-tile-3.jpg';
-import picture_4 from '../../assets/images/project-tile-4.jpg';
+import picture_1 from '../../assets/images/project-tile-1.png';
+import picture_2 from '../../assets/images/project-tile-2.png';
+import picture_3 from '../../assets/images/project-tile-3.png';
+import picture_4 from '../../assets/images/project-tile-4.png';
 
 const items = [
   {
@@ -36,9 +36,11 @@ const items = [
 function ProjectsTile() {
   const animationRef = useRef(null);
 
+  // Функция сброса и перезапуска анимации перелистывания
   const resetAnimation = () => {
     if (animationRef.current) {
       if (window.innerWidth <= 1439) {
+        // Удаление и повторное добавление класса анимации для перезапуска
         animationRef.current.classList.remove(styles.animate);
         setTimeout(() => {
           animationRef.current.classList.add(styles.animate);
@@ -51,18 +53,17 @@ function ProjectsTile() {
 
   useEffect(() => {
     resetAnimation();
-    const handleResize = () => {
-      resetAnimation();
-    };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', resetAnimation);
+
     let timer;
     if (window.innerWidth <= 1439) {
       timer = setInterval(resetAnimation, 14200);
     }
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', resetAnimation);
+
       if (timer) {
         clearInterval(timer);
       }
@@ -78,7 +79,7 @@ function ProjectsTile() {
           {items.map(({ id, picture, src, title }, index) => (
             <div key={id} className={styles.ProjectsTile__item} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
               <div className={`${styles.ProjectsTile__picture} ${hoveredIndex !== null && hoveredIndex !== index ? styles.hide : ''}`}>
-                <img src={picture} alt={title} />
+                <img src={picture} />
               </div>
               <a className={styles.ProjectsTile__link} href={src}>
                 <div className={styles.ProjectsTile__text}>
@@ -92,7 +93,7 @@ function ProjectsTile() {
         <div className={styles.ProjectsTile__images}>
           {items.map(({ id, picture }, index) => (
             <div key={id} className={`${styles.ProjectsTile__image} ${hoveredIndex === index ? styles.show : ''}`}>
-              <img src={picture} alt={`Image ${id}`} />
+              <img src={picture} />
             </div>
           ))}
         </div>
