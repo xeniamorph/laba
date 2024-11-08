@@ -1,32 +1,29 @@
 @import '../../variables.scss';
 
 .Ticker {
-  background-color: var(--prime-3);
   height: rem(51);
-  font-size: rem(16);
-  line-height: rem(15.44);
-  letter-spacing: rem(1.6);
-  color: var(--prime-1);
-  overflow: hidden;
   display: flex;
   align-items: center;
   gap: rem(32);
+  background: linear-gradient(90.29deg, #90a1fc 0.25%, #73ccd2 25.1%, #9fcaf1 44.26%, #e3cae4 83.44%, #deafdf 103.8%);
+  overflow: hidden;
 
-  &__text {
-    animation: marquee 35s linear infinite;
-    white-space: nowrap;
+  &__items {
     display: flex;
     align-items: center;
-    list-style-type: disc;
     gap: rem(32);
-
-    li {
-      font-weight: var(--fw-light);
-      font-family: var(--font-sec);
-    }
+    font-family: var(--font-sec);
+    font-weight: var(--fw-light);
+    font-size: rem(20);
+    line-height: rem(20);
+    color: var(--prime-1);
+    text-transform: uppercase;
+    white-space: nowrap;
+    list-style-type: disc;
+    animation: TickerMarquee 35s linear infinite;
   }
 
-  @keyframes marquee {
+  @keyframes TickerMarquee {
     from {
       transform: translateX(0);
     }

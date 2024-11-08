@@ -1,26 +1,21 @@
-import PropTypes from 'prop-types';
 import styles from './Ticker.module.scss';
 import { tickerItems } from '../../constants/tickerItems';
 
-const Ticker = ({star }) => {
+const Ticker = () => {
   return (
-    <div className={`${styles.Ticker} ${star ? styles.Ticker__star : ''}`}>
-      <ul className={styles.Ticker__text}>
+    <div className={styles.Ticker}>
+      <ul className={styles.Ticker__items}>
         {tickerItems.map((item, index) => (
           <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>
         ))}
       </ul>
-      <ul className={styles.Ticker__text}>
+      <ul className={styles.Ticker__items}>
         {tickerItems.map((item, index) => (
           <li key={index} dangerouslySetInnerHTML={{ __html: item }}></li>
         ))}
       </ul>
     </div>
   );
-};
-
-Ticker.propTypes = {
-  star: PropTypes.bool,
 };
 
 export default Ticker;
