@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
 import video from '../../assets/videos/intro-cover.mp4';
-import styles from './Expertise.module.scss';
+import styles from './Counter.module.scss';
 
 // Анимация числа
 const Number = ({ n }) => {
@@ -52,7 +52,7 @@ Number.propTypes = {
   n: PropTypes.number.isRequired,
 };
 
-const Expertise = () => {
+const Counter = () => {
   const NumbersBoxRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -86,16 +86,16 @@ const Expertise = () => {
   }, []);
 
   return (
-    <section className={styles.Expertise}>
+    <section className={styles.Counter}>
       <div>
-        <div ref={NumbersBoxRef} className={styles.Expertise__items}>
-          <div className={`${styles.Expertise__item} ${isVisible && isMobile ? styles.active : ''}`}>
+        <div ref={NumbersBoxRef} className={styles.Counter__items}>
+          <div className={`${styles.Counter__item} ${isVisible && isMobile ? styles.active : ''}`}>
             <div>
               <Number n={130} />
             </div>
             <p>Создано рилсов и&nbsp;видео роликов</p>
           </div>
-          <div className={`${styles.Expertise__item} ${isVisible && isMobile ? styles.active : ''}`}>
+          <div className={`${styles.Counter__item} ${isVisible && isMobile ? styles.active : ''}`}>
             <div>
               <Number n={85} />
             </div>
@@ -103,20 +103,20 @@ const Expertise = () => {
               Серверов в&nbsp;собственном дата-центре<br></br> для&nbsp;просчета компьютерной графики
             </p>
           </div>
-          <div className={`${styles.Expertise__item} ${isVisible && isMobile ? styles.active : ''}`}>
+          <div className={`${styles.Counter__item} ${isVisible && isMobile ? styles.active : ''}`}>
             <div>
               <Number n={1000} />
             </div>
             <p>3д&nbsp;моделей</p>
           </div>
-          <div className={`${styles.Expertise__item} ${isVisible && isMobile ? styles.active : ''}`}>
+          <div className={`${styles.Counter__item} ${isVisible && isMobile ? styles.active : ''}`}>
             <div>
               <Number n={7} />
             </div>
             <p>Лет на&nbsp;рынке 3D&nbsp;графики</p>
           </div>
         </div>
-        <div className={styles.Expertise__video}>
+        <div className={styles.Counter__video}>
           <video preload="auto" autoPlay loop muted>
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
@@ -127,4 +127,4 @@ const Expertise = () => {
   );
 };
 
-export default Expertise;
+export default Counter;
