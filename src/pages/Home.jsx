@@ -1,6 +1,7 @@
 import '../App.scss';
 
 import ProjectsTile from '../components/ProjectsTile/ProjectsTile';
+import ProjectsTile2 from '../components/ProjectsTile2/ProjectsTile2';
 import Intro from '../components/Intro/Intro';
 import Ticker from '../components/Ticker/Ticker';
 import Gallery from '../components/Gallery/Gallery';
@@ -16,7 +17,9 @@ import video from '../assets/videos/vr.mp4';
 export default function Home() {
   return (
     <main>
-      <ProjectsTile />
+      {/* <ProjectsTile /> */}
+      <ProjectsTile2 />
+
       {/* <Intro />
       <Ticker />
       <Gallery />
