@@ -47,7 +47,7 @@
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
-  --fw-extra-bold: 700;
+  --fw-extra-bold: 800;
 }
 
 #root {
@@ -56,15 +56,15 @@
 
 // это нужно для контейнера gsap который расчитывает высоту нашего макета и на этой высоте работает тяжелый скрол, если мы это уберём то наш footer не показывается полностью. я добавл отступ сверху для того, чтоб gsap расчитывал высоту чуть больше. напиши мне если будет как-то не корректно работать =)
 #smooth-content {
-  padding-top: 46px;
+  padding-top: 48px;
   /* Добавляет отступ снизу для Footer */
 
   @media all and (min-width: $bp4) {
-    padding-top: 48px;
+    padding-top: 50px;
   }
 
   @media all and (min-width: $bp1) {
-    padding-top: 58px;
+    padding-top: 60px;
   }
 
   @media all and (min-width: $bp) {

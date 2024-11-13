@@ -40,50 +40,59 @@
   }
 
   &__text {
-    font-size: clamp(rem(28), 7.5vw, rem(200));
-    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+
     margin: 0;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 
     div:nth-child(3) {
       margin-left: auto;
     }
   }
 
-  &__icons {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: rem(-108);
-    gap: rem(16);
-    z-index: 10;
-    opacity: 0;
-  }
+  // &__icons {
+  //   display: flex;
+  //   justify-content: center;
+  //   position: absolute;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   bottom: rem(-108);
+  //   gap: rem(16);
+  //   z-index: 10;
+  //   opacity: 0;
+  // }
 
-  &__icon {
-    width: rem(81);
-    height: rem(71);
+  // &__icon {
+  //   width: rem(81);
+  //   height: rem(71);
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  }
+  //   img {
+  //     display: block;
+  //     width: 100%;
+  //     height: auto;
+  //     object-fit: cover;
+  //   }
+  // }
 
-  @media all and (min-width: $bp5) {
-    &__text {
-      font-size: clamp(rem(28), 7.7vw, rem(200));
-    }
-  }
+  // @media all and (min-width: $bp5) {
+  //   &__text {
+  //     font-size: clamp(rem(28), 7.7vw, rem(200));
+  //   }
+  // }
 
   @media all and (min-width: $bp3) {
     margin: rem(74) rem(32) rem(74) rem(32);
     user-select: none;
+
+    &__text {
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 64px;
+    }
 
     &.animate {
       #{$s}__icon {
@@ -124,12 +133,17 @@
 
     &.animate {
       #{$s}__layer_secondary {
-        --mask: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black 15%, transparent 0);
+        --mask: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black 25%, transparent 0);
         color: var(--prime-3);
         transition: color 2s;
         cursor: none;
         pointer-events: none;
       }
+    }
+    &__text {
+      font-size: 88px;
+      font-weight: 500;
+      line-height: 96px;
     }
 
     &__wrapper {
@@ -152,6 +166,17 @@
         -webkit-mask-image: var(--mask);
         mask-image: var(--mask);
         transition: --x 0.2s ease-out, --y 0.2s ease-out;
+
+        #{$s}__text {
+          gap: 12px;
+
+          div {
+            background-image: linear-gradient(134.58deg, #73ccd2 14.79%, #9fcaf1 44.57%, #f8b7fa 100.22%, #deafdf 124.62%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        }
       }
     }
 

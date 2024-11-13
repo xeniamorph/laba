@@ -58,7 +58,6 @@
           line-height: rem(17);
           font-weight: var(--fw-light);
           padding-left: rem(6);
-          height: rem(32);
           display: flex;
           align-items: center;
           position: relative;
@@ -66,7 +65,7 @@
           &::before {
             content: '';
             width: 1px;
-            height: rem(14);
+            height: 100%;
             background-color: var(--prime-4);
             top: 50%;
             transform: translateY(-50%);
@@ -99,15 +98,24 @@
   // Адаптация для desktop
   @media all and (min-width: $bp2) {
     &__item {
-      span {
-        &:first-child {
-          opacity: 0;
-          transform: translateX(rem(-100));
-          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-        }
+      h2 {
+        top: rem(24);
+        bottom: auto;
+        left: rem(32);
+        right: rem(32);
+        flex-direction: column-reverse;
 
-        &:last-child {
-          width: 100%;
+        span {
+          &:first-child {
+            opacity: 0;
+            transform: translateX(rem(-100));
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+          }
+
+          &:last-child {
+            width: 100%;
+            margin-bottom: 8px;
+          }
         }
       }
 
@@ -129,12 +137,31 @@
     &__items {
       grid-template-columns: 1fr 1fr 1fr;
     }
+
     &__item {
       height: 33vw;
 
       &:nth-child(3),
       &:nth-child(6) {
         order: initial;
+      }
+    }
+  }
+
+  @media all and (min-width: $bp0) {
+    &__item {
+      h2 {
+        span {
+          &:first-child {
+            font-size: rem(40);
+            line-height: rem(48);
+          }
+
+          &:last-child {
+            font-size: rem(24);
+            line-height: rem(32);
+          }
+        }
       }
     }
   }

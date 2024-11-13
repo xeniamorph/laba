@@ -4,7 +4,7 @@ import ProjectsTile from '../components/ProjectsTile/ProjectsTile';
 import Intro from '../components/Intro/Intro';
 import Ticker from '../components/Ticker/Ticker';
 import Gallery from '../components/Gallery/Gallery';
-import Expertise from '../components/Expertise/Expertise';
+import Counter from '../components/Counter/Counter';
 import ProjectsGrid from '../components/ProjectsGrid/ProjectsGrid';
 import AboutList from '../components/AboutList/AboutList';
 import TextEffect from '../components/TextEffect/TextEffect';
@@ -20,7 +20,7 @@ export default function Home() {
       {/* <Intro />
       <Ticker />
       <Gallery />
-      <Expertise />
+      <Counter />
       <ProjectsGrid />
       <Ticker star={true} />
       <video

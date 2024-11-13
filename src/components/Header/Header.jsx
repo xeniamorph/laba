@@ -19,11 +19,11 @@ function Header() {
     setActiveTab(savedTab);
   }, [location.pathname]);
 
-  // Хук для блокировки/разблокировки скролла страницы
-  useEffect(() => {
-    document.body.style.overflow = isActive ? 'hidden' : '';
-    return () => (document.body.style.overflow = '');
-  }, [isActive]);
+  // // Хук для блокировки/разблокировки скролла страницы
+  // useEffect(() => {
+  //   document.body.style.overflow = isActive ? 'hidden' : '';
+  //   return () => (document.body.style.overflow = '');
+  // }, [isActive]);
 
   useEffect(() => {
     const showAnim = gsap.fromTo(

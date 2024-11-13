@@ -202,7 +202,7 @@ $animation-duration: 3s;
 
   &__text {
     position: absolute;
-    top: 68%;
+    top: 81%;
     left: rem(16);
     transform: translateY(-68%);
     font-weight: var(--fw-medium);
@@ -269,6 +269,10 @@ $animation-duration: 3s;
         z-index: 40;
         left: calc($slide-width + 26vw);
       }
+    }
+
+    &__text {
+      left: rem(32);
     }
 
     @keyframes slide-2-left {
@@ -417,6 +421,10 @@ $animation-duration: 3s;
           object-position: -75vw center;
         }
       }
+    }
+
+    &__text {
+      top: 65%;
     }
 
     &__picture {
