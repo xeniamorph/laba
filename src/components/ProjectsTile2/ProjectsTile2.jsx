@@ -39,7 +39,7 @@ function ProjectsTile2() {
   // Функция сброса и перезапуска анимации перелистывания
   const resetAnimation = () => {
     if (animationRef.current) {
-      if (window.innerWidth <= 1439) {
+      if (window.innerWidth <= 1280) {
         // Удаление и повторное добавление класса анимации для перезапуска
         animationRef.current.classList.remove(styles.animate);
         setTimeout(() => {
@@ -57,7 +57,7 @@ function ProjectsTile2() {
     window.addEventListener('resize', resetAnimation);
 
     let timer;
-    if (window.innerWidth <= 1439) {
+    if (window.innerWidth <= 1280) {
       timer = setInterval(resetAnimation, 14200);
     }
 
@@ -75,23 +75,31 @@ function ProjectsTile2() {
   return (
     <section className={styles.ProjectsTile2}>
       <div className={styles.ProjectsTile2__container}>
-        <div className={`${styles.ProjectsTile2__items} ${styles.animate}`} ref={animationRef}>
-          {items.map(({ id, picture, src, title }, index) => (
-            <div style={{ backgroundImage: `url(${picture})` }} key={id} className={`${styles.ProjectsTile2__item} ${hoveredIndex !== null && hoveredIndex !== index ? styles.hide : ''}`}></div>
+        <div ref={animationRef} className={`${styles.ProjectsTile2__items} ${styles.animate}`}>
+          {items.map(({ id, picture, src, title }) => (
+            <div className={styles.ProjectsTile2__item} style={{ backgroundImage: `url(${picture})` }} key={id}>
+              <a className={`${styles.ProjectsTile2__link} ${styles.ProjectsTile2__link_bot}`} href={src}>
+                <div className={styles.ProjectsTile2__text}>
+                  <div className={styles.ProjectsTile2__num}>{String(id).padStart(2, '0')}</div>
+                  <div className={styles.ProjectsTile2__title} dangerouslySetInnerHTML={{ __html: title }}></div>
+                </div>
+              </a>
+            </div>
           ))}
         </div>
+
         <div className={`${styles.ProjectsTile2__layer} ${styles.ProjectsTile2__layer_mid}`}>
           <div className={styles.ProjectsTile2__images}>
-            {items.map(({ id, picture }, index) => (
-              <div key={id} className={`${styles.ProjectsTile2__image} ${hoveredIndex === index ? styles.show : ''}`}></div>
+            {items.map(({ id }, index) => (
+              <div className={`${styles.ProjectsTile2__image} ${hoveredIndex === index ? styles.show : ''}`} key={id}></div>
             ))}
           </div>
         </div>
 
         <div className={`${styles.ProjectsTile2__layer} ${styles.ProjectsTile2__layer_top}`}>
           <div className={`${styles.ProjectsTile2__items}`}>
-            {items.map(({ id, picture, src, title }, index) => (
-              <div key={id} className={styles.ProjectsTile2__item} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
+            {items.map(({ id, src, title }, index) => (
+              <div className={styles.ProjectsTile2__item} key={id} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
                 <a className={styles.ProjectsTile2__link} href={src}>
                   <div className={styles.ProjectsTile2__text}>
                     <div className={styles.ProjectsTile2__num}>{String(id).padStart(2, '0')}</div>

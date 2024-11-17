@@ -1,24 +1,27 @@
 @import '../../variables.scss';
 
-$slide-height: 55vh;
-$max-slide-height: rem(444);
-$slide-width: 80vw;
-$animation-duration: 3s;
-
 .ProjectsTile2 {
   $s: &;
+  $slide-width: 80vw;
+  $slide-height: 55vh;
+  $max-slide-height: rem(444);
+  $animation-duration: 3s;
+
   height: $slide-height;
-  max-height: $max-slide-height;
 
   &__container {
     position: relative;
+  }
+
+  &__layer {
+    display: none;
   }
 
   &__items {
     position: relative;
     width: 100%;
     height: $slide-height;
-    max-height: $max-slide-height;
+
     overflow: hidden;
     z-index: 10;
 
@@ -41,6 +44,94 @@ $animation-duration: 3s;
                       slide-4-left $animation-duration ease-in-out 6s 1 forwards,
                       slide-4-right 3.3s  ease-in-out 9.3s 1 forwards;
         }
+
+        @keyframes slide-2-left {
+          0% {
+            z-index: 30;
+            left: $slide-width;
+          }
+          100% {
+            z-index: 30;
+            left: 0;
+          }
+        }
+
+        @keyframes slide-2-right {
+          0% {
+            z-index: 30;
+            left: 0;
+          }
+          100% {
+            z-index: 30;
+            left: $slide-width;
+          }
+        }
+
+        @keyframes slide-3-prepare {
+          0% {
+            z-index: 40;
+            left: 100vw;
+          }
+          100% {
+            z-index: 40;
+            left: $slide-width;
+          }
+        }
+
+        @keyframes slide-3-left {
+          0% {
+            z-index: 40;
+            left: $slide-width;
+          }
+          100% {
+            z-index: 40;
+            left: 0;
+          }
+        }
+
+        @keyframes slide-3-right {
+          0% {
+            z-index: 40;
+            left: 0;
+          }
+          100% {
+            z-index: 40;
+            left: 100vw;
+          }
+        }
+
+        @keyframes slide-4-prepare {
+          0% {
+            z-index: 50;
+            left: 100vw;
+          }
+          100% {
+            z-index: 50;
+            left: $slide-width;
+          }
+        }
+
+        @keyframes slide-4-left {
+          0% {
+            z-index: 50;
+            left: $slide-width;
+          }
+          100% {
+            z-index: 50;
+            left: 0;
+          }
+        }
+
+        @keyframes slide-4-right {
+          0% {
+            z-index: 50;
+            left: 0;
+          }
+          100% {
+            z-index: 50;
+            left: 100vw;
+          }
+        }
       }
     }
   }
@@ -52,31 +143,14 @@ $animation-duration: 3s;
     top: 0;
     background-size: cover;
 
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-
-      &::after {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 100%;
-        background-color: var(--sec-5);
-        top: 0;
-        left: 0;
-        z-index: 100;
-      }
-    }
-
     &:nth-child(1) {
       left: 0;
       border-left: none;
     }
 
     &:nth-child(2) {
-      left: $slide-width;
       z-index: 30;
+      left: $slide-width;
     }
 
     &:nth-child(3) {
@@ -85,118 +159,26 @@ $animation-duration: 3s;
     }
 
     &:nth-child(4) {
-      width: 100vw;
       z-index: 10;
+      width: 100vw;
       left: $slide-width;
     }
   }
 
-  &__picture {
+  &__link {
+    display: block;
     width: 100%;
     height: 100%;
 
-    img {
-      display: block;
-      width: 100%;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
       height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-
-  @keyframes slide-2-left {
-    0% {
-      z-index: 30;
-      left: $slide-width;
-    }
-
-    100% {
-      z-index: 30;
+      background-color: var(--sec-5);
+      top: 0;
       left: 0;
-    }
-  }
-
-  @keyframes slide-2-right {
-    0% {
-      z-index: 30;
-      left: 0;
-    }
-
-    100% {
-      z-index: 30;
-      left: $slide-width;
-    }
-  }
-
-  @keyframes slide-3-prepare {
-    0% {
-      z-index: 40;
-      left: 100vw;
-    }
-
-    100% {
-      z-index: 40;
-      left: $slide-width;
-    }
-  }
-
-  @keyframes slide-3-left {
-    0% {
-      z-index: 40;
-      left: $slide-width;
-    }
-
-    100% {
-      z-index: 40;
-      left: 0;
-    }
-  }
-
-  @keyframes slide-3-right {
-    0% {
-      z-index: 40;
-      left: 0;
-    }
-
-    100% {
-      z-index: 40;
-      left: 100vw;
-    }
-  }
-
-  @keyframes slide-4-prepare {
-    0% {
-      z-index: 50;
-      left: 100vw;
-    }
-
-    100% {
-      z-index: 50;
-      left: $slide-width;
-    }
-  }
-
-  @keyframes slide-4-left {
-    0% {
-      z-index: 50;
-      left: $slide-width;
-    }
-
-    100% {
-      z-index: 50;
-      left: 0;
-    }
-  }
-
-  @keyframes slide-4-right {
-    0% {
-      z-index: 50;
-      left: 0;
-    }
-
-    100% {
-      z-index: 50;
-      left: 100vw;
+      z-index: 100;
     }
   }
 
@@ -223,12 +205,9 @@ $animation-duration: 3s;
     line-height: 1.26;
   }
 
-  &__images {
-    display: none;
-  }
-
   @media all and (min-width: $bp3) {
     $slide-width: 61vw;
+    $animation-duration: 3.5s;
 
     &__items {
       &.animate {
@@ -236,17 +215,73 @@ $animation-duration: 3s;
         #{$s}__item {
           &:nth-child(2) {
             animation:  slide-2-left $animation-duration ease-in-out 0s 1 forwards,
-                        slide-2-right 3s ease-in-out 9s 1 forwards;
+                        slide-2-right 3.5s ease-in-out 10.5s 1 forwards;
           }
 
           &:nth-child(3) {
-            animation:  slide-3-left $animation-duration ease-in-out 3s 1 forwards,
-                        slide-3-right 3s ease-in-out 9s 1 forwards;
+            animation:  slide-3-left $animation-duration ease-in-out 3.5s 1 forwards,
+                        slide-3-right 3.5s ease-in-out 10.5s 1 forwards;
           }
 
           &:nth-child(4) {
-            animation:  slide-4-left $animation-duration ease-in-out 6s 1 forwards,
-                        slide-4-right 3s ease-in-out 9s 1 forwards;
+            animation:  slide-4-left $animation-duration ease-in-out 7s 1 forwards,
+                        slide-4-right 3.5s ease-in-out 10.5s 1 forwards;
+          }
+
+          @keyframes slide-2-left {
+            0% {
+              left: $slide-width;
+            }
+            100% {
+              left: 0;
+            }
+          }
+
+          @keyframes slide-2-right {
+            0% {
+              z-index: 30;
+              left: 0;
+            }
+            100% {
+              z-index: 30;
+              left: $slide-width;
+            }
+          }
+
+          @keyframes slide-3-left {
+            0% {
+              left: calc($slide-width + 13vw);
+            }
+            100% {
+              left: 0;
+            }
+          }
+
+          @keyframes slide-3-right {
+            0% {
+              left: 0;
+            }
+            100% {
+              left: calc($slide-width + 13vw);
+            }
+          }
+
+          @keyframes slide-4-left {
+            0% {
+              left: calc($slide-width + 26vw);
+            }
+            100% {
+              left: 0;
+            }
+          }
+
+          @keyframes slide-4-right {
+            0% {
+              left: 0;
+            }
+            100% {
+              left: calc($slide-width + 26vw);
+            }
           }
         }
       }
@@ -274,71 +309,9 @@ $animation-duration: 3s;
     &__text {
       left: rem(32);
     }
-
-    @keyframes slide-2-left {
-      0% {
-        left: $slide-width;
-      }
-
-      100% {
-        left: 0;
-      }
-    }
-
-    @keyframes slide-2-right {
-      0% {
-        z-index: 30;
-        left: 0;
-      }
-
-      100% {
-        z-index: 30;
-        left: $slide-width;
-      }
-    }
-
-    @keyframes slide-3-left {
-      0% {
-        left: calc($slide-width + 13vw);
-      }
-
-      100% {
-        left: 0;
-      }
-    }
-
-    @keyframes slide-3-right {
-      0% {
-        left: 0;
-      }
-
-      100% {
-        left: calc($slide-width + 13vw);
-      }
-    }
-
-    @keyframes slide-4-left {
-      0% {
-        left: calc($slide-width + 26vw);
-      }
-
-      100% {
-        left: 0;
-      }
-    }
-
-    @keyframes slide-4-right {
-      0% {
-        left: 0;
-      }
-
-      100% {
-        left: calc($slide-width + 26vw);
-      }
-    }
   }
 
-  @media all and (min-width: $bp1) {
+  @media all and (min-width: $bp2) {
     $max-slide-height: rem(530);
     height: $max-slide-height;
 
@@ -346,92 +319,8 @@ $animation-duration: 3s;
       height: $max-slide-height;
     }
 
-    &__items {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      position: absolute;
-      height: $max-slide-height;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      max-height: 100%;
-    }
-
-    &__item {
-      position: static;
-      overflow: hidden;
-      width: 100% !important;
-      background-size: 100vw;
-      background-repeat: no-repeat;
-      height: $max-slide-height;
-
-      a {
-        position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          backdrop-filter: blur(0px);
-          transition: none;
-          animation: blur-out-animation 1s forwards;
-        }
-
-        &:hover::before {
-          animation: blur-in-animation 1s forwards;
-        }
-      }
-
-      // Блюр по ховеру через анимацию, поскольку браузеры не поддерживают transition для backdrop-filter
-      @keyframes blur-in-animation {
-        0% {
-          backdrop-filter: blur(0px);
-        }
-        100% {
-          backdrop-filter: blur(16px);
-        }
-      }
-
-      @keyframes blur-out-animation {
-        0% {
-          backdrop-filter: blur(16px);
-        }
-        100% {
-          backdrop-filter: blur(0px);
-        }
-      }
-
-      &:nth-child(1) {
-        background-position: 0 50% center;
-      }
-
-      &:nth-child(2) {
-        background-position: 37.5% center;
-      }
-
-      &:nth-child(3) {
-        background-position: 62.5% center;
-      }
-
-      &:nth-child(4) {
-        background-position: 100% center;
-      }
-    }
-
-    &__text {
-      top: 65%;
-    }
-
-    &__picture {
-      background-repeat: no-repeat;
-      &.hide {
-        opacity: 0;
-        transition: 0.1s;
-      }
-    }
-
     &__layer {
+      display: block;
       position: relative;
       height: $max-slide-height;
 
@@ -450,12 +339,44 @@ $animation-duration: 3s;
       }
     }
 
-    &__images {
+    &__items {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      position: relative;
-      max-height: $max-slide-height;
+      position: absolute;
       height: $max-slide-height;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      max-height: 100%;
+    }
+
+    &__item {
+      position: static;
+      overflow: hidden;
+      background-size: 100vw auto;
+      background-repeat: no-repeat;
+      height: $max-slide-height;
+      background-origin: border-box;
+
+      &:nth-child(1) {
+        width: 100%;
+        background-position: 0 center;
+      }
+
+      &:nth-child(2) {
+        width: 100%;
+        background-position: 37.5% center;
+      }
+
+      &:nth-child(3) {
+        width: 100%;
+        background-position: 62.5% center;
+      }
+
+      &:nth-child(4) {
+        width: 100%;
+        background-position: 100% center;
+      }
     }
 
     &__image {
@@ -463,22 +384,12 @@ $animation-duration: 3s;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-size: 0 auto;
-      transition: background-size 0.5s ease;
       height: $max-slide-height;
       opacity: 0;
-      transition: 0.3s;
-      background-position: 100% 50%;
-
-      &.show {
-        opacity: 1;
-        transition: 0.3s;
-        z-index: 10;
-        background-size: 100vw auto !important;
-        background-position: 50% 50%;
-      }
+      background-repeat: no-repeat;
+      background-size: 0 auto;
+      transition: all 0.3s, background-size 0.5s ease;
+      background-origin: border-box;
 
       &:nth-child(1) {
         background-image: url('/src/assets/images/project-tile-1.png');
@@ -499,6 +410,66 @@ $animation-duration: 3s;
         background-image: url('/src/assets/images/project-tile-4.png');
         background-position: 100% center;
       }
+
+      &.show {
+        opacity: 1;
+        z-index: 10;
+        background-size: 100% auto !important;
+        transition: all 0.3s, background-size 0.5s ease;
+      }
+    }
+
+    &__link {
+      position: relative;
+
+      &_bot {
+        display: none;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(0px);
+        transition: none;
+        animation: blur-out-animation 1s forwards;
+      }
+
+      // &:hover::before {
+      //   animation: blur-in-animation 0.2s forwards;
+      // }
+
+      // Блюр по ховеру через анимацию, поскольку браузеры не поддерживают transition для backdrop-filter
+      @keyframes blur-in-animation {
+        0% {
+          backdrop-filter: blur(0px);
+        }
+        100% {
+          backdrop-filter: blur(16px);
+        }
+      }
+
+      @keyframes blur-out-animation {
+        0% {
+          backdrop-filter: blur(16px);
+        }
+        100% {
+          backdrop-filter: blur(0px);
+        }
+      }
+    }
+
+    &__text {
+      top: 65%;
+    }
+
+    &__images {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      position: relative;
+
+      height: $max-slide-height;
     }
   }
 }
