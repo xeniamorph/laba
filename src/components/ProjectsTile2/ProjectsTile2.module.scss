@@ -3,11 +3,10 @@
 .ProjectsTile2 {
   $s: &;
   $slide-width: 80vw;
-  $slide-height: 55vh;
-  $max-slide-height: rem(444);
-  $animation-duration: 3s;
+  $slide-height: rem(444);
 
   height: $slide-height;
+  $animation-duration: 3s;
 
   &__container {
     position: relative;
@@ -312,17 +311,17 @@
   }
 
   @media all and (min-width: $bp2) {
-    $max-slide-height: rem(530);
-    height: $max-slide-height;
+    $slide-height: rem(530);
+    height: $slide-height;
 
     &__container {
-      height: $max-slide-height;
+      height: $slide-height;
     }
 
     &__layer {
       display: block;
       position: relative;
-      height: $max-slide-height;
+      height: $slide-height;
 
       &_mid {
         z-index: 20;
@@ -343,7 +342,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       position: absolute;
-      height: $max-slide-height;
+      height: $slide-height;
       z-index: 10;
       top: 0;
       left: 0;
@@ -355,7 +354,7 @@
       overflow: hidden;
       background-size: 100vw auto;
       background-repeat: no-repeat;
-      height: $max-slide-height;
+      height: $slide-height;
       background-origin: border-box;
 
       &:nth-child(1) {
@@ -384,7 +383,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: $max-slide-height;
+      height: $slide-height;
       opacity: 0;
       background-repeat: no-repeat;
       background-size: 0 auto;
@@ -436,9 +435,9 @@
         animation: blur-out-animation 1s forwards;
       }
 
-      // &:hover::before {
-      //   animation: blur-in-animation 0.2s forwards;
-      // }
+      &:hover::before {
+        animation: blur-in-animation 1s forwards;
+      }
 
       // Блюр по ховеру через анимацию, поскольку браузеры не поддерживают transition для backdrop-filter
       @keyframes blur-in-animation {
@@ -469,7 +468,7 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
       position: relative;
 
-      height: $max-slide-height;
+      height: $slide-height;
     }
   }
 }

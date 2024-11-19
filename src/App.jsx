@@ -36,7 +36,7 @@ const App = () => {
   return (
     <>
       <div id="smooth-wrapper">
-        {/* <Header /> */}
+        <Header />
         <div id="smooth-content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -45,7 +45,7 @@ const App = () => {
             <Route path="/form" element={<FormBrief />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
           <CookieAgreement />
         </div>
       </div>

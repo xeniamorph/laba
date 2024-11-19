@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
 import styles from './TextEffect.module.scss';
 
-import icon1 from '../../assets/images/text-effect-1.svg';
-import icon2 from '../../assets/images/text-effect-2.svg';
+import icon1 from '../../assets/images/text-effect-1.png';
+import icon2 from '../../assets/images/text-effect-2.png';
+import icon3 from '../../assets/images/text-effect-3.png';
 
 const TextEffect = () => {
   const heroRef = useRef(null);
@@ -30,7 +31,7 @@ const TextEffect = () => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.1,
+        threshold: 0.3,
       }
     );
 
@@ -57,6 +58,9 @@ const TextEffect = () => {
             <div>амбициозных</div>
             <div>заказчиков</div>
           </div>
+          <div className={styles.TextEffect__footnote}>
+            Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков
+          </div>
         </div>
 
         <div className={`${styles.TextEffect__layer} ${styles.TextEffect__layer_secondary}`} aria-hidden="true">
@@ -66,14 +70,20 @@ const TextEffect = () => {
             <div>амбициозных</div>
             <div>заказчиков</div>
           </div>
+          <div className={styles.TextEffect__footnote}>
+            Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков
+          </div>
         </div>
       </div>
       <div className={styles.TextEffect__icons}>
         <div className={styles.TextEffect__icon}>
-          <img src={icon1} alt="Icon 1" />
+          <img src={icon1} />
         </div>
         <div className={styles.TextEffect__icon}>
-          <img src={icon2} alt="Icon 2" />
+          <img src={icon2} />
+        </div>
+        <div className={styles.TextEffect__icon}>
+          <img src={icon3} />
         </div>
       </div>
     </div>

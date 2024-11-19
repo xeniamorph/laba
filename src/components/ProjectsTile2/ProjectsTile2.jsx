@@ -44,7 +44,7 @@ function ProjectsTile2() {
         animationRef.current.classList.remove(styles.animate);
         setTimeout(() => {
           animationRef.current.classList.add(styles.animate);
-        }, 10);
+        }, 50);
       } else {
         animationRef.current.classList.remove(styles.animate);
       }
