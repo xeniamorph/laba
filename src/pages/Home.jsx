@@ -19,35 +19,18 @@ export default function Home() {
   return (
     <main>
       <Intro2 />
-      <ProjectsTile />
+      {/* <ProjectsTile /> */}
       <ProjectsTile2 />
 
       <Ticker />
-      {/* <Gallery /> */}
-      {/* <Counter /> */}
-      {/* <ProjectsGrid /> */}
-      {/* <Ticker star={true} /> */}
-      {/* <video
-        preload="auto"
-        autoPlay
-        loop
-        muted
-        style={{
-          display: 'block',
-          width: '100%',
-          height: '100vh',
-          maxHeight: '1024px',
-          objectFit: 'cover',
-        }}
-      >
-        <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
-      {/* <Ticker /> */}
-      {/* <AboutList /> */}
+      <Counter />
       <TextEffect />
-      {/* <Partners />
-      <ProjectsSlider /> */}
+      <Gallery />
+
+      <Ticker />
+      <AboutList />
+      <Partners />
+      {/* <ProjectsSlider /> */}
     </main>
   );
 }

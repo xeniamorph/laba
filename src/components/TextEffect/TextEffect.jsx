@@ -51,39 +51,51 @@ const TextEffect = () => {
   return (
     <div ref={heroRef} className={`${styles.TextEffect} ${isVisible ? styles.animate : ''}`}>
       <div className={styles.TextEffect__wrapper}>
-        <div className={styles.TextEffect__layer}>
+        <div className={`${styles.TextEffect__layer} ${styles.TextEffect__layer_first} ${isVisible ? styles.animate : ''}`}>
           <div className={styles.TextEffect__text}>
-            <div>Вдохновляющие</div>
-            <div>проекты для</div>
-            <div>амбициозных</div>
-            <div>заказчиков</div>
-          </div>
-          <div className={styles.TextEffect__footnote}>
-            Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков
+            <div>
+              <span>Вдохновляющие</span>
+            </div>
+            <div>
+              <span>проекты для</span>
+            </div>
+            <div>
+              <span>амбициозных</span>
+            </div>
+            <div>
+              <span>заказчиков</span>
+            </div>
           </div>
         </div>
-
         <div className={`${styles.TextEffect__layer} ${styles.TextEffect__layer_secondary}`} aria-hidden="true">
           <div className={styles.TextEffect__text}>
-            <div>Вдохновляющие</div>
-            <div>проекты для</div>
-            <div>амбициозных</div>
-            <div>заказчиков</div>
+            <div>
+              <span>Вдохновляющие</span>
+            </div>
+            <div>
+              <span>проекты для</span>
+            </div>
+            <div>
+              <span>амбициозных</span>
+            </div>
+            <div>
+              <span>заказчиков</span>
+            </div>
           </div>
-          <div className={styles.TextEffect__footnote}>
-            Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков
+        </div>
+        <div className={styles.TextEffect__footnote}>
+          Работаем по&nbsp;системе такой то&nbsp;2х&nbsp;недельными спринтами, предоставляем результаты работ и&nbsp;внимательно слушаем наших заказчиков
+        </div>
+        <div className={styles.TextEffect__icons}>
+          <div className={styles.TextEffect__icon}>
+            <img src={icon1} />
           </div>
-        </div>
-      </div>
-      <div className={styles.TextEffect__icons}>
-        <div className={styles.TextEffect__icon}>
-          <img src={icon1} />
-        </div>
-        <div className={styles.TextEffect__icon}>
-          <img src={icon2} />
-        </div>
-        <div className={styles.TextEffect__icon}>
-          <img src={icon3} />
+          <div className={styles.TextEffect__icon}>
+            <img src={icon2} />
+          </div>
+          <div className={styles.TextEffect__icon}>
+            <img src={icon3} />
+          </div>
         </div>
       </div>
     </div>
