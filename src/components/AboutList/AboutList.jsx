@@ -72,7 +72,7 @@ function AboutList() {
             <div className={styles.AboutList__text}>
               <div className={`${styles.AboutList__header} ${animateIndices.includes(index) ? styles.animate : ''}`}>
                 <div className={styles.AboutList__num}>
-                  <img src={el.num} alt="" />
+                  <img loading="lazy" src={el.num} />
                 </div>
                 <div className={styles.AboutList__subtitle} dangerouslySetInnerHTML={{ __html: el.title }} />
               </div>

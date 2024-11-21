@@ -6,7 +6,7 @@ function Intro2() {
     <section className={`${styles.Intro2}`}>
       <div className={styles.Intro2__container}>
         <div className={styles.Intro2__laba}>
-          <img src={labaBlack}></img>
+          <img loading="lazy" src={labaBlack}></img>
         </div>
         <div className={styles.Intro2__desc}>Создаем уникальные цифровые продукты</div>
       </div>

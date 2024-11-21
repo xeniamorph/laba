@@ -79,7 +79,7 @@ function ProjectsTile() {
           {items.map(({ id, picture, src, title }, index) => (
             <div key={id} className={styles.ProjectsTile__item} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
               <div className={`${styles.ProjectsTile__picture} ${hoveredIndex !== null && hoveredIndex !== index ? styles.hide : ''}`}>
-                <img src={picture} />
+                <img loading="lazy" src={picture} />
               </div>
               <a className={styles.ProjectsTile__link} href={src}>
                 <div className={styles.ProjectsTile__text}>
@@ -93,7 +93,7 @@ function ProjectsTile() {
         <div className={styles.ProjectsTile__images}>
           {items.map(({ id, picture }, index) => (
             <div key={id} className={`${styles.ProjectsTile__image} ${hoveredIndex === index ? styles.show : ''}`}>
-              <img src={picture} />
+              <img loading="lazy" src={picture} />
             </div>
           ))}
         </div>

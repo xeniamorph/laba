@@ -71,7 +71,7 @@ function Header() {
           </Link>
           <Link to="/" className={styles.Header__logo} onClick={() => handleTabClick('/')}>
             <picture>
-              <img src={logo} alt="Логотип Laba" />
+              <img loading="lazy" src={logo} alt="Логотип Laba" />
             </picture>
           </Link>
           <button className={styles.Header__toggle} onClick={toggleActiveClass}>

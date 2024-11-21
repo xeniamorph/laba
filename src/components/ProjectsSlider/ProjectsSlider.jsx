@@ -87,12 +87,13 @@ function ProjectsSlider() {
               slidesPerView: 1,
               loop: true,
             },
-          }}>
+          }}
+        >
           {items.map((item) => (
             <SwiperSlide className={styles.ProjectsSlider__slide} key={item.id}>
               <div className={styles.ProjectsSlider__container}>
                 <div className={styles.ProjectsSlider__background}>
-                  <img src={item.picture} alt={item.title} />
+                  <img loading="lazy" src={item.picture} alt={item.title} />
                 </div>
                 <div className={`${styles.ProjectsSlider__half} ${styles.ProjectsSlider__half_left}`} onClick={() => handleSlide('prev')}></div>
                 <div className={`${styles.ProjectsSlider__half} ${styles.ProjectsSlider__half_right}`} onClick={() => handleSlide('next')}></div>

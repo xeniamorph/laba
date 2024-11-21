@@ -88,13 +88,13 @@ const TextEffect = () => {
         </div>
         <div className={styles.TextEffect__icons}>
           <div className={styles.TextEffect__icon}>
-            <img src={icon1} />
+            <img loading="lazy" src={icon1} />
           </div>
           <div className={styles.TextEffect__icon}>
-            <img src={icon2} />
+            <img loading="lazy" src={icon2} />
           </div>
           <div className={styles.TextEffect__icon}>
-            <img src={icon3} />
+            <img loading="lazy" src={icon3} />
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import styles from './Contacts.module.scss';
 import map from '../../assets/images/contacts.png';
 export default function Contacts() {
-
   return (
     <section className={`${styles.Contacts} `}>
       <div className={styles.Contacts__content}>
@@ -22,7 +21,7 @@ export default function Contacts() {
         </a>
       </div>
       <div className={styles.Contacts__map}>
-        <img src={map}></img>
+        <img loading="lazy" src={map}></img>
       </div>
     </section>
   );

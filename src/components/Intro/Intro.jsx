@@ -10,8 +10,8 @@ function Intro() {
     <section className={`${styles.Intro}   `}>
       <div className={styles.Intro__company}>
         <div className={styles.Intro__laba}>
-          <img src={labaBlack}></img>
-          <img src={labaWhite}></img>
+          <img loading="lazy" src={labaBlack}></img>
+          <img loading="lazy" src={labaWhite}></img>
         </div>
         <span>digital agency&nbsp;.</span>
       </div>
