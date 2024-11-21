@@ -2,7 +2,94 @@
 
 .Partners {
   $s: &;
-  margin: rem(74) 0;
+  --circle-1: 42px;
+  --circle-2: 23px;
+
+  margin: rem(32) 0 rem(80) 0;
+  position: relative;
+
+  &.animate {
+    #{$s}__icon {
+      &:nth-child(1) {
+        transform: scale(3.95);
+      }
+
+      &:nth-child(2) {
+        transform: scale(3.95);
+      }
+    }
+
+    #{$s}__text div {
+      opacity: 1;
+      transform: none;
+
+      &:nth-child(1) {
+        transform: translateX(-15%);
+      }
+
+      &:nth-child(2) {
+        transform: translateX(5%);
+      }
+    }
+  }
+
+  &__text {
+    width: max-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 85px;
+    font-size: clamp(48px, 12.8vw, 84px);
+    font-weight: var(--fw-medium);
+    line-height: 1;
+    text-align: left;
+    padding: 0 16px;
+    position: relative;
+    z-index: 10;
+
+    div {
+      opacity: 0;
+      transition: 2s;
+
+      &:nth-child(1) {
+        align-self: flex-start;
+        transform: translateX(-150%);
+      }
+
+      &:nth-child(2) {
+        align-self: flex-end;
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 2s;
+
+    &:nth-child(1) {
+      width: var(--circle-1);
+      height: var(--circle-1);
+      left: 78%;
+      top: 13%;
+    }
+
+    &:nth-child(2) {
+      width: var(--circle-2);
+      height: var(--circle-2);
+      top: 54%;
+      left: 6%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 
   &__swiper {
     padding: 0 rem(16);
@@ -13,7 +100,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(240, 242, 245, 0.65);
     border: 1px solid #dcddde;
+    backdrop-filter: blur(20px);
   }
 
   &__img {
@@ -52,7 +141,6 @@
   }
 
   // Для ленты
-
   &__rows {
     margin: rem(70) 0;
     display: flex;
@@ -65,13 +153,13 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 
-    &.visible {
+    &.animate {
       opacity: 1;
-    }
 
-    .animate {
-      animation: fast-scroll 2s ease-in-out forwards, slow-scroll 100s linear infinite;
-      animation-delay: 0s, 2s;
+      #{$s}__track {
+        animation: fast-scroll 3s ease-in-out forwards, slow-scroll 100s linear infinite;
+        animation-delay: 0s, 3s;
+      }
     }
   }
 
@@ -99,7 +187,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(240, 242, 245, 0.65);
     border: 1px solid #dcddde;
+    backdrop-filter: blur(20px);
   }
 
   &__picture {
@@ -131,7 +221,58 @@
     }
   }
 
+  @media all and (min-width: $bp4) {
+    margin: rem(186) 0 rem(54) 0;
+
+    &__text {
+      margin-bottom: 50px;
+      font-size: clamp(84px, 8vw, 128px);
+      text-transform: uppercase;
+    }
+
+    &__icon {
+      &:nth-child(1) {
+        left: 72%;
+        top: 20%;
+      }
+
+      &:nth-child(2) {
+        top: 61%;
+        left: 18%;
+      }
+    }
+
+    &.animate {
+      #{$s}__text div {
+        &:nth-child(1) {
+          transform: translateX(-22%);
+        }
+
+        &:nth-child(2) {
+          transform: translateX(5%);
+        }
+      }
+
+      #{$s}__icon {
+        &:nth-child(1) {
+          transform: scale(8.2);
+        }
+
+        &:nth-child(2) {
+          transform: scale(8.2);
+        }
+      }
+    }
+  }
+
   @media all and (min-width: $bp0) {
+    margin: rem(220) 0 rem(54) 0;
+
+    &__text {
+      font-size: clamp(128px, 8vw, 211px);
+      margin-bottom: 130px;
+    }
+
     &__row {
       height: rem(182);
     }
@@ -142,10 +283,48 @@
     }
 
     &__rows {
-      gap: rem(32);
+      gap: rem(40);
     }
     &__track {
       gap: rem(40);
+    }
+
+    &__icon {
+      &:nth-child(1) {
+        left: 74%;
+        top: 23%;
+      }
+
+      &:nth-child(2) {
+        top: 77%;
+        left: 14%;
+      }
+    }
+
+    &__picture {
+      width: 77%;
+    }
+
+    &.animate {
+      #{$s}__text div {
+        &:nth-child(1) {
+          transform: translateX(-15%);
+        }
+
+        &:nth-child(2) {
+          transform: translate(10%, 18%);
+        }
+      }
+
+      #{$s}__icon {
+        &:nth-child(1) {
+          transform: scale(12.2);
+        }
+
+        &:nth-child(2) {
+          transform: scale(12.2);
+        }
+      }
     }
   }
 }

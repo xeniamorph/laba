@@ -25,10 +25,12 @@ const items = [
   { logo: logo_1, title: 'Партнер 12' },
 ];
 
+import circle_1 from '../../assets/images/partners-ico-1.png';
+import circle_2 from '../../assets/images/partners-ico-2.png';
+
 const splitItems = [
   [...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4)],
   [...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8)],
-  [...items.slice(8, 12), ...items.slice(8, 12), ...items.slice(8, 12), ...items.slice(8, 12), ...items.slice(8, 12)],
 ];
 
 function Partners() {
@@ -40,7 +42,7 @@ function Partners() {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     window.addEventListener('resize', handleResize);
 
-    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.1 });
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.2 });
     if (ref.current) observer.observe(ref.current);
 
     return () => {
@@ -50,7 +52,19 @@ function Partners() {
   }, []);
 
   return (
-    <section className={styles.Partners} ref={ref}>
+    <section className={`${styles.Partners} ${isVisible ? styles.animate : ''}`} ref={ref}>
+      <div className={styles.Partners__text}>
+        <div>нам </div>
+        <div>доверяют</div>
+      </div>
+      <div className={styles.Partners__icons}>
+        <div className={styles.Partners__icon}>
+          <img loading="lazy" src={circle_1} />
+        </div>
+        <div className={styles.Partners__icon}>
+          <img loading="lazy" src={circle_2} />
+        </div>
+      </div>
       {isMobile ? (
         <div>
           <Swiper
@@ -73,7 +87,8 @@ function Partners() {
             autoplay={{
               delay: 1500,
               disableOnInteraction: false,
-            }}>
+            }}
+          >
             {items.map((item, index) => (
               <SwiperSlide className={styles.Partners__slide} key={index}>
                 <div className={styles.Partners__img}>
@@ -85,10 +100,10 @@ function Partners() {
           <div className={styles.Partners__pagination}></div>
         </div>
       ) : (
-        <ul className={`${styles.Partners__rows} ${isVisible ? styles.visible : ''}`}>
+        <ul className={`${styles.Partners__rows} ${isVisible ? styles.animate : ''}`}>
           {splitItems.map((rowItems, rowIndex) => (
             <li className={styles.Partners__row} key={rowIndex}>
-              <div className={`${styles.Partners__track} ${isVisible ? styles.animate : ''}`}>
+              <div className={styles.Partners__track}>
                 {rowItems.map((item, index) => (
                   <div key={index} className={styles.Partners__item}>
                     <div className={styles.Partners__picture}>
