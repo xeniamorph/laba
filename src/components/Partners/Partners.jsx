@@ -29,8 +29,8 @@ import circle_1 from '../../assets/images/partners-ico-1.png';
 import circle_2 from '../../assets/images/partners-ico-2.png';
 
 const splitItems = [
-  [...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4), ...items.slice(0, 4)],
-  [...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8), ...items.slice(4, 8)],
+  [...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6)],
+  [...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12)],
 ];
 
 function Partners() {
@@ -100,9 +100,9 @@ function Partners() {
           <div className={styles.Partners__pagination}></div>
         </div>
       ) : (
-        <ul className={`${styles.Partners__rows} ${isVisible ? styles.animate : ''}`}>
+        <div className={`${styles.Partners__rows}`}>
           {splitItems.map((rowItems, rowIndex) => (
-            <li className={styles.Partners__row} key={rowIndex}>
+            <div className={styles.Partners__row} key={rowIndex}>
               <div className={styles.Partners__track}>
                 {rowItems.map((item, index) => (
                   <div key={index} className={styles.Partners__item}>
@@ -112,9 +112,9 @@ function Partners() {
                   </div>
                 ))}
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </section>
   );

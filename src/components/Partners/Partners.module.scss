@@ -8,37 +8,11 @@
   margin: rem(32) 0 rem(80) 0;
   position: relative;
 
-  &.animate {
-    #{$s}__icon {
-      &:nth-child(1) {
-        transform: scale(3.95);
-      }
-
-      &:nth-child(2) {
-        transform: scale(3.95);
-      }
-    }
-
-    #{$s}__text div {
-      opacity: 1;
-      transform: none;
-
-      &:nth-child(1) {
-        transform: translateX(-15%);
-      }
-
-      &:nth-child(2) {
-        transform: translateX(5%);
-      }
-    }
-  }
-
   &__text {
     width: max-content;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-
     margin-bottom: 85px;
     font-size: clamp(48px, 12.8vw, 84px);
     font-weight: var(--fw-medium);
@@ -50,16 +24,13 @@
 
     div {
       opacity: 0;
-      transition: 2s;
 
       &:nth-child(1) {
         align-self: flex-start;
-        transform: translateX(-150%);
       }
 
       &:nth-child(2) {
         align-self: flex-end;
-        transform: translateX(100%);
       }
     }
   }
@@ -68,7 +39,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: 2s;
+    transition: 2.5s;
 
     &:nth-child(1) {
       width: var(--circle-1);
@@ -140,7 +111,6 @@
     }
   }
 
-  // Для ленты
   &__rows {
     margin: rem(70) 0;
     display: flex;
@@ -150,17 +120,6 @@
     width: 100%;
     list-style: none;
     padding: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-
-    &.animate {
-      opacity: 1;
-
-      #{$s}__track {
-        animation: fast-scroll 3s ease-in-out forwards, slow-scroll 100s linear infinite;
-        animation-delay: 0s, 3s;
-      }
-    }
   }
 
   &__row {
@@ -169,15 +128,15 @@
     width: 100%;
     height: rem(112);
 
-    &:nth-child(even) #{$s}__track {
-      animation-direction: reverse;
+    &:nth-child(odd) #{$s}__track {
+      direction: rtl;
     }
   }
 
   &__track {
     display: flex;
     gap: rem(32);
-    width: max-content;
+    width: 100%;
   }
 
   &__item {
@@ -203,21 +162,90 @@
     }
   }
 
-  @keyframes fast-scroll {
+  // Для ленты
+  @keyframes partners-entry-first {
     0% {
-      margin-left: 0;
+      opacity: 0;
+      transform: translateX(-80%);
     }
     100% {
-      margin-left: -200%;
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 
-  @keyframes slow-scroll {
+  @keyframes partners-scroll-first {
     0% {
-      margin-left: -200%;
+      transform: translateX(0);
     }
     100% {
-      margin-left: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes partners-entry-second {
+    0% {
+      opacity: 0;
+      transform: translateX(80%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes partners-scroll-second {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes partners-circle-scale {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+    }
+  }
+
+  &.animate {
+    #{$s}__icon {
+      &:nth-child(1) {
+        transform: scale(3.95);
+      }
+
+      &:nth-child(2) {
+        transform: scale(3.95);
+      }
+    }
+
+    #{$s}__text div {
+      opacity: 1;
+      transform: none;
+      width: 100%;
+
+      // animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+
+      &:nth-child(1) {
+        animation: partners-entry-first 2.5s ease-in-out forwards;
+      }
+
+      &:nth-child(2) {
+        animation: partners-entry-second 2.5s ease-in-out forwards;
+      }
+    }
+
+    #{$s}__row {
+      &:nth-child(odd) #{$s}__track {
+        animation: partners-entry-first 2.5s ease-in-out forwards, partners-scroll-first 40s linear 2.5s infinite;
+      }
+
+      &:nth-child(even) #{$s}__track {
+        animation: partners-entry-second 2.5s ease-in-out forwards, partners-scroll-second 40s linear 2.5s infinite;
+      }
     }
   }
 
@@ -243,16 +271,6 @@
     }
 
     &.animate {
-      #{$s}__text div {
-        &:nth-child(1) {
-          transform: translateX(-22%);
-        }
-
-        &:nth-child(2) {
-          transform: translateX(5%);
-        }
-      }
-
       #{$s}__icon {
         &:nth-child(1) {
           transform: scale(8.2);
@@ -306,16 +324,6 @@
     }
 
     &.animate {
-      #{$s}__text div {
-        &:nth-child(1) {
-          transform: translateX(-15%);
-        }
-
-        &:nth-child(2) {
-          transform: translate(10%, 18%);
-        }
-      }
-
       #{$s}__icon {
         &:nth-child(1) {
           transform: scale(12.2);
