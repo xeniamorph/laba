@@ -15,23 +15,22 @@ const items = [
   { logo: logo_2, title: 'Партнер 2' },
   { logo: logo_3, title: 'Партнер 3' },
   { logo: logo_4, title: 'Партнер 4' },
-  { logo: logo_3, title: 'Партнер 5' },
-  { logo: logo_2, title: 'Партнер 6' },
-  { logo: logo_2, title: 'Партнер 7' },
-  { logo: logo_4, title: 'Партнер 8' },
-  { logo: logo_4, title: 'Партнер 9' },
-  { logo: logo_3, title: 'Партнер 10' },
-  { logo: logo_2, title: 'Партнер 11' },
-  { logo: logo_1, title: 'Партнер 12' },
 ];
 
 import circle_1 from '../../assets/images/partners-ico-1.png';
 import circle_2 from '../../assets/images/partners-ico-2.png';
 
-const splitItems = [
-  [...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6), ...items.slice(0, 6)],
-  [...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12), ...items.slice(6, 12)],
-];
+const repeatItems = (array, targetCount) => {
+  const result = [];
+  while (result.length < targetCount) {
+    result.push(...array);
+  }
+  return result.slice(0, targetCount);
+};
+
+const targetLength = 30;
+
+const splitItems = [repeatItems(items, targetLength), repeatItems(items, targetLength)];
 
 function Partners() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -54,8 +53,12 @@ function Partners() {
   return (
     <section className={`${styles.Partners} ${isVisible ? styles.animate : ''}`} ref={ref}>
       <div className={styles.Partners__text}>
-        <div>нам </div>
-        <div>доверяют</div>
+        <div>
+          <span>нам</span>
+        </div>
+        <div>
+          <span>доверяют</span>
+        </div>
       </div>
       <div className={styles.Partners__icons}>
         <div className={styles.Partners__icon}>
