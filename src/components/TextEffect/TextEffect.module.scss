@@ -14,51 +14,13 @@
 
 .TextEffect {
   $s: &;
-  position: relative;
-  user-select: none;
-  $circle-1-big: 45px;
-  $circle-2-big: 36px;
-  $circle-3-big: 22px;
-  $circle-1-small: calc($circle-1-big * 0.3);
-  $circle-2-small: calc($circle-2-big * 0.3);
-  $circle-3-small: calc($circle-3-big * 0.3);
 
-  &.animate {
-    #{$s}__text {
-      div {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    #{$s}__icon {
-      &:nth-child(1) {
-        width: $circle-1-big;
-        height: $circle-1-big;
-        top: -22%;
-        left: 87%;
-      }
-
-      &:nth-child(2) {
-        width: $circle-2-big;
-        height: $circle-2-big;
-        top: 67%;
-        left: 5%;
-      }
-
-      &:nth-child(3) {
-        width: $circle-3-big;
-        height: $circle-3-big;
-        top: 96%;
-        left: 18%;
-      }
-    }
-
-    #{$s}__footnote {
-      transform: none;
-      opacity: 1;
-    }
-  }
+  --circle-1-big: 44px;
+  --circle-2-big: 36px;
+  --circle-3-big: 22px;
+  --circle-1-small: calc(var(--circle-1-big) * 0.3);
+  --circle-2-small: calc(var(--circle-2-big) * 0.3);
+  --circle-3-small: calc(var(--circle-3-big) * 0.3);
 
   &__wrapper {
     position: relative;
@@ -67,24 +29,15 @@
 
   &__layer {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 
     &_first {
       position: relative;
       z-index: 20;
       background-color: var(--prime-1);
-
-      &.animate {
-        --mask: radial-gradient(circle at var(--x) var(--y), transparent 75px, black 0);
-        mask-image: var(--mask);
-        -webkit-mask-image: var(--mask);
-        mask-repeat: no-repeat;
-        -webkit-mask-repeat: no-repeat;
-        transition: --x 0.2s ease-out, --y 0.2s ease-out;
-      }
     }
 
     &_secondary {
@@ -102,7 +55,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
           }
         }
       }
@@ -112,196 +64,228 @@
   &__text {
     display: flex;
     flex-direction: column;
-    font-size: 32px;
+    margin-bottom: rem(16);
     font-weight: 500;
-    line-height: 40px;
-    margin-bottom: 16px;
+    font-size: rem(32);
+    line-height: 1.25;
+    user-select: none;
 
     div {
+      display: flex;
       opacity: 0;
-      transition: opacity 3s, transform 3s;
-    }
-
-    div:nth-child(1) {
-      transform: translateX(-100%);
+      transition-duration: 3s;
+      width: 100%;
 
       span {
-        display: block;
-        transform: translateX(-12px);
+        display: inline-block;
       }
-    }
 
-    div:nth-child(2) {
-      transform: translateX(100%);
+      &:nth-child(1) {
+        transform: translateX(-100%);
 
-      span {
-        display: block;
-        transform: translateX(-12px);
+        span {
+          transform: translateX(rem(-12));
+        }
       }
-    }
 
-    div:nth-child(3) {
-      margin-left: auto;
-      transform: translateX(-100%);
-    }
+      &:nth-child(2) {
+        transform: translateX(100%);
 
-    div:nth-child(4) {
-      transform: translateX(100%);
+        span {
+          transform: translateX(rem(-12));
+        }
+      }
+
+      &:nth-child(3) {
+        transform: translateX(-100%);
+
+        span {
+          transform: translateX(rem(42));
+          margin-left: auto;
+        }
+      }
+
+      &:nth-child(4) {
+        transform: translateX(100%);
+
+        span {
+          transform: translateX(rem(24));
+        }
+      }
     }
   }
 
   &__footnote {
-    margin-left: auto;
-    width: 73%;
-    font-family: var(--font-sec);
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.57;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
     transform: translateX(100%);
     opacity: 0;
-    transition: 3s;
+    transition-duration: 3s;
+    margin-left: auto;
+    width: 73%;
+    font-weight: 300;
+    font-size: rem(14);
+    line-height: 1.57;
+    font-family: var(--font-sec);
+    text-align: left;
   }
 
   &__icon {
     position: absolute;
-    transition: 2s;
+    opacity: 0;
     z-index: 30;
+    transition-duration: 1s;
 
     img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
 
     &:nth-child(1) {
-      width: $circle-1-small;
-      height: $circle-1-small;
       top: 14%;
-      left: 97%;
+      left: 97vw;
+      width: var(--circle-1-small);
+      height: var(--circle-1-small);
     }
 
     &:nth-child(2) {
-      width: $circle-2-small;
-      height: $circle-2-small;
       top: 42%;
-      left: -1%;
-      transition-delay: 0.5s;
+      left: -1vw;
+      width: var(--circle-2-small);
+      height: var(--circle-2-small);
     }
 
     &:nth-child(3) {
-      width: $circle-3-small;
-      height: $circle-3-small;
       top: 83%;
-      left: 27%;
-      transition-delay: 1s;
+      left: 27vw;
+      width: var(--circle-3-small);
+      height: var(--circle-3-small);
+    }
+  }
+
+  &.animate {
+    #{$s}__layer_first {
+      --mask: radial-gradient(circle at var(--x) var(--y), transparent 75px, black 0);
+      mask-image: var(--mask);
+      -webkit-mask-image: var(--mask);
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      transition:
+        --x 0.2s ease-out,
+        --y 0.2s ease-out;
+    }
+
+    #{$s}__text {
+      div {
+        transform: none;
+        opacity: 1;
+        transition-duration: 3s;
+      }
+    }
+
+    #{$s}__icon {
+      opacity: 1;
+      transition-duration: 3s;
+
+      &:nth-child(1) {
+        top: -18%;
+        left: 85vw;
+        width: var(--circle-1-big);
+        height: var(--circle-1-big);
+      }
+
+      &:nth-child(2) {
+        top: 72%;
+        left: 4vw;
+        transition-delay: 0.5s;
+        transition-duration: 2.5s;
+        width: var(--circle-2-big);
+        height: var(--circle-2-big);
+      }
+
+      &:nth-child(3) {
+        top: 100%;
+        left: 17vw;
+        transition-delay: 1s;
+        transition-duration: 2s;
+        width: var(--circle-3-big);
+        height: var(--circle-3-big);
+      }
+    }
+
+    #{$s}__footnote {
+      transform: none;
+      opacity: 1;
     }
   }
 
   @media all and (min-width: $bp4) {
-    // padding: rem(157) rem(32) rem(140) rem(32);
-
-    $circle-1-big: 80px;
-    $circle-2-big: 65px;
-    $circle-3-big: 40px;
-    $circle-1-small: calc($circle-1-big * 0.3);
-    $circle-2-small: calc($circle-2-big * 0.3);
-    $circle-3-small: calc($circle-3-big * 0.3);
+    --circle-1-big: 80px;
+    --circle-2-big: 65px;
+    --circle-3-big: 40px;
 
     &__wrapper {
-      position: relative;
       margin: rem(156) 0 rem(150) 0;
     }
 
     &__text {
-      font-size: 56px;
       font-weight: 500;
-      line-height: 64px;
-    }
-
-    &__icon {
-      &:nth-child(1) {
-        width: $circle-1-small;
-        height: $circle-1-small;
-      }
-
-      &:nth-child(2) {
-        width: $circle-2-small;
-        height: $circle-2-small;
-      }
-
-      &:nth-child(3) {
-        width: $circle-3-small;
-        height: $circle-3-small;
-      }
+      font-size: rem(56);
+      line-height: 1.3;
     }
 
     &__footnote {
+      margin-right: rem(188);
       width: 34%;
-      margin-right: 124px;
+      font-size: rem(16);
     }
 
     &.animate {
-      #{$s}__icon {
-        &:nth-child(1) {
-          width: $circle-1-big;
-          height: $circle-1-big;
-        }
-        &:nth-child(2) {
-          width: $circle-2-big;
-          height: $circle-2-big;
-        }
-        &:nth-child(3) {
-          width: $circle-3-big;
-          height: $circle-3-big;
-        }
+      #{$s}__layer_first {
+        --mask: radial-gradient(circle at var(--x) var(--y), transparent 13vw, black 0);
       }
     }
   }
 
-  @media all and (min-width: $bp3) {
-    &__layer {
-      &_first {
-        &.animate {
-          --mask: radial-gradient(circle at var(--x) var(--y), transparent 13vw, black 0);
-        }
+  @media all and (min-width: $bp2) {
+    &__text {
+      div:nth-child(1) span,
+      div:nth-child(2) span {
+        transform: translateX(rem(-45));
       }
+
+      div:nth-child(3) span {
+        transform: translateX(rem(45));
+      }
+    }
+  }
+
+  @media all and (min-width: $bp1) {
+    --circle-1-big: clamp(122px, 7.6vw, 244px);
+    --circle-2-big: clamp(100px, 6.25vw, 200px);
+    --circle-3-big: clamp(60px, 3.75vw, 120px);
+
+    &__wrapper {
+      margin: rem(228) 0 rem(200) 0;
     }
 
     &__text {
-      div:nth-child(1) {
-        span {
-          display: block;
-          transform: translateX(-45px);
-        }
-      }
-
-      div:nth-child(2) {
-        span {
-          display: block;
-          transform: translateX(-45px);
-        }
-      }
-
-      div:nth-child(3) {
-        span {
-          display: block;
-          transform: translateX(45px);
-        }
-      }
+      gap: rem(14);
+      cursor: none;
+      margin-bottom: rem(50);
+      font-weight: 500;
+      font-size: clamp(rem(88), 5.5vw, rem(200));
+      line-height: 1.1;
     }
-  }
-  @media all and (min-width: $bp1) {
-    cursor: none;
-    $circle-1-big: clamp(122px, 7.6vw, 244px);
-    $circle-2-big: clamp(100px, 6.25vw, 200px);
-    $circle-3-big: clamp(60px, 3.75vw, 120px);
-    $circle-1-small: calc($circle-1-big * 0.3);
-    $circle-2-small: calc($circle-2-big * 0.3);
-    $circle-3-small: calc($circle-3-big * 0.3);
+
+    &__footnote {
+      margin-right: rem(275);
+      margin-left: auto;
+      width: 43%;
+      font-weight: 300;
+      font-size: clamp(rem(24), 1.5vw, rem(48));
+      line-height: 1.3;
+    }
 
     &__icon {
       &:nth-child(3) {
@@ -312,48 +296,20 @@
     &.animate {
       #{$s}__icon {
         &:nth-child(1) {
-          width: $circle-1-big;
-          height: $circle-1-big;
           top: -5%;
-          left: 84%;
+          left: 84vw;
         }
+
         &:nth-child(2) {
-          width: $circle-2-big;
-          height: $circle-2-big;
           top: 45%;
-          left: 10%;
+          left: 10vw;
         }
+
         &:nth-child(3) {
-          width: $circle-3-big;
-          height: $circle-3-big;
           top: 87%;
-          left: 27%;
+          left: 27vw;
         }
       }
-    }
-
-    &__wrapper {
-      margin: rem(228) 0 rem(200) 0;
-    }
-
-    &__text {
-      font-size: clamp(88px, 5.5vw, 200px);
-      font-weight: 500;
-      line-height: 1.1;
-      gap: 14px;
-      margin-bottom: 50px;
-    }
-
-    &__footnote {
-      font-size: clamp(24px, 1.5vw, 48px);
-      font-weight: 300;
-      line-height: 1.3;
-    }
-
-    &__footnote {
-      width: 43%;
-      margin-right: 275px;
-      margin-left: auto;
     }
   }
 }

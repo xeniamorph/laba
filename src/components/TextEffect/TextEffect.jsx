@@ -31,7 +31,7 @@ const TextEffect = () => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.3,
+        threshold: 0.4,
       }
     );
 
@@ -49,9 +49,9 @@ const TextEffect = () => {
   }, [isVisible]);
 
   return (
-    <div ref={heroRef} className={`${styles.TextEffect} ${isVisible ? styles.animate : ''}`}>
+    <section ref={heroRef} className={`${styles.TextEffect} ${isVisible ? styles.animate : ''}`}>
       <div className={styles.TextEffect__wrapper}>
-        <div className={`${styles.TextEffect__layer} ${styles.TextEffect__layer_first} ${isVisible ? styles.animate : ''}`}>
+        <div className={`${styles.TextEffect__layer} ${styles.TextEffect__layer_first}`}>
           <div className={styles.TextEffect__text}>
             <div>
               <span>Вдохновляющие</span>
@@ -98,7 +98,7 @@ const TextEffect = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
