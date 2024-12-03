@@ -1,10 +1,9 @@
 @import '../../variables.scss';
 
-.ProjectsTile2 {
+.ProjectsTile3 {
   $s: &;
   $slide-width: 80vw;
   $slide-height: rem(444);
-
   height: $slide-height;
   $animation-duration: 3s;
 
@@ -332,10 +331,7 @@
       height: $slide-height;
 
       &_bot {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
+        display: none;
       }
 
       &_mid {
@@ -393,43 +389,64 @@
       position: absolute;
       top: 0;
       left: 0;
-      opacity: 0;
-      transition:
-        all 0.3s,
-        background-size 0.5s ease;
-      background-size: 0 auto;
+      opacity: 1;
+      z-index: 5;
+      transition-timing-function: ease;
+      transition: 0.4s;
+      will-change: clip-path;
+      background-size: cover;
       background-repeat: no-repeat;
-      background-origin: border-box;
       width: 100%;
       height: $slide-height;
 
       &:nth-child(1) {
+        clip-path: inset(0 75% 0 0);
         background-image: url('/src/assets/images/project-tile-1.png');
-        background-position: 0 center;
       }
 
       &:nth-child(2) {
+        clip-path: inset(0 50% 0 25%);
         background-image: url('/src/assets/images/project-tile-2.png');
-        background-position: 37.5% center;
       }
 
       &:nth-child(3) {
+        clip-path: inset(0 25% 0 50%);
         background-image: url('/src/assets/images/project-tile-3.png');
-        background-position: 62.5% center;
       }
 
       &:nth-child(4) {
+        clip-path: inset(0 0 0 75%);
         background-image: url('/src/assets/images/project-tile-4.png');
-        background-position: 100% center;
+      }
+    }
+
+    @mixin clip-animation-initial {
+      z-index: 10;
+      clip-path: inset(0 0 0 0);
+    }
+
+    &__images {
+      &.active1 #{$s}__image,
+      &.active2 #{$s}__image,
+      &.active3 #{$s}__image,
+      &.active4 #{$s}__image {
+        transition: 1s;
+        transition-timing-function: ease;
+      }
+      &.active1 #{$s}__image:nth-child(1) {
+        @include clip-animation-initial;
       }
 
-      &.show {
-        opacity: 1;
-        z-index: 10;
-        transition:
-          all 0.3s,
-          background-size 0.5s ease;
-        background-size: 100% auto !important;
+      &.active2 #{$s}__image:nth-child(2) {
+        @include clip-animation-initial;
+      }
+
+      &.active3 #{$s}__image:nth-child(3) {
+        @include clip-animation-initial;
+      }
+
+      &.active4 #{$s}__image:nth-child(4) {
+        @include clip-animation-initial;
       }
     }
 

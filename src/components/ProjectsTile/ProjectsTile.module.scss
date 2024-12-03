@@ -16,41 +16,43 @@ $animation-duration: 3s;
 
   &__items {
     position: relative;
+    z-index: 10;
     width: 100%;
     height: $slide-height;
     max-height: $max-slide-height;
     overflow: hidden;
-    z-index: 10;
 
     &.animate {
-      // prettier-ignore
       #{$s}__item {
         &:nth-child(2) {
-          animation:  slide-2-left $animation-duration ease-in-out 0s 1 forwards,
-                      slide-2-right 4.2s ease-in-out 9.9s 1 forwards;
+          animation:
+            slide-2-left $animation-duration ease-in-out 0s 1 forwards,
+            slide-2-right 4.2s ease-in-out 9.9s 1 forwards;
         }
 
         &:nth-child(3) {
-          animation:  slide-3-prepare 1.5s ease-out 1.5s 1 forwards,
-                      slide-3-left $animation-duration ease-in-out 3s 1 forwards,
-                      slide-3-right 3.8s ease-in-out 9.6s 1 forwards;
+          animation:
+            slide-3-prepare 1.5s ease-out 1.5s 1 forwards,
+            slide-3-left $animation-duration ease-in-out 3s 1 forwards,
+            slide-3-right 3.8s ease-in-out 9.6s 1 forwards;
         }
 
         &:nth-child(4) {
-          animation:  slide-4-prepare 1.5s ease-out 4.5s 1 forwards,
-                      slide-4-left $animation-duration ease-in-out 6s 1 forwards,
-                      slide-4-right 3.3s  ease-in-out 9.3s 1 forwards;
+          animation:
+            slide-4-prepare 1.5s ease-out 4.5s 1 forwards,
+            slide-4-left $animation-duration ease-in-out 6s 1 forwards,
+            slide-4-right 3.3s ease-in-out 9.3s 1 forwards;
         }
       }
     }
   }
 
   &__item {
-    width: $slide-width;
-    height: 100%;
     position: absolute;
     top: 0;
     background-size: cover;
+    width: $slide-width;
+    height: 100%;
 
     a {
       display: block;
@@ -58,14 +60,14 @@ $animation-duration: 3s;
       height: 100%;
 
       &::after {
-        content: '';
         position: absolute;
-        width: 1px;
-        height: 100%;
-        background-color: var(--sec-5);
         top: 0;
         left: 0;
         z-index: 100;
+        background-color: var(--sec-5);
+        width: 1px;
+        height: 100%;
+        content: '';
       }
     }
 
@@ -80,14 +82,14 @@ $animation-duration: 3s;
     }
 
     &:nth-child(3) {
-      z-index: 20;
       left: $slide-width;
+      z-index: 20;
     }
 
     &:nth-child(4) {
-      width: 100vw;
-      z-index: 10;
       left: $slide-width;
+      z-index: 10;
+      width: 100vw;
     }
   }
 
@@ -106,97 +108,97 @@ $animation-duration: 3s;
 
   @keyframes slide-2-left {
     0% {
-      z-index: 30;
       left: $slide-width;
+      z-index: 30;
     }
 
     100% {
-      z-index: 30;
       left: 0;
+      z-index: 30;
     }
   }
 
   @keyframes slide-2-right {
     0% {
-      z-index: 30;
       left: 0;
+      z-index: 30;
     }
 
     100% {
-      z-index: 30;
       left: $slide-width;
+      z-index: 30;
     }
   }
 
   @keyframes slide-3-prepare {
     0% {
-      z-index: 40;
       left: 100vw;
+      z-index: 40;
     }
 
     100% {
-      z-index: 40;
       left: $slide-width;
+      z-index: 40;
     }
   }
 
   @keyframes slide-3-left {
     0% {
-      z-index: 40;
       left: $slide-width;
+      z-index: 40;
     }
 
     100% {
-      z-index: 40;
       left: 0;
+      z-index: 40;
     }
   }
 
   @keyframes slide-3-right {
     0% {
-      z-index: 40;
       left: 0;
+      z-index: 40;
     }
 
     100% {
-      z-index: 40;
       left: 100vw;
+      z-index: 40;
     }
   }
 
   @keyframes slide-4-prepare {
     0% {
-      z-index: 50;
       left: 100vw;
+      z-index: 50;
     }
 
     100% {
-      z-index: 50;
       left: $slide-width;
+      z-index: 50;
     }
   }
 
   @keyframes slide-4-left {
     0% {
-      z-index: 50;
       left: $slide-width;
+      z-index: 50;
     }
 
     100% {
-      z-index: 50;
       left: 0;
+      z-index: 50;
     }
   }
 
   @keyframes slide-4-right {
     0% {
-      z-index: 50;
       left: 0;
+      z-index: 50;
     }
 
     100% {
-      z-index: 50;
       left: 100vw;
+      z-index: 50;
     }
   }
 
@@ -205,22 +207,22 @@ $animation-duration: 3s;
     top: 81%;
     left: rem(16);
     transform: translateY(-68%);
-    font-weight: var(--fw-medium);
     color: var(--prime-4);
+    font-weight: var(--fw-medium);
   }
 
   &__num {
-    font-family: var(--font-prime);
-    font-size: rem(48);
-    font-weight: var(--fw-medium);
-    line-height: 1.16;
     margin-bottom: rem(24);
+    font-weight: var(--fw-medium);
+    font-size: rem(48);
+    line-height: 1.16;
+    font-family: var(--font-prime);
   }
 
   &__title {
-    font-family: var(--font-sec);
     font-size: rem(30);
     line-height: 1.26;
+    font-family: var(--font-sec);
   }
 
   &__images {
@@ -232,21 +234,23 @@ $animation-duration: 3s;
 
     &__items {
       &.animate {
-        // prettier-ignore
         #{$s}__item {
           &:nth-child(2) {
-            animation:  slide-2-left $animation-duration ease-in-out 0s 1 forwards,
-                        slide-2-right 3s ease-in-out 9s 1 forwards;
+            animation:
+              slide-2-left $animation-duration ease-in-out 0s 1 forwards,
+              slide-2-right 3s ease-in-out 9s 1 forwards;
           }
 
           &:nth-child(3) {
-            animation:  slide-3-left $animation-duration ease-in-out 3s 1 forwards,
-                        slide-3-right 3s ease-in-out 9s 1 forwards;
+            animation:
+              slide-3-left $animation-duration ease-in-out 3s 1 forwards,
+              slide-3-right 3s ease-in-out 9s 1 forwards;
           }
 
           &:nth-child(4) {
-            animation:  slide-4-left $animation-duration ease-in-out 6s 1 forwards,
-                        slide-4-right 3s ease-in-out 9s 1 forwards;
+            animation:
+              slide-4-left $animation-duration ease-in-out 6s 1 forwards,
+              slide-4-right 3s ease-in-out 9s 1 forwards;
           }
         }
       }
@@ -260,14 +264,14 @@ $animation-duration: 3s;
       }
 
       &:nth-child(3) {
-        z-index: 30;
         left: calc($slide-width + 13vw);
+        z-index: 30;
       }
 
       &:nth-child(4) {
-        width: 100vw;
-        z-index: 40;
         left: calc($slide-width + 26vw);
+        z-index: 40;
+        width: 100vw;
       }
     }
 
@@ -287,13 +291,13 @@ $animation-duration: 3s;
 
     @keyframes slide-2-right {
       0% {
-        z-index: 30;
         left: 0;
+        z-index: 30;
       }
 
       100% {
-        z-index: 30;
         left: $slide-width;
+        z-index: 30;
       }
     }
 
@@ -344,8 +348,8 @@ $animation-duration: 3s;
 
     &__items {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
       position: relative;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       max-height: $max-slide-height;
     }
 
@@ -357,13 +361,13 @@ $animation-duration: 3s;
         position: relative;
 
         &::before {
-          content: '';
           position: absolute;
+          backdrop-filter: blur(0px);
+          animation: blur-out-animation 1s forwards;
+          transition: none;
           width: 100%;
           height: 100%;
-          backdrop-filter: blur(0px);
-          transition: none;
-          animation: blur-out-animation 1s forwards;
+          content: '';
         }
 
         &:hover::before {
@@ -441,29 +445,29 @@ $animation-duration: 3s;
     }
 
     &__images {
-      width: 100%;
-      height: $slide-height;
-      max-height: $max-slide-height;
       display: block;
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: $slide-height;
+      max-height: $max-slide-height;
     }
 
     &__image {
-      width: 100%;
-      height: 100%;
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
 
       img {
         display: block;
+        opacity: 0;
+        transition: 1s;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0;
-        transition: 1s;
       }
 
       &.show img {
