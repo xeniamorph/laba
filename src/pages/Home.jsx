@@ -1,9 +1,6 @@
 import '../App.scss';
 
 import ProjectsTile from '../components/ProjectsTile/ProjectsTile';
-import ProjectsTile2 from '../components/ProjectsTile2/ProjectsTile2';
-import ProjectsTile3 from '../components/ProjectsTile3/ProjectsTile3';
-import ProjectsTile4 from '../components/ProjectsTile4/ProjectsTile4';
 import Intro from '../components/Intro/Intro';
 import Intro2 from '../components/Intro2/Intro2';
 import Ticker from '../components/Ticker/Ticker';
@@ -22,9 +19,6 @@ export default function Home() {
     <main>
       <Intro2 />
       <ProjectsTile />
-      <ProjectsTile2 />
-      <ProjectsTile3 />
-      <ProjectsTile4 />
       <Ticker />
       <Counter />
       <TextEffect />

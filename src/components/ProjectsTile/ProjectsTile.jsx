@@ -35,16 +35,25 @@ const items = [
 
 function ProjectsTile() {
   const animationRef = useRef(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index); // Устанавливаем индекс при наведении мыши
+  };
+
+  const handleMouseLeave = (index) => {
+    setHoveredIndex(null); // Убираем активный индекс
+  };
 
   // Функция сброса и перезапуска анимации перелистывания
   const resetAnimation = () => {
     if (animationRef.current) {
-      if (window.innerWidth <= 1439) {
+      if (window.innerWidth <= 1280) {
         // Удаление и повторное добавление класса анимации для перезапуска
         animationRef.current.classList.remove(styles.animate);
         setTimeout(() => {
           animationRef.current.classList.add(styles.animate);
-        }, 10);
+        }, 50);
       } else {
         animationRef.current.classList.remove(styles.animate);
       }
@@ -53,11 +62,10 @@ function ProjectsTile() {
 
   useEffect(() => {
     resetAnimation();
-
     window.addEventListener('resize', resetAnimation);
 
     let timer;
-    if (window.innerWidth <= 1439) {
+    if (window.innerWidth <= 1280) {
       timer = setInterval(resetAnimation, 14200);
     }
 
@@ -70,32 +78,42 @@ function ProjectsTile() {
     };
   }, []);
 
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
   return (
     <section className={styles.ProjectsTile}>
       <div className={styles.ProjectsTile__container}>
-        <div className={`${styles.ProjectsTile__items} ${styles.animate}`} ref={animationRef}>
-          {items.map(({ id, picture, src, title }, index) => (
-            <div key={id} className={styles.ProjectsTile__item} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
-              <div className={`${styles.ProjectsTile__picture} ${hoveredIndex !== null && hoveredIndex !== index ? styles.hide : ''}`}>
-                <img loading="lazy" src={picture} />
+        <div className={`${styles.ProjectsTile__layer} ${styles.ProjectsTile__layer_bot}`}>
+          <div ref={animationRef} className={`${styles.ProjectsTile__items} ${styles.animate}`}>
+            {items.map(({ id, picture, src, title }) => (
+              <div className={styles.ProjectsTile__item} style={{ backgroundImage: `url(${picture})` }} key={id}>
+                <a className={styles.ProjectsTile__link} href={src}>
+                  <div className={styles.ProjectsTile__text}>
+                    <div className={styles.ProjectsTile__num}>{String(id).padStart(2, '0')}</div>
+                    <div className={styles.ProjectsTile__title} dangerouslySetInnerHTML={{ __html: title }}></div>
+                  </div>
+                </a>
               </div>
-              <a className={styles.ProjectsTile__link} href={src}>
-                <div className={styles.ProjectsTile__text}>
-                  <div className={styles.ProjectsTile__num}>{String(id).padStart(2, '0')}</div>
-                  <div className={styles.ProjectsTile__title} dangerouslySetInnerHTML={{ __html: title }}></div>
-                </div>
-              </a>
-            </div>
+            ))}
+          </div>
+        </div>
+        <div className={`${styles.ProjectsTile__images} ${hoveredIndex !== null ? `${styles[`active${hoveredIndex + 1}`]}` : ''}`}>
+          {items.map(({ id }, index) => (
+            <div className={styles.ProjectsTile__image} key={id} style={{ backgroundImage: `url(${items[index].picture})` }}></div>
           ))}
         </div>
-        <div className={styles.ProjectsTile__images}>
-          {items.map(({ id, picture }, index) => (
-            <div key={id} className={`${styles.ProjectsTile__image} ${hoveredIndex === index ? styles.show : ''}`}>
-              <img loading="lazy" src={picture} />
-            </div>
-          ))}
+
+        <div className={`${styles.ProjectsTile__layer} ${styles.ProjectsTile__layer_top}`}>
+          <div className={`${styles.ProjectsTile__items}`}>
+            {items.map(({ id, src, title }, index) => (
+              <div className={styles.ProjectsTile__item} key={id} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}>
+                <a className={styles.ProjectsTile__link} href={src}>
+                  <div className={styles.ProjectsTile__text}>
+                    <div className={styles.ProjectsTile__num}>{String(id).padStart(2, '0')}</div>
+                    <div className={styles.ProjectsTile__title} dangerouslySetInnerHTML={{ __html: title }}></div>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
