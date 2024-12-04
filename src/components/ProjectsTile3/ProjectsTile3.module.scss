@@ -25,7 +25,6 @@
     width: 100%;
     height: $slide-height;
     overflow: hidden;
-
     &.animate {
       #{$s}__item {
         &:nth-child(2) {
@@ -392,7 +391,9 @@
       opacity: 1;
       z-index: 5;
       transition-timing-function: ease;
-      transition: 0.4s;
+      transition:
+        clip-path 1s,
+        z-index 1s 0.2s;
       will-change: clip-path;
       background-size: cover;
       background-repeat: no-repeat;
@@ -423,6 +424,9 @@
     @mixin clip-animation-initial {
       z-index: 10;
       clip-path: inset(0 0 0 0);
+      transition:
+        clip-path 1s,
+        z-index 0s 0.2s;
     }
 
     &__images {
