@@ -11,14 +11,20 @@ import AboutList from '../components/AboutList/AboutList';
 import TextEffect from '../components/TextEffect/TextEffect';
 import Partners from '../components/Partners/Partners';
 import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
-
 import video from '../assets/videos/vr.mp4';
+
+import ServiceIntro from '../components/ServiceIntro/ServiceIntro';
+import Text from '../components/Text/Text';
+import Softwar from '../components/Softwar/Softwar';
 
 export default function Home() {
   return (
     <main>
-      <Intro2 />
-      <ProjectsTile />
+      <ServiceIntro />
+      <Text />
+      <Softwar />
+      {/* <Intro2 /> */}
+      {/* <ProjectsTile />
       <Ticker />
       <Counter />
       <TextEffect />
@@ -26,7 +32,7 @@ export default function Home() {
       <Ticker />
       <AboutList />
       <Partners />
-      <ProjectsSlider />
+      <ProjectsSlider /> */}
     </main>
   );
 }

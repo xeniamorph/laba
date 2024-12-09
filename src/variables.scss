@@ -11,3 +11,13 @@ $bp3: 1024px;
 $bp4: 768px;
 $bp5: 576px;
 $bp6: 377px;
+
+@mixin container {
+  padding-right: rem(16);
+  padding-left: rem(16);
+
+  @media all and (min-width: $bp3) {
+    padding-right: rem(32);
+    padding-left: rem(32);
+  }
+}

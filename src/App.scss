@@ -11,17 +11,19 @@
 
 /* Gella Display */
 @font-face {
-  font-family: 'GellaDisplay';
-  src: url(./assets/fonts/GellaDisplay/GellaDisplay-ExpandedMedium.otf) format('opentype'), url(../assets/fonts/GellaDisplay/GellaDisplay-ExpandedMedium.woff2) format('woff2');
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
+  src:
+    url(./assets/fonts/GellaDisplay/GellaDisplay-ExpandedMedium.otf) format('opentype'),
+    url(../assets/fonts/GellaDisplay/GellaDisplay-ExpandedMedium.woff2) format('woff2');
+  font-family: 'GellaDisplay';
 }
 
 @font-face {
-  font-family: 'GellaDisplay';
-  src: url(./assets/fonts/GellaDisplay/GellaDisplay-Light.otf) format('opentype');
-  font-weight: 300;
   font-style: normal;
+  font-weight: 300;
+  src: url(./assets/fonts/GellaDisplay/GellaDisplay-Light.otf) format('opentype');
+  font-family: 'GellaDisplay';
 }
 
 :root {
@@ -82,10 +84,10 @@ main {
 
 html {
   $s: &;
-  font-size: 16px;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
   /* Уменьшение толщины полосы прокрутки в Firefox */
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+  font-size: 16px;
   /* Убирает подсветку при таче */
   -webkit-tap-highlight-color: transparent;
 
@@ -106,8 +108,8 @@ html {
 
 /* Стилизация ползунка */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Стилизация фона полосы прокрутки */
@@ -125,20 +127,20 @@ html {
 }
 
 body {
-  font-family: var(--font-prime);
-  color: var(--prime-2);
   background-color: var(--prime-1);
   min-height: 100vh;
+  color: var(--prime-2);
+  font-family: var(--font-prime);
 }
 
 /* Сброс стилей */
 html *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  border: 0;
   box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 h1,
@@ -161,17 +163,17 @@ img {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
 }
 
 article,
