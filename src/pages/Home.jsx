@@ -13,26 +13,28 @@ import Partners from '../components/Partners/Partners';
 import ProjectsSlider from '../components/ProjectsSlider/ProjectsSlider';
 import video from '../assets/videos/vr.mp4';
 
-import ServiceIntro from '../components/ServiceIntro/ServiceIntro';
+import CasesIntro from '../components/CasesIntro/CasesIntro';
 import Text from '../components/Text/Text';
 import Softwar from '../components/Softwar/Softwar';
+import CasesSlider from '../components/CasesSlider/CasesSlider';
 
 export default function Home() {
   return (
     <main>
-      <ServiceIntro />
+      <ProjectsTile />
+      <CasesIntro />
       <Text />
       <Softwar />
+      <CasesSlider />
       {/* <Intro2 /> */}
-      {/* <ProjectsTile />
-      <Ticker />
+      {/* <Ticker />
       <Counter />
       <TextEffect />
       <Gallery />
       <Ticker />
       <AboutList />
-      <Partners />
-      <ProjectsSlider /> */}
+      <Partners /> */}
+      {/* <ProjectsSlider /> */}
     </main>
   );
 }

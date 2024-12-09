@@ -1,0 +1,202 @@
+@import '../../variables.scss';
+
+
+.CasesSlider {
+  $s: &;
+
+  &__container {
+    position: relative;
+  }
+
+  &__cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: var(--prime-1);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &__swiper {
+    @include container;
+    overflow: visible !important;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+
+  &__half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 15;
+    background-color: transparent;
+    cursor: default;
+
+    &_left {
+      left: 0;
+      cursor: url('../../assets/images/cases-slider-left.svg') 10 10, auto;
+    }
+
+    &_right {
+      right: 0;
+      cursor: url('../../assets/images/cases-slider-right.svg') 10 10, auto;
+    }
+
+    @media (pointer: coarse) {
+      &_left {
+        cursor: default;
+      }
+
+      &_right {
+        cursor: default;
+      }
+    }
+  }
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    background-color: transparent;
+    padding: rem(20) rem(30);
+    max-width: 50%;
+  }
+
+  &__title {
+    font-size: rem(40);
+    font-weight: var(--fw-medium);
+    line-height: rem(48);
+    margin-bottom: rem(4);
+    position: relative;
+    z-index: 10;
+  }
+
+  &__desc {
+    font-family: var(--font-sec);
+    font-size: rem(14);
+    font-weight: var(--fw-light);
+    line-height: rem(22);
+    position: relative;
+    z-index: 10;
+  }
+
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 22vw;
+    height: 22vw;
+    backdrop-filter: blur(12px);
+    border-radius: 100%;
+    font-size: 32px;
+    color: var(--prime-1);
+    border: 1px solid var(--prime-1);
+    z-index: 20;
+    background-color: rgba(30, 36, 45, 0.24);
+    opacity: 0;
+    transition: 1s;
+
+    &:hover {
+      opacity: 1;
+
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  &__popup {
+    position: relative;
+    width: 100vw; /* Слайдер будет растягиваться на всю ширину экрана */
+    height: 100vh; /* Слайдер будет растягиваться на всю высоту экрана */
+    background-color: transparent;
+  }
+
+  &__popupSwiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__popupSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__popupWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__popupBackground {  width: 100%;
+    height: 100%;
+    object-fit: contain; /* Изображения будут подстраиваться, чтобы не выходить за пределы экрана */
+
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1100; /* Чтобы кнопка была поверх слайдера */
+  }
+
+
+  @media all and (min-width: $bp3) {
+
+
+    &:hover {
+      #{$s}__cursor {
+        width: rem(62);
+        height: rem(62);
+        z-index: 100;
+        transition:  width 0.8s, height 0.8s;
+
+        &.hidden {
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+}

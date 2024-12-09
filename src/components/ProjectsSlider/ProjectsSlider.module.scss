@@ -17,7 +17,7 @@
     pointer-events: none;
     z-index: -1;
     transition: background-color 0.3s ease, width 0.3s, height 0.3s;
-    mix-blend-mode: multiply;
+
 
     @media (pointer: coarse) {
       display: none;
@@ -42,12 +42,12 @@
 
     &_left {
       left: 0;
-      cursor: url('../../assets/images/arrow-left.svg') 10 10, auto;
+      cursor: url('../../assets/images/projects-slider-left.svg') 10 10, auto;
     }
 
     &_right {
       right: 0;
-      cursor: url('../../assets/images/arrow-right.svg') 10 10, auto;
+      cursor: url('../../assets/images/projects-slider-right.svg') 10 10, auto;
     }
 
     @media (pointer: coarse) {
