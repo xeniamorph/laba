@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from './CasesSlider.module.scss';
@@ -45,7 +45,6 @@ function CasesSlider() {
   const swiperRef = useRef(null);
 
   const [cursorHidden, setCursorHidden] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Состояние для управления отображением попапа
 
   const handleSlide = (direction) => {
     if (direction === 'prev') {
@@ -63,26 +62,57 @@ function CasesSlider() {
     cursorRef.current.style.top = `${y}px`;
   };
 
-  const openPopup = () => {
-    setIsOpen(true); // Открытие попапа
-  };
+  const [isActive, setIsActive] = useState(false);
 
-  const closePopup = () => {
-    setIsOpen(false); // Закрытие попапа
+  const scrollToSection = () => {
+    if (projectRef.current) {
+      const projectRect = projectRef.current.getBoundingClientRect();
+      const scrollPosition = window.scrollY + projectRect.top - (window.innerHeight / 2 - projectRect.height / 2);
+
+      // Прокрутка с плавным поведением
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth',
+      });
+    }
   };
+  useEffect(() => {
+    document.body.style.overflow = isActive ? 'hidden' : '';
+    const header = document.getElementById('main-tool-bar');
+
+    if (isActive) {
+      header.style.display = 'none';
+      header.style.transform = 'translate(0%, -100%)';
+      header.style.transition = '0';
+    } else {
+      header.style.display = 'block';
+      header.style.transform = 'translate(0%, -100%)';
+      header.style.transition = '0';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isActive]);
 
   return (
-    <section className={styles.CasesSlider}>
+    <section className={`${styles.CasesSlider} ${isActive ? styles.active : ''}`}>
       <div ref={projectRef} className={styles.CasesSlider__container} onMouseMove={handleMouseMove}>
         <div ref={cursorRef} className={`${styles.CasesSlider__cursor} ${cursorHidden ? styles.hidden : ''}`}></div>
 
-        {/* Основной слайдер */}
         <Swiper
           className={styles.CasesSlider__swiper}
           ref={swiperRef}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           speed={1000}
           keyboard={{ enabled: true }}
+          pagination={{
+            el: `.${styles.CasesSlider__pagination}`,
+            clickable: true,
+            bulletClass: styles.CasesSlider__bullet,
+            bulletActiveClass: styles.CasesSlider__bullet_active,
+            renderBullet: (index, className) => `<span class="${className}"></span>`,
+          }}
           breakpoints={{
             320: {
               spaceBetween: 16,
@@ -112,56 +142,24 @@ function CasesSlider() {
                 <div className={styles.CasesSlider__background}>
                   <img loading="lazy" src={item.picture} alt={item.title} />
                 </div>
-                <div
-                  className={`${styles.CasesSlider__half} ${styles.CasesSlider__half_left}`}
-                  onClick={() => handleSlide('prev')}
-                ></div>
-                <div
-                  className={`${styles.CasesSlider__half} ${styles.CasesSlider__half_right}`}
-                  onClick={() => handleSlide('next')}
-                ></div>
+                <div className={`${styles.CasesSlider__half} ${styles.CasesSlider__half_left}`} onClick={() => handleSlide('prev')}></div>
+                <div className={`${styles.CasesSlider__half} ${styles.CasesSlider__half_right}`} onClick={() => handleSlide('next')}></div>
                 <button
                   className={styles.CasesSlider__circle}
-                  onClick={openPopup} // Открытие попапа при клике на кнопку
                   onMouseEnter={() => setCursorHidden(true)}
                   onMouseLeave={() => setCursorHidden(false)}
+                  onClick={() => {
+                    setIsActive(!isActive);
+                    scrollToSection();
+                  }}
                 >
-                  <div>На весь экран</div>
+                  <div>{isActive ? 'Вернуться' : 'На весь экран'}</div>
                 </button>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
         <div className={styles.CasesSlider__pagination}></div>
-
-        {/* Оверлей и попап слайдер */}
-        {isOpen && (
-          <div className={styles.CasesSlider__overlay} onClick={closePopup}>
-            <div className={styles.CasesSlider__popup}>
-              <Swiper
-                className={styles.CasesSlider__popupSwiper}
-                ref={swiperRef}
-                modules={[Navigation]}
-                speed={1000}
-                keyboard={{ enabled: true }}
-                loop={true}
-              >
-                {items.map((item) => (
-                  <SwiperSlide className={styles.CasesSlider__popupSlide} key={item.id}>
-                    <div className={styles.CasesSlider__popupWrapper}>
-                      <div className={styles.CasesSlider__popupBackground}>
-                        <img loading="lazy" src={item.picture} alt={item.title} />
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <button className={styles.CasesSlider__closeButton} onClick={closePopup}>
-                Закрыть
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
