@@ -17,6 +17,7 @@ import CasesIntro from '../components/CasesIntro/CasesIntro';
 import Text from '../components/Text/Text';
 import Softwar from '../components/Softwar/Softwar';
 import CasesSlider from '../components/CasesSlider/CasesSlider';
+import ReviewsSlider from '../components/ReviewsSlider/ReviewsSlider';
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Text />
       <Softwar />
       <CasesSlider />
+      <ReviewsSlider />
       {/* <Intro2 /> */}
       {/* <Ticker />
       <Counter />
