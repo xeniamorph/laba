@@ -21,3 +21,17 @@ $bp6: 377px;
     padding-left: rem(32);
   }
 }
+
+@mixin sectionMargin {
+  & {
+    margin-top: 160px;
+    margin-bottom: 160px;
+  }
+
+  @media all and (max-width: $bp4) {
+    & {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+  }
+}
