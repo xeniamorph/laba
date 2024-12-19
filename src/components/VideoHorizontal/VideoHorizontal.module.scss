@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.VideoHorizontal {
+  $s: &;
+  margin-right: auto;
+  margin-left: auto;
+  @include container;
+  @include sectionMargin;
+
+  &__video {
+    display: block;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+  }
+
+  @media all and (min-width: $bp1) {
+  }
+
+  @media all and (min-width: $bp0) {
+  }
+}
