@@ -1,18 +1,20 @@
+import PropTypes from 'prop-types';
 import styles from './Text.module.scss';
 
-function Text() {
+function Text({ title, text }) {
   return (
     <section className={styles.Text}>
       <div className={styles.Text__container}>
-        <div className={styles.Text__title}>Задача</div>
-        <div className={styles.Text__text}>
-          Создать10 ракурсов 3D визуализации, монтаж анимационного ролика для рекламных целей, создание интерактивной модели, для офиса продаж «Панорама 360°», дизайн и верстка многостраничного сайта
-          <br></br>
-          <br></br>Если есть второй абзац
-        </div>
+        <div className={styles.Text__title} dangerouslySetInnerHTML={{ __html: title }}></div>
+        <div className={styles.Text__text} dangerouslySetInnerHTML={{ __html: text }}></div>
       </div>
     </section>
   );
 }
+
+Text.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 export default Text;
