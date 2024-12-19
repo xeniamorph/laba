@@ -1,32 +1,32 @@
 @import '../../variables.scss';
 
 .Footer {
-  background-color: var(--prime-2);
-  color: var(--prime-1);
-  padding: rem(24) rem(16) rem(16) rem(16);
-  font-weight: var(--fw-light);
-  line-height: rem(24);
-  font-family: var(--font-sec);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: var(--prime-2);
+  padding: rem(24) rem(16) rem(16) rem(16);
+  color: var(--prime-1);
+  font-weight: var(--fw-light);
+  line-height: rem(24);
+  font-family: var(--font-sec);
 
   a {
-    text-decoration: none;
     transition: 0.3s;
+    text-decoration: none;
 
     &:hover {
-      color: var(--prime-3);
       transition: 0.5s;
+      color: var(--prime-3);
     }
   }
 
   &__mail {
-    font-family: var(--font-prime);
     display: block;
+    margin-bottom: rem(24);
     font-size: rem(32);
     line-height: rem(48);
-    margin-bottom: rem(24);
+    font-family: var(--font-prime);
   }
 
   &__contacts {
@@ -54,10 +54,10 @@
     &__mail {
       display: block;
       margin-bottom: rem(32);
-      font-family: var(--font-prime);
-      font-size: rem(56);
       font-weight: var(--fw-medium);
+      font-size: rem(56);
       line-height: rem(64);
+      font-family: var(--font-prime);
     }
 
     &__contacts {
@@ -67,9 +67,11 @@
     }
   }
 
-  @media all and (min-width: $bp1) {
+  @media all and (min-width: $bp3) {
     padding: rem(24) rem(32) rem(32) rem(32);
+  }
 
+  @media all and (min-width: $bp1) {
     &__mail {
       margin-bottom: rem(40);
       font-size: rem(88);
@@ -78,8 +80,8 @@
 
     &__container {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
+      align-items: flex-end;
       width: 100%;
     }
 

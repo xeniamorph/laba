@@ -78,8 +78,8 @@ function ReviewsSlider() {
           breakpoints={{
             280: { spaceBetween: 32, slidesPerView: 1.2, loop: true },
             1024: { spaceBetween: 32, slidesPerView: 1, loop: true, centeredSlides: true },
-            1280: { spaceBetween: 100, slidesPerView: 1, loop: true },
-            2560: { spaceBetween: 52, slidesPerView: 1, loop: true },
+            1280: { spaceBetween: 100, slidesPerView: 1, loop: true, centeredSlides: true },
+            2560: { spaceBetween: 52, slidesPerView: 1, loop: true, centeredSlides: true },
           }}
         >
           {items.map((item, index) => (

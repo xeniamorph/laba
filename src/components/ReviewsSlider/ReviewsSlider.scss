@@ -7,7 +7,8 @@
   color: var(--sec-3);
 
   &__swiper {
-    @include containerMob;
+    padding-right: rem(16);
+    padding-left: rem(16);
 
     .swiper-wrapper {
       align-items: stretch;
@@ -135,10 +136,6 @@
     }
   }
   @media all and (min-width: $bp3) {
-    &__swiper {
-      @include containerDesk;
-    }
-
     &__title {
       margin-bottom: 16px;
       font-weight: var(--fw-medium);

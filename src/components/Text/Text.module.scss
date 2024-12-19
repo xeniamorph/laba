@@ -20,7 +20,7 @@
     line-height: 1.33;
   }
 
-  @media all and (min-width: $bp1) {
+  @media all and (min-width: $bp3) {
     @include containerDesk;
   }
 
