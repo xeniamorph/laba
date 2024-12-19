@@ -98,6 +98,11 @@ function Header() {
                   Контакты
                 </Link>
               </li>
+              <li>
+                <Link className={activeTab === '/case' ? styles.active : ''} to="/case" onClick={() => handleTabClick('/case')}>
+                  Кейс
+                </Link>
+              </li>
             </ul>
           </nav>
           <ul className={styles.Header__links}>

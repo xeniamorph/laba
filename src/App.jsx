@@ -6,6 +6,7 @@ import GalleryTabs from './components/GalleryTabs/GalleryTabs.jsx';
 import Contacts from './components/Contacts/Contacts.jsx';
 import './App.scss';
 import Home from './pages/Home.jsx';
+import Case from './pages/Case.jsx';
 import FormBrief from './components/FormBrief/FormBrief.jsx';
 import CookieAgreement from './components/CookieAgreement/CookieAgreement.jsx';
 
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/portfolio" element={<GalleryTabs />} />
             <Route path="/contact" element={<Contacts />} />
             <Route path="/form" element={<FormBrief />} />
+            <Route path="/case" element={<Case />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <Footer />
