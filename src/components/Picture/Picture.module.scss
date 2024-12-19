@@ -1,0 +1,23 @@
+@import '../../variables.scss';
+
+.Picture {
+  $s: &;
+  @include container;
+  @include sectionMargin;
+
+  &__picture {
+    aspect-ratio: 16 / 9;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @media all and (min-width: $bp1) {
+  }
+
+  @media all and (min-width: $bp0) {
+  }
+}
