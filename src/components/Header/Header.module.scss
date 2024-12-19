@@ -2,13 +2,13 @@
 
 .Header {
   $s: &;
-  height: 46px;
   position: fixed;
-  width: 100%;
-  left: 0;
   top: 0;
-  transition: ease 0.4s;
+  left: 0;
   z-index: 9999;
+  transition: ease 0.4s;
+  width: 100%;
+  height: 46px;
 
   @media all and (min-width: $bp4) {
     height: 48px;
@@ -27,22 +27,22 @@
   }
 
   &__container {
-    background: var(--prime-1);
     display: flex;
     flex-direction: column;
     align-items: stretch;
     transition: 0.3s;
-    overflow: hidden;
+    background: var(--prime-1);
     height: 100%;
+    overflow: hidden;
   }
 
   &__top {
+    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: rem(8) 0 rem(16) 0;
-    margin: 0 rem(16);
     z-index: 30;
+    padding: rem(8) 0 rem(16) 0;
   }
 
   &__desc {
@@ -52,21 +52,21 @@
 
   &__logo {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 
   &__toggle {
+    position: relative;
     width: rem(62);
     min-height: rem(18);
-    position: relative;
 
     span {
       position: absolute;
+      transition: all 0.5s;
+      background-color: var(--prime-2);
       width: 100%;
       height: rem(2);
-      background-color: var(--prime-2);
-      transition: all 0.5s;
 
       &:first-child {
         top: 0;
@@ -82,16 +82,16 @@
 
       &:last-child {
         top: 100%;
-        left: 0;
         right: auto;
+        left: 0;
       }
     }
 
     &:hover {
       span {
+        transition: all 0.5s;
         width: rem(5);
         height: rem(5);
-        transition: all 0.5s;
 
         &:first-child {
           top: 50%;
@@ -107,8 +107,8 @@
 
         &:last-child {
           top: 50%;
-          left: rem(17);
           right: auto;
+          left: rem(17);
         }
       }
     }
@@ -118,10 +118,10 @@
       &:hover {
         span {
           position: absolute;
+          transition: all 0.5s;
+          background-color: var(--prime-2);
           width: 100%;
           height: rem(2);
-          background-color: var(--prime-2);
-          transition: all 0.5s;
 
           &:first-child {
             top: 0;
@@ -137,8 +137,8 @@
 
           &:last-child {
             top: 100%;
-            left: 0;
             right: auto;
+            left: 0;
           }
         }
       }
@@ -146,9 +146,9 @@
 
     &:hover {
       span {
+        transition: all 0.5s;
         width: rem(5);
         height: rem(5);
-        transition: all 0.5s;
 
         &:first-child {
           top: 50%;
@@ -164,8 +164,8 @@
 
         &:last-child {
           top: 50%;
-          left: rem(17);
           right: auto;
+          left: rem(17);
         }
       }
     }
@@ -173,38 +173,38 @@
 
   &__inner {
     display: none;
+    position: relative;
     flex-direction: column;
+    justify-content: space-between;
+    animation: slideDown 0.5s ease-out forwards;
+    padding: 0 rem(16) rem(16) rem(16);
     height: 100%;
     min-height: rem(726);
-    justify-content: space-between;
-    position: relative;
-    padding: 0 rem(16) rem(16) rem(16);
-    animation: slideDown 0.5s ease-out forwards;
 
     &::before {
-      content: '';
       position: absolute;
-      width: rem(530);
-      height: rem(454);
       top: 0;
       right: rem(-150);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-image: url(/src/assets/images/header-menu.png);
       transform: scaleX(-1);
+      background-image: url(/src/assets/images/header-menu.png);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: rem(530);
+      height: rem(454);
+      content: '';
     }
   }
 
   nav {
-    padding-top: rem(60);
-    padding-bottom: rem(16);
-    z-index: 10;
-    position: relative;
-    overflow: hidden;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: flex-start;
+    z-index: 10;
+    padding-top: rem(60);
+    padding-bottom: rem(16);
+    overflow: hidden;
     color: var(--prime-1);
 
     li:not(:last-child) {
@@ -213,27 +213,27 @@
 
     a {
       display: inline-block;
-      font-size: rem(40);
-      line-height: rem(38.6);
       position: relative;
       transition: color 0.3s;
+      font-size: rem(40);
+      line-height: rem(38.6);
 
       &:hover {
         color: var(--prime-3);
       }
 
       &::before {
-        content: '';
         position: absolute;
-        left: 0;
         bottom: rem(-12);
-        height: rem(2);
-        width: 0;
-        background-color: var(--prime-3);
+        left: 0;
+        transform: translateX(rem(-10));
+        opacity: 0;
         z-index: 20;
         transition: all 0.5s ease-in-out;
-        opacity: 0;
-        transform: translateX(rem(-10));
+        background-color: var(--prime-3);
+        width: 0;
+        height: rem(2);
+        content: '';
       }
 
       &.active {
@@ -242,26 +242,26 @@
         }
 
         &::before {
+          transform: translateX(0);
+          opacity: 1;
           transition: 0.3s;
           width: rem(95);
-          opacity: 1;
-          transform: translateX(0);
         }
       }
     }
   }
 
   &__links {
-    font-family: var(--font-sec);
-    font-weight: var(--fw-light);
-    z-index: 20;
     display: flex;
     align-self: flex-end;
     gap: rem(20);
+    opacity: 0.6;
+    z-index: 20;
     margin-top: auto;
     margin-bottom: rem(16);
-    opacity: 0.6;
     color: var(--prime-1);
+    font-weight: var(--fw-light);
+    font-family: var(--font-sec);
 
     a {
       display: block;
@@ -274,30 +274,30 @@
   }
 
   &__contacts {
-    color: var(--prime-1);
-    z-index: 10;
-    position: relative;
-    font-family: var(--font-sec);
-    font-weight: var(--fw-light);
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 10;
+    color: var(--prime-1);
+    font-weight: var(--fw-light);
+    font-family: var(--font-sec);
 
     a {
       display: block;
+      opacity: 0.6;
       transition: color 0.3s;
       font-size: rem(16);
       line-height: rem(24);
-      opacity: 0.6;
 
       &:hover {
         color: var(--prime-3);
       }
 
       &#{$s}__mail {
+        margin: 0 0 rem(16) 0;
         font-size: rem(24);
         line-height: rem(32);
-        margin: 0 0 rem(16) 0;
       }
 
       &#{$s}__tel {
@@ -308,35 +308,35 @@
 
   @keyframes slideDown {
     0% {
-      opacity: 0;
       transform: translateY(rem(-50));
+      opacity: 0;
     }
     100% {
-      opacity: 1;
       transform: translateY(0);
+      opacity: 1;
     }
   }
 
   @keyframes slideUp {
     0% {
-      opacity: 1;
       transform: translateY(0);
+      opacity: 1;
     }
     100% {
-      opacity: 0;
       transform: translateY(rem(-50));
+      opacity: 0;
     }
   }
 
   &__container.active {
-    background-color: var(--prime-2);
-    color: var(--prime-1);
-    z-index: 30;
     position: relative;
+    z-index: 30;
+    background-color: var(--prime-2);
     height: 100vh;
+    color: var(--prime-1);
 
     #{$s}__top {
-      border-bottom: rem(2) solid var(--prime-1);
+      border-bottom: 2px solid var(--prime-1);
     }
 
     #{$s}__logo img {
@@ -345,9 +345,9 @@
 
     #{$s}__toggle {
       span {
-        background-color: var(--prime-1);
         top: auto;
         bottom: auto;
+        background-color: var(--prime-1);
 
         &:first-child,
         &:last-child {
@@ -360,17 +360,17 @@
         }
 
         &:first-child {
-          transform: translateY(-50%) rotate(-30deg);
           top: 50%;
           right: rem(15);
           left: auto;
+          transform: translateY(-50%) rotate(-30deg);
         }
 
         &:last-child {
-          transform: translateY(-50%) rotate(30deg);
           top: 50%;
-          left: rem(15);
           right: auto;
+          left: rem(15);
+          transform: translateY(-50%) rotate(30deg);
         }
       }
 
@@ -390,17 +390,17 @@
         &:hover {
           span {
             &:first-child {
-              transform: translateY(-50%) rotate(-30deg);
               top: 50%;
               right: rem(15);
               left: auto;
+              transform: translateY(-50%) rotate(-30deg);
             }
 
             &:last-child {
-              transform: translateY(-50%) rotate(30deg);
               top: 50%;
-              left: rem(15);
               right: auto;
+              left: rem(15);
+              transform: translateY(-50%) rotate(30deg);
             }
           }
         }
@@ -427,7 +427,6 @@
   @media all and (min-width: $bp3) {
     &__top {
       padding: rem(12) 0 rem(16) 0;
-      margin: 0 rem(32);
     }
 
     &__inner {
@@ -435,12 +434,12 @@
       min-height: 100vh;
 
       &::before {
-        width: rem(962);
-        height: rem(826);
         top: rem(155);
         right: auto;
         left: rem(-189);
         transform: scaleX(1);
+        width: rem(962);
+        height: rem(826);
       }
     }
 
@@ -460,9 +459,9 @@
     }
 
     &__inner {
+      position: relative;
       min-height: 95vh;
       max-height: rem(1024);
-      position: relative;
 
       &::before {
         top: rem(59);
@@ -472,7 +471,7 @@
 
     &__container.active {
       #{$s}__top {
-        border-bottom: rem(3) solid var(--prime-1);
+        border-bottom: 3px solid var(--prime-1);
       }
     }
     nav {
@@ -488,12 +487,12 @@
 
     &__contacts {
       a {
-        transition: 0.3s;
         opacity: 0.6;
+        transition: 0.3s;
 
         &:hover {
-          color: var(--prime-1);
           opacity: 1;
+          color: var(--prime-1);
         }
       }
     }

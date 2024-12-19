@@ -94,8 +94,10 @@ function Partners() {
           >
             {items.map((item, index) => (
               <SwiperSlide className={styles.Partners__slide} key={index}>
-                <div className={styles.Partners__img}>
-                  <img src={item.logo} loading="lazy" alt={item.title} />
+                <div className={styles.Partners__inner}>
+                  <div className={styles.Partners__img}>
+                    <img src={item.logo} loading="lazy" alt={item.title} />
+                  </div>
                 </div>
               </SwiperSlide>
             ))}

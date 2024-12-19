@@ -6,8 +6,9 @@
   font-family: var(--font-sec);
 
   &__header {
-    margin-bottom: rem(40);
     @include container;
+    margin-bottom: rem(40);
+    border-top: 2px solid var(--prime-2);
   }
 
   &__return {
@@ -106,13 +107,16 @@
   }
 
   &__footer {
-    display: flex;
-    flex-direction: column;
-    gap: rem(32);
     background-color: white;
     padding-top: rem(40);
     padding-bottom: rem(40);
+  }
+
+  &__cols {
     @include container;
+    display: flex;
+    flex-direction: column;
+    gap: rem(32);
   }
 
   &__topic {
@@ -150,7 +154,7 @@
       margin-right: rem(30);
     }
 
-    &__footer {
+    &__cols {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
     }

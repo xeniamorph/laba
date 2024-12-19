@@ -15,13 +15,14 @@ $bp6: 377px;
 
 @mixin container {
   & {
-    padding-right: rem(16);
-    padding-left: rem(16);
+    margin-right: rem(16);
+    margin-left: rem(16);
   }
+
   @media all and (min-width: $bp3) {
     & {
-      padding-right: rem(32);
-      padding-left: rem(32);
+      margin-right: rem(32);
+      margin-left: rem(32);
     }
   }
 }

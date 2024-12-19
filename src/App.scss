@@ -58,23 +58,23 @@
 
 // это нужно для контейнера gsap который расчитывает высоту нашего макета и на этой высоте работает тяжелый скрол, если мы это уберём то наш footer не показывается полностью. я добавл отступ сверху для того, чтоб gsap расчитывал высоту чуть больше. напиши мне если будет как-то не корректно работать =)
 #smooth-content {
-  margin-top: 48px;
+  padding-top: 48px;
   /* Добавляет отступ снизу для Footer */
 
   @media all and (min-width: $bp4) {
-    margin-top: 50px;
+    padding-top: 50px;
   }
 
   @media all and (min-width: $bp1) {
-    margin-top: 60px;
+    padding-top: 60px;
   }
 
   @media all and (min-width: $bp) {
-    margin-top: 73px;
+    padding-top: 73px;
   }
 
   @media all and (min-width: 2560px) {
-    margin-top: 94px;
+    padding-top: 94px;
   }
 }
 

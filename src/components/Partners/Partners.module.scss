@@ -78,16 +78,19 @@
   }
 
   &__swiper {
-    padding: 0 rem(16);
+    padding: 0 rem(16) !important;
   }
 
   &__slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     backdrop-filter: blur(20px);
     border: 1px solid #dcddde;
     background-color: rgba(240, 242, 245, 0.65);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: rem(182);
   }
 

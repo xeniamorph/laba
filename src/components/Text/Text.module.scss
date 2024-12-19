@@ -2,12 +2,12 @@
 
 .Text {
   $s: &;
+  @include container;
   background-color: var(--prime-1);
   padding-top: rem(80);
   padding-bottom: rem(80);
   font-weight: var(--fw-light);
   font-family: var(--font-sec);
-  @include container;
 
   &__title {
     margin-bottom: rem(24);

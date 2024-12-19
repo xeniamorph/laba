@@ -31,25 +31,27 @@ function CasesIntro() {
         </a>
       </div>
       <div className={styles.CasesIntro__footer}>
-        <div className={styles.CasesIntro__col}>
-          <div className={styles.CasesIntro__topic}>Клиент</div>
-          <div className={styles.CasesIntro__desc}>MARKS GROUP</div>
-        </div>
-        <div className={styles.CasesIntro__col}>
-          <div className={styles.CasesIntro__topic}>Платформа</div>
-          <div className={styles.CasesIntro__desc}>WEB / DESKTOP</div>
-        </div>
-        <div className={styles.CasesIntro__col}>
-          <div className={styles.CasesIntro__topic}>Команда</div>
-          <div className={styles.CasesIntro__desc}>
-            Разработчик VR,
-            <br /> UX/UI дизайнер, Frontend Разработчик
+        <div className={styles.CasesIntro__cols}>
+          <div className={styles.CasesIntro__col}>
+            <div className={styles.CasesIntro__topic}>Клиент</div>
+            <div className={styles.CasesIntro__desc}>MARKS GROUP</div>
           </div>
-        </div>
-        <div className={styles.CasesIntro__col}>
-          <div className={styles.CasesIntro__topic}>Что сделано</div>
-          <div className={styles.CasesIntro__desc}>Панорама 360, VR приложение</div>
-        </div>
+          <div className={styles.CasesIntro__col}>
+            <div className={styles.CasesIntro__topic}>Платформа</div>
+            <div className={styles.CasesIntro__desc}>WEB / DESKTOP</div>
+          </div>
+          <div className={styles.CasesIntro__col}>
+            <div className={styles.CasesIntro__topic}>Команда</div>
+            <div className={styles.CasesIntro__desc}>
+              Разработчик VR,
+              <br /> UX/UI дизайнер, Frontend Разработчик
+            </div>
+          </div>
+          <div className={styles.CasesIntro__col}>
+            <div className={styles.CasesIntro__topic}>Что сделано</div>
+            <div className={styles.CasesIntro__desc}>Панорама 360, VR приложение</div>
+          </div>
+        </div>{' '}
       </div>
     </section>
   );

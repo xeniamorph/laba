@@ -2,9 +2,9 @@
 
 .ReviewsSlider {
   $s: &;
+  @include sectionMargin;
   background-color: var(--prime-1);
   color: var(--sec-3);
-  @include sectionMargin;
 
   &__swiper {
     @include container;

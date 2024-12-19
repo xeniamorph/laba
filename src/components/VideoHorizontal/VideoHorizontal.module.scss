@@ -2,10 +2,10 @@
 
 .VideoHorizontal {
   $s: &;
-  margin-right: auto;
-  margin-left: auto;
   @include container;
   @include sectionMargin;
+  margin-right: auto;
+  margin-left: auto;
 
   &__video {
     display: block;

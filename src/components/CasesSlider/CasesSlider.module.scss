@@ -28,9 +28,9 @@
   }
 
   &__swiper {
+    @include container;
     transition: 0.3s;
     overflow: visible !important;
-    @include container;
   }
 
   &__wrapper {

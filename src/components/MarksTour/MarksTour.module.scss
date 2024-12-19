@@ -2,10 +2,10 @@
 
 .MarksTour {
   $s: &;
-  position: relative;
-  background-color: var(--prime-1);
   @include sectionMargin;
   @include container;
+  position: relative;
+  background-color: var(--prime-1);
 
   &.active {
     #{$s}__iframe {

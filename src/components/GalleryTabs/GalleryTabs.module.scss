@@ -42,8 +42,9 @@
   $s: &;
 
   &__header {
-    margin: rem(48) 0 rem(40) 0;
-    padding: 0 rem(16);
+    @include container;
+    border-top: 2px solid var(--prime-2);
+    padding: rem(48) 0 rem(40) 0;
   }
 
   &__title {
@@ -60,10 +61,11 @@
     margin-bottom: rem(8);
 
     ul {
+      @include container;
       display: flex;
       flex-wrap: nowrap;
       gap: rem(8);
-      padding: 0 rem(16) rem(12) rem(16);
+      padding: 0 0 rem(12) 0;
       overflow-x: auto;
       overflow-y: hidden;
       scrollbar-width: thin;
@@ -144,14 +146,16 @@
         }
 
         &:hover.active {
-          border: 1px solid var(--prime-2);
+          border: 1px solid var(--prime-3);
         }
 
         &.active {
+          border: 1px solid var(--prime-3);
           color: var(--prime-1);
 
           &::after {
-            background-color: var(--prime-2);
+            border: 1px solid var(--prime-3);
+            background-color: var(--prime-3);
             width: rem(700);
             height: rem(700);
           }
@@ -166,6 +170,10 @@
   }
 
   @media all and (min-width: $bp4) {
+    &__header {
+      border-top: 3px solid var(--prime-2);
+    }
+
     &__filters {
       margin-bottom: rem(8);
 
@@ -186,8 +194,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: rem(110) 0 rem(93) 0;
-      padding: 0 rem(30);
+      padding: rem(110) 0 rem(93) 0;
     }
 
     &__title {

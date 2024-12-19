@@ -66,7 +66,6 @@ function ReviewsSlider() {
           className={'ReviewsSlider__swiper'}
           modules={[Pagination, Autoplay]}
           speed={1000}
-          centeredSlides={true}
           keyboard={{ enabled: true }}
           slideActiveClass={'ReviewsSlider__slide_active'}
           pagination={{
@@ -77,8 +76,8 @@ function ReviewsSlider() {
             renderBullet: (index, className) => `<span class="${className}"></span>`,
           }}
           breakpoints={{
-            280: { spaceBetween: 32, slidesPerView: 1.1, loop: true },
-            1024: { spaceBetween: 32, slidesPerView: 1, loop: true },
+            280: { spaceBetween: 32, slidesPerView: 1.2, loop: true },
+            1024: { spaceBetween: 32, slidesPerView: 1, loop: true, centeredSlides: true },
             1280: { spaceBetween: 100, slidesPerView: 1, loop: true },
             2560: { spaceBetween: 52, slidesPerView: 1, loop: true },
           }}
