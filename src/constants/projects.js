@@ -11,7 +11,7 @@ import video_10 from '../assets/videos/gallery-10.mp4';
 import video_11 from '../assets/videos/gallery-11.mp4';
 import video_12 from '../assets/videos/gallery-12.mp4';
 
-export const itemsGalleryTabs = [
+export const projects = [
   {
     id: 1,
     video: video_1,

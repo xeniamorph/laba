@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import styles from './GalleryTabs.module.scss';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { itemsGalleryTabs } from '../../constants/itemsGalleryTabs';
-import { typesfiltersGalerryTabs } from '../../constants/typesfiltersGalerryTabs';
 
+import styles from './GalleryTabs.module.scss';
+import GalleryItem from '../GalleryItem/GalleryItem';
+
+import { projects } from '../../constants/projects';
+import { projectsTypes } from '../../constants/projectsTypes';
 
 export default function GalleryTabs() {
   const [activeFilter, setActiveFilter] = useState('all');
-  // Функции остановки или воспроизведения видео
+
   const handleMouseEnter = (video) => {
     video.play();
   };
@@ -16,12 +18,10 @@ export default function GalleryTabs() {
     video.pause();
   };
 
-  // Функция смены фильтра
   const handleFilterChange = (type) => {
     setActiveFilter(type);
   };
 
-  // Функция определения координат курсора для передачи в CSS
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -31,8 +31,7 @@ export default function GalleryTabs() {
     e.currentTarget.style.setProperty('--y4', `${y}px`);
   };
 
-  // Применение фильтрации
-  const filteredItems = activeFilter === 'all' ? itemsGalleryTabs : itemsGalleryTabs.filter((item) => item.type === activeFilter);
+  const filteredItems = activeFilter === 'all' ? projects : projects.filter((item) => item.type === activeFilter);
 
   return (
     <section className={styles.GalleryTabs}>
@@ -49,26 +48,21 @@ export default function GalleryTabs() {
       </div>
       <nav className={styles.GalleryTabs__filters}>
         <ul>
-          {typesfiltersGalerryTabs.map((element) => {
-            return (
-              <li key={element.id}>
-                <button onMouseMove={handleMouseMove} className={activeFilter === `${element.type}` ? styles.active : ''} onClick={() => handleFilterChange(`${element.type}`)}>
-                  <span>{element.title}</span>
-                </button>
-              </li>
-            );
-          })}
+          {projectsTypes.map((element) => (
+            <li key={element.id}>
+              <button onMouseMove={handleMouseMove} className={activeFilter === element.type ? styles.active : ''} onClick={() => handleFilterChange(element.type)}>
+                <span>{element.title}</span>
+              </button>
+            </li>
+          ))}
         </ul>
       </nav>
 
       <TransitionGroup component="ul" className={styles.GalleryTabs__items}>
         {filteredItems.map((element, index) => {
           const uniqueKey = `${element.id}-${activeFilter}`;
-          const totalLength = element.title.length + element.desc.length;
-          const hoverAnimateClass = totalLength > 34 ? styles.long : styles.short;
-
           const videoProps =
-            index % 2 === 1
+            index % 2 === 0
               ? { autoPlay: true }
               : {
                   onMouseEnter: (e) => handleMouseEnter(e.currentTarget),
@@ -80,23 +74,13 @@ export default function GalleryTabs() {
               key={uniqueKey}
               timeout={1000}
               classNames={{
-                enter: styles.itemEnter, //Класс, применяемый при начале появления элемента.
-                enterActive: styles.itemEnterActive, // Класс для активной фазы появления (анимации).
-                exit: styles.itemExit, // Класс, применяемый при начале исчезновения элемента.
-                exitActive: styles.itemExitActive, // Класс для активной фазы исчезновения (анимации).
-              }}>
-              <li className={`${styles.GalleryTabs__item} ${hoverAnimateClass}`}>
-                <a href={element.src}>
-                  <video {...videoProps} preload="auto" loop muted>
-                    <source src={element.video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <h2>
-                    <span>{element.title}</span>
-                    <span>{element.desc}</span>
-                  </h2>
-                </a>
-              </li>
+                enter: styles.itemEnter,
+                enterActive: styles.itemEnterActive,
+                exit: styles.itemExit,
+                exitActive: styles.itemExitActive,
+              }}
+            >
+              <GalleryItem videoSrc={element.video} href={element.src} title={element.title} desc={element.desc} videoProps={videoProps} />
             </CSSTransition>
           );
         })}

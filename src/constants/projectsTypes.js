@@ -1,4 +1,4 @@
-export const typesfiltersGalerryTabs = [
+export const projectsTypes = [
   {
     id: 1,
     title: 'Все',

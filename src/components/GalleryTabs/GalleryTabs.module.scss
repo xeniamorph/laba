@@ -13,25 +13,29 @@
 }
 
 .itemEnter {
-  opacity: 0;
   transform: scale(0.8);
+  opacity: 0;
 }
 
 .itemEnterActive {
-  opacity: 1;
   transform: scale(1);
-  transition: opacity 1s, transform 1s;
+  opacity: 1;
+  transition:
+    opacity 1s,
+    transform 1s;
 }
 
 .itemExit {
-  opacity: 1;
   transform: scale(1);
+  opacity: 1;
 }
 
 .itemExitActive {
-  opacity: 0;
   transform: scale(0.8);
-  transition: opacity 1s, transform 1s;
+  opacity: 0;
+  transition:
+    opacity 1s,
+    transform 1s;
 }
 
 .GalleryTabs {
@@ -43,8 +47,8 @@
   }
 
   &__title {
-    font-size: rem(40);
     font-weight: var(--fw-medium);
+    font-size: rem(40);
     line-height: rem(48);
   }
 
@@ -59,29 +63,29 @@
       display: flex;
       flex-wrap: nowrap;
       gap: rem(8);
-      overflow-y: hidden;
-      overflow-x: auto;
       padding: 0 rem(16) rem(12) rem(16);
+      overflow-x: auto;
+      overflow-y: hidden;
       scrollbar-width: thin;
 
       button {
         display: flex;
+        position: relative;
         justify-content: center;
         align-items: center;
-        white-space: nowrap;
+        transition: 0.3s;
+        transition: border 0.1s;
+        cursor: pointer;
+        border: 1px solid var(--prime-2);
+        border-radius: rem(34);
+        background-color: var(--prime-1);
         padding: rem(8) rem(24);
+        min-height: rem(40);
+        overflow: hidden;
+        color: var(--prime-2);
         font-size: rem(16);
         font-family: var(--font-sec);
-        color: var(--prime-2);
-        border: 1px solid var(--prime-2);
-        background-color: var(--prime-1);
-        cursor: pointer;
-        border-radius: rem(34);
-        transition: 0.3s;
-        min-height: rem(40);
-        position: relative;
-        overflow: hidden;
-        transition: border 0.1s;
+        white-space: nowrap;
 
         span {
           position: relative;
@@ -89,33 +93,37 @@
         }
 
         &::before {
-          content: '';
           position: absolute;
           top: var(--y4);
           left: var(--x4);
           transform: translate(-50%, -50%);
+          transition:
+            width 1s,
+            height 1s;
+          border-radius: 50%;
           width: 0;
           height: 0;
-          border-radius: 50%;
-          transition: width 1s, height 1s;
+          content: '';
         }
 
         &::after {
-          content: '';
           position: absolute;
           top: var(--y4);
           left: var(--x4);
           transform: translate(-50%, -50%);
+          transition:
+            width 1s,
+            height 1s;
+          border-radius: 50%;
           width: 0;
           height: 0;
-          border-radius: 50%;
-          transition: width 1s, height 1s;
+          content: '';
         }
 
         @media (pointer: coarse) {
           &:hover {
-            color: var(--prime-2);
             border: 1px solid var(--prime-2);
+            color: var(--prime-2);
 
             &::before {
               content: none;
@@ -124,8 +132,8 @@
         }
 
         &:hover {
-          color: var(--prime-1);
           border: 1px solid var(--prime-3);
+          color: var(--prime-1);
 
           &::before {
             border: 1px solid var(--prime-3);
@@ -143,9 +151,9 @@
           color: var(--prime-1);
 
           &::after {
+            background-color: var(--prime-2);
             width: rem(700);
             height: rem(700);
-            background-color: var(--prime-2);
           }
         }
       }
@@ -153,81 +161,8 @@
   }
 
   &__items {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  &__item {
-    width: 100%;
-    height: 100vw;
-    display: flex;
-    align-items: flex-end;
-
-    a {
-      overflow: hidden;
-      position: relative;
-      display: block;
-      color: var(--prime-4);
-      width: 100%;
-      height: 100%;
-    }
-
-    video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: filter 1s ease;
-      filter: brightness(70%);
-    }
-
-    h2 {
-      position: absolute;
-      bottom: rem(10);
-      left: rem(16);
-      right: rem(16);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-
-      span {
-        display: inline-block;
-
-        &:first-child {
-          font-weight: var(--fw-medium);
-          font-size: rem(24);
-          line-height: rem(32);
-          color: var(--prime-1);
-          margin-right: rem(8);
-        }
-
-        &:last-child {
-          color: var(--sec-5);
-          font-family: var(--font-sec);
-          font-size: rem(14);
-          line-height: rem(17);
-          font-weight: var(--fw-light);
-          padding-left: rem(6);
-          height: rem(32);
-          display: flex;
-          align-items: center;
-          position: relative;
-
-          &::before {
-            content: '';
-            width: 1px;
-            height: rem(14);
-            background-color: var(--prime-4);
-            top: 50%;
-            transform: translateY(-50%);
-            left: 0;
-            position: absolute;
-          }
-        }
-      }
-    }
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   @media all and (min-width: $bp4) {
@@ -241,24 +176,16 @@
       }
     }
 
-    &__item {
-      width: 50%;
-      height: 50vw;
-
-      &:nth-child(3) {
-        order: 4;
-      }
-      &:nth-child(6) {
-        order: 5;
-      }
+    &__items {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   @media all and (min-width: $bp3) {
     &__header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       margin: rem(110) 0 rem(93) 0;
       padding: 0 rem(30);
     }
@@ -275,10 +202,10 @@
       gap: rem(18);
 
       a {
+        transition: 0.3s;
         font-size: rem(24);
         line-height: rem(24);
         text-align: right;
-        transition: 0.3s;
 
         &:hover {
           color: var(--prime-3);
@@ -288,77 +215,14 @@
   }
 
   // Адаптация для desktop
-  @media all and (min-width: $bp2) {
-    &__item {
-      &.long {
-        span {
-          &:first-child {
-            opacity: 0;
-            transform: translateX(rem(-100));
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-          }
-          &:last-child {
-            width: 100%;
-          }
-        }
-
-        a:hover span {
-          &:first-child {
-            opacity: 1;
-            transform: translateX(0);
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-          }
-        }
-      }
-
-      &.short {
-        h2 {
-          flex-wrap: nowrap;
-        }
-
-        span {
-          &:first-child {
-            opacity: 0;
-            white-space: nowrap;
-            max-width: 0;
-            transform: translateX(rem(-50));
-            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 1s ease-in-out, opacity 1s ease-in-out;
-            margin-right: 0;
-          }
-        }
-
-        a:hover span {
-          &:first-child {
-            max-width: 100%;
-            transform: translateX(0);
-            opacity: 1;
-            left: 0;
-            transition: margin 1s ease-in-out, max-width 1s ease-in-out, transform 0.3s ease-in-out, opacity 1.4s ease-in-out;
-            margin-right: rem(8);
-          }
-        }
-      }
-
-      &:hover video {
-        filter: brightness(30%);
-      }
-    }
-  }
-
   @media all and (min-width: $bp1) {
     &__title {
       font-size: rem(88);
       line-height: rem(96);
     }
 
-    &__item {
-      width: 33.33%;
-      height: 33.3vw;
-
-      &:nth-child(3),
-      &:nth-child(6) {
-        order: initial;
-      }
+    &__items {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 }
