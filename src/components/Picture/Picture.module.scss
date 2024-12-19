@@ -2,8 +2,8 @@
 
 .Picture {
   $s: &;
-  @include container;
-  @include sectionMargin;
+  @include containerMob;
+  @include sectionMarginMob;
 
   &__picture {
     aspect-ratio: 16 / 9;
@@ -15,9 +15,7 @@
     }
   }
 
-  @media all and (min-width: $bp1) {
-  }
-
-  @media all and (min-width: $bp0) {
+  @media all and (min-width: $bp3) {
+    @include containerDesk;
   }
 }

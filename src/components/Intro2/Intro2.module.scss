@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .Intro2 {
-  @include container;
+  @include containerMob;
   $s: &;
   position: relative;
   margin-bottom: rem(48);
@@ -33,7 +33,6 @@
   }
 
   @media all and (min-width: $bp4) {
-    margin: 0 rem(16) rem(45) rem(16);
     padding-top: rem(87);
 
     &__container {
@@ -56,7 +55,7 @@
   }
 
   @media all and (min-width: $bp3) {
-    margin: 0 rem(32) rem(45) rem(32);
+    @include containerDesk;
 
     &__container {
       gap: rem(50);
@@ -74,7 +73,6 @@
   }
 
   @media all and (min-width: $bp1) {
-    margin: 0 rem(32) rem(90) rem(32);
     border-top: 3px solid var(--prime-2);
     padding-top: rem(100);
 

@@ -10,7 +10,7 @@ import ReviewsSlider from '../components/ReviewsSlider/ReviewsSlider';
 import VideoHorizontal from '../components/VideoHorizontal/VideoHorizontal';
 import CasesItems from '../components/CasesItems/CasesItems';
 
-import video from '/src/assets/videos/about-list-3.mp4';
+// import video from '/src/assets/videos/about-list-3.mp4';
 import picture from '/src/assets/images/cases-1.jpg';
 
 const text = [
@@ -40,7 +40,7 @@ export default function Case() {
       <Picture src={picture} />
       <MarksTour />
       <VideoHorizontal videoUrl="https://rutube.ru/play/embed/8cf88425e21edd7fe6f8ff77913b233c" />
-      <VideoHorizontal videoUrl={video} />
+      {/* <VideoHorizontal videoUrl={video} /> */}
       <ReviewsSlider />
       <CasesItems type="web" />
     </main>

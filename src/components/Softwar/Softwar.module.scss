@@ -16,7 +16,7 @@
   }
 
   &__swiper {
-    @include container;
+    @include containerMob;
   }
 
   &__img {
@@ -67,6 +67,10 @@
   }
 
   @media all and (min-width: $bp3) {
+    &__swiper {
+      @include containerDesk;
+    }
+
     &__pagination {
       margin: rem(32) 0;
     }

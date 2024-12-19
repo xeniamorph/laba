@@ -37,7 +37,7 @@
   }
 
   &__top {
-    @include container;
+    @include containerMob;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -426,6 +426,7 @@
   // Адаптация для tablet
   @media all and (min-width: $bp3) {
     &__top {
+      @include containerDesk;
       padding: rem(12) 0 rem(16) 0;
     }
 

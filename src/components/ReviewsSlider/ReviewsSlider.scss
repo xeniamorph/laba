@@ -2,12 +2,12 @@
 
 .ReviewsSlider {
   $s: &;
-  @include sectionMargin;
+  @include sectionMarginMob;
   background-color: var(--prime-1);
   color: var(--sec-3);
 
   &__swiper {
-    @include container;
+    @include containerMob;
 
     .swiper-wrapper {
       align-items: stretch;
@@ -135,6 +135,10 @@
     }
   }
   @media all and (min-width: $bp3) {
+    &__swiper {
+      @include containerDesk;
+    }
+
     &__title {
       margin-bottom: 16px;
       font-weight: var(--fw-medium);

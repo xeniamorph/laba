@@ -2,8 +2,8 @@
 
 .MarksTour {
   $s: &;
-  @include sectionMargin;
-  @include container;
+  @include sectionMarginMob;
+  @include containerMob;
   position: relative;
   background-color: var(--prime-1);
 
@@ -62,7 +62,9 @@
   }
 
   @media all and (min-width: $bp3) {
+    @include containerDesk;
     width: 100vw;
+
     &__iframe {
       aspect-ratio: 11 / 6;
     }

@@ -28,7 +28,7 @@
   }
 
   &__swiper {
-    @include container;
+    @include containerMob;
     transition: 0.3s;
     overflow: visible !important;
   }
@@ -162,10 +162,6 @@
   }
 
   @media all and (min-width: $bp3) {
-    &__circle {
-      display: block;
-    }
-
     &:hover {
       #{$s}__cursor {
         z-index: 100;
@@ -180,6 +176,14 @@
           height: 0;
         }
       }
+    }
+
+    &__circle {
+      display: block;
+    }
+
+    &__swiper {
+      @include containerDesk;
     }
   }
 

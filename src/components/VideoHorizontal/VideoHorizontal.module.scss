@@ -2,8 +2,8 @@
 
 .VideoHorizontal {
   $s: &;
-  @include container;
-  @include sectionMargin;
+  @include containerMob;
+  @include sectionMarginMob;
   margin-right: auto;
   margin-left: auto;
 
@@ -14,9 +14,7 @@
     height: auto;
   }
 
-  @media all and (min-width: $bp1) {
-  }
-
-  @media all and (min-width: $bp0) {
+  @media all and (min-width: $bp3) {
+    @include containerDesk;
   }
 }

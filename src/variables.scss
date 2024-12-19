@@ -13,30 +13,22 @@ $bp4: 768px;
 $bp5: 576px;
 $bp6: 377px;
 
-@mixin container {
-  & {
-    margin-right: rem(16);
-    margin-left: rem(16);
-  }
-
-  @media all and (min-width: $bp3) {
-    & {
-      margin-right: rem(32);
-      margin-left: rem(32);
-    }
-  }
+@mixin containerMob {
+  margin-right: rem(16);
+  margin-left: rem(16);
 }
 
-@mixin sectionMargin {
-  & {
-    margin-top: 160px;
-    margin-bottom: 160px;
-  }
+@mixin containerDesk {
+  margin-right: rem(32);
+  margin-left: rem(32);
+}
 
-  @media all and (max-width: $bp4) {
-    & {
-      margin-top: 80px;
-      margin-bottom: 80px;
-    }
-  }
+@mixin sectionMarginMob {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+@mixin sectionMarginDesk {
+  margin-top: 160px;
+  margin-bottom: 160px;
 }

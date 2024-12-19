@@ -42,7 +42,7 @@
   $s: &;
 
   &__header {
-    @include container;
+    @include containerMob;
     border-top: 2px solid var(--prime-2);
     padding: rem(48) 0 rem(40) 0;
   }
@@ -61,7 +61,7 @@
     margin-bottom: rem(8);
 
     ul {
-      @include container;
+      @include containerMob;
       display: flex;
       flex-wrap: nowrap;
       gap: rem(8);
@@ -191,10 +191,15 @@
 
   @media all and (min-width: $bp3) {
     &__header {
+      @include containerDesk;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: rem(110) 0 rem(93) 0;
+    }
+
+    &__filters ul {
+      @include containerDesk;
     }
 
     &__title {
